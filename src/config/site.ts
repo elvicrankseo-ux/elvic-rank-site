@@ -44,9 +44,9 @@ export const siteConfig = {
     { label: "Why Us", href: "/#why-us" },
     { label: "Industries", href: "/#industries" },
     { label: "Process", href: "/#process" },
-    { label: "Case Studies", href: "/#case-studies" },
+    { label: "Current Projects", href: "/#case-studies" },
     { label: "About", href: "/#about" },
-    { label: "Blog", href: "/#blog" },
+    { label: "Blog", href: "/blog" },
     { label: "FAQ", href: "/#faq" },
   ],
 
@@ -54,8 +54,9 @@ export const siteConfig = {
   // rendered on every page, not just the homepage — a bare "#audit" only
   // scrolls correctly when already on "/".
   cta: {
-    primary: { label: "Get Your Free SEO Audit", href: "/#audit" },
-    secondary: { label: "Talk to Us", href: "/#contact" },
+    primary: { label: "Book Your Free SEO Audit", href: "/#audit" },
+    // Only consumed by Hero — safe to point at Services rather than Contact.
+    secondary: { label: "View Our Services", href: "/#services" },
   },
 } as const;
 

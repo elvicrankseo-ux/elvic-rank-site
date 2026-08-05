@@ -73,6 +73,27 @@ export function getServiceSchema(service: {
   };
 }
 
+/** Article JSON-LD for individual /blog/[slug] posts. */
+export function getArticleSchema(post: {
+  title: string;
+  metaDescription: string;
+  slug: string;
+  publishDate: string;
+}) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: post.title,
+    description: post.metaDescription,
+    datePublished: post.publishDate,
+    dateModified: post.publishDate,
+    author: { "@id": `${siteConfig.url}/#organization` },
+    publisher: { "@id": `${siteConfig.url}/#organization` },
+    url: `${siteConfig.url}/blog/${post.slug}`,
+    mainEntityOfPage: `${siteConfig.url}/blog/${post.slug}`,
+  };
+}
+
 /** BreadcrumbList JSON-LD helper for non-homepage pages. */
 export function getBreadcrumbSchema(
   items: { name: string; path: string }[]

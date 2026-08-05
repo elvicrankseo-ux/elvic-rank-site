@@ -4,8 +4,14 @@ import { Mail, MessageCircle } from "lucide-react";
 import { siteConfig } from "@/config/site";
 import { SocialLinks } from "@/components/ui/social-links";
 
-const exploreLinks = siteConfig.nav.slice(0, 4);
-const companyLinks = siteConfig.nav.slice(4);
+const quickLinks = siteConfig.nav.slice(0, 4);
+const resourceLinks = siteConfig.nav.slice(4);
+
+const legalLinks = [
+  { label: "Privacy Policy", href: "/privacy" },
+  { label: "Terms of Service", href: "/terms" },
+  { label: "Sitemap", href: "/site-map" },
+];
 
 export function Footer() {
   const year = new Date().getFullYear();
@@ -36,10 +42,10 @@ export function Footer() {
 
           <div>
             <p className="text-sm font-medium uppercase tracking-wider text-muted-dark">
-              Explore
+              Quick Links
             </p>
             <ul className="mt-5 space-y-3">
-              {exploreLinks.map((link) => (
+              {quickLinks.map((link) => (
                 <li key={link.href}>
                   <Link
                     href={link.href}
@@ -54,10 +60,10 @@ export function Footer() {
 
           <div>
             <p className="text-sm font-medium uppercase tracking-wider text-muted-dark">
-              Company
+              Resources
             </p>
             <ul className="mt-5 space-y-3">
-              {companyLinks.map((link) => (
+              {resourceLinks.map((link) => (
                 <li key={link.href}>
                   <Link
                     href={link.href}
@@ -116,7 +122,18 @@ export function Footer() {
           <p className="text-xs text-muted-dark">
             © {year} {siteConfig.legalName}. All rights reserved.
           </p>
-          <p className="text-xs text-muted-dark">{siteConfig.tagline}</p>
+          <ul className="flex flex-wrap gap-x-6 gap-y-2">
+            {legalLinks.map((link) => (
+              <li key={link.href}>
+                <Link
+                  href={link.href}
+                  className="text-xs text-muted-dark transition-colors hover:text-accent-bright"
+                >
+                  {link.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
     </footer>

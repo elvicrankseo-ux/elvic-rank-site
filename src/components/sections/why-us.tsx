@@ -1,34 +1,53 @@
 "use client";
 
 import { motion, useReducedMotion } from "framer-motion";
-import { Check, X } from "lucide-react";
+import {
+  BarChart3,
+  Compass,
+  MapPinCheck,
+  Search,
+  MessageCircle,
+  TrendingUp,
+  type LucideIcon,
+} from "lucide-react";
 import { SectionHeading } from "@/components/ui/section-heading";
-import { siteConfig } from "@/config/site";
 
-const comparisons = [
+const reasons: { icon: LucideIcon; title: string; description: string }[] = [
   {
-    typical: "12-month lock-in contracts",
-    elvic: "No long-term contracts — you stay because it works",
+    icon: BarChart3,
+    title: "Transparent Reporting",
+    description:
+      "Weekly, plain-English reports tied to rankings, traffic, and booked jobs — never a black box you have to decode.",
   },
   {
-    typical: "Vague monthly PDF reports",
-    elvic: "Weekly, plain-English updates you'll actually read",
+    icon: Compass,
+    title: "Custom SEO Strategies",
+    description:
+      "No templated playbooks. Every strategy is built around your services, service area, and actual competitors.",
   },
   {
-    typical: "Cookie-cutter SEO templates",
-    elvic: "Strategy built around your trade and service area",
+    icon: MapPinCheck,
+    title: "Google Business Profile Experts",
+    description:
+      "Deep, hands-on GBP optimization and ongoing management — not a one-time setup that's left to rot.",
   },
   {
-    typical: "Bulk, risky link building",
-    elvic: "White-hat links from relevant, real sites",
+    icon: Search,
+    title: "Technical SEO Specialists",
+    description:
+      "Core Web Vitals, crawl health, and indexation fixed by people who actually read the crawl reports.",
   },
   {
-    typical: "Account manager rotates every few months",
-    elvic: "Direct access to the person actually doing the work",
+    icon: MessageCircle,
+    title: "Fast Communication",
+    description:
+      "Real answers within one business day — not a support ticket queue you disappear into.",
   },
   {
-    typical: "Chases vanity keyword rankings",
-    elvic: "Optimizes for booked jobs, not just rankings",
+    icon: TrendingUp,
+    title: "Long-Term Growth",
+    description:
+      "SEO built to compound over months and years, not chase a short-term spike that fades the moment you stop paying.",
   },
 ];
 
@@ -37,65 +56,41 @@ export function WhyUs() {
 
   return (
     <section id="why-us" className="bg-paper py-20 lg:py-28">
-      <div className="mx-auto max-w-6xl px-6 lg:px-8">
+      <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <SectionHeading
           eyebrow="Why Elvic Rank"
-          title="Built different from typical SEO agencies"
-          description="Most agencies are built to retain you. We're built to earn you — one ranking, one booked job at a time."
+          title="Why local businesses choose Elvic Rank"
+          description="Not a generic marketing checklist — six things that actually change the outcome of an SEO engagement."
         />
 
-        <div className="mt-14 grid gap-6 md:grid-cols-2">
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] as const }}
-            className="rounded-2xl border border-paper-border bg-paper-muted p-8"
-          >
-            <p className="text-sm font-medium uppercase tracking-wider text-muted">
-              Typical SEO agencies
-            </p>
-            <ul className="mt-6 space-y-5">
-              {comparisons.map((item) => (
-                <li key={item.typical} className="flex items-start gap-3">
-                  <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-paper text-muted">
-                    <X size={12} aria-hidden />
-                  </span>
-                  <span className="text-sm leading-relaxed text-muted">
-                    {item.typical}
-                  </span>
-                </li>
-              ))}
-            </ul>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-80px" }}
-            transition={{
-              duration: 0.5,
-              delay: prefersReducedMotion ? 0 : 0.1,
-              ease: [0.16, 1, 0.3, 1] as const,
-            }}
-            className="rounded-2xl border border-ink-border bg-ink p-8 shadow-2xl shadow-ink/20"
-          >
-            <p className="text-sm font-medium uppercase tracking-wider text-accent-bright">
-              {siteConfig.name}
-            </p>
-            <ul className="mt-6 space-y-5">
-              {comparisons.map((item) => (
-                <li key={item.elvic} className="flex items-start gap-3">
-                  <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-accent text-accent-foreground">
-                    <Check size={12} aria-hidden />
-                  </span>
-                  <span className="text-sm leading-relaxed text-ink-foreground">
-                    {item.elvic}
-                  </span>
-                </li>
-              ))}
-            </ul>
-          </motion.div>
+        <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {reasons.map((reason, index) => {
+            const Icon = reason.icon;
+            return (
+              <motion.div
+                key={reason.title}
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-80px" }}
+                transition={{
+                  duration: 0.5,
+                  delay: prefersReducedMotion ? 0 : (index % 3) * 0.08,
+                  ease: [0.16, 1, 0.3, 1] as const,
+                }}
+                className="rounded-2xl border border-paper-border bg-paper-muted p-8"
+              >
+                <div className="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-accent/10 text-accent-deep">
+                  <Icon size={22} aria-hidden />
+                </div>
+                <h3 className="mt-6 font-display text-lg font-medium text-foreground">
+                  {reason.title}
+                </h3>
+                <p className="mt-3 text-sm leading-relaxed text-muted">
+                  {reason.description}
+                </p>
+              </motion.div>
+            );
+          })}
         </div>
       </div>
     </section>

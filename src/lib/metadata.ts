@@ -32,11 +32,16 @@ export function buildMetadata({
       siteName: siteConfig.name,
       type: "website",
       locale: "en_US",
+      // Next doesn't inherit the root layout's openGraph.images when a
+      // page defines its own openGraph object — set explicitly here so
+      // every page sharing this helper gets a social preview image.
+      images: [{ url: "/opengraph-image.png", width: 394, height: 394 }],
     },
     twitter: {
       card: "summary_large_image",
       title,
       description,
+      images: ["/opengraph-image.png"],
     },
     robots: noIndex
       ? { index: false, follow: false }

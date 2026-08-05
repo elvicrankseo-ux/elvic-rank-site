@@ -1,74 +1,37 @@
+"use client";
+
+import { motion, useReducedMotion } from "framer-motion";
 import {
-  Wrench,
   HardHat,
   Truck,
-  Car,
   Scale,
+  UtensilsCrossed,
+  Stethoscope,
   Building2,
-  Trees,
-  HeartPulse,
-  Package,
-  Sparkles,
+  Hammer,
+  Wrench,
+  Car,
+  Briefcase,
   type LucideIcon,
 } from "lucide-react";
 import { SectionHeading } from "@/components/ui/section-heading";
 
-const rowOne: { icon: LucideIcon; label: string }[] = [
-  { icon: Wrench, label: "Home Services (HVAC, Plumbing, Electrical)" },
-  { icon: HardHat, label: "Roofing & Construction" },
-  { icon: Truck, label: "Towing & Roadside Assistance" },
-  { icon: Car, label: "Auto Repair & Detailing" },
-  { icon: Scale, label: "Legal & Professional Services" },
+const industries: { icon: LucideIcon; label: string }[] = [
+  { icon: HardHat, label: "Roofing" },
+  { icon: Truck, label: "Towing" },
+  { icon: Scale, label: "Law Firms" },
+  { icon: UtensilsCrossed, label: "Restaurants" },
+  { icon: Stethoscope, label: "Medical Clinics" },
+  { icon: Building2, label: "Real Estate" },
+  { icon: Hammer, label: "Construction" },
+  { icon: Wrench, label: "Home Services" },
+  { icon: Car, label: "Automotive" },
+  { icon: Briefcase, label: "Professional Services" },
 ];
-
-const rowTwo: { icon: LucideIcon; label: string }[] = [
-  { icon: Building2, label: "Real Estate & Property Management" },
-  { icon: Trees, label: "Landscaping & Outdoor Services" },
-  { icon: HeartPulse, label: "Health & Wellness Clinics" },
-  { icon: Package, label: "Moving & Logistics" },
-  { icon: Sparkles, label: "Cleaning Services" },
-];
-
-function Chip({ icon: Icon, label }: { icon: LucideIcon; label: string }) {
-  return (
-    <span className="flex shrink-0 items-center gap-2.5 rounded-full border border-paper-border bg-paper px-5 py-2.5 text-sm font-medium text-foreground">
-      <Icon size={16} className="text-accent-deep" aria-hidden />
-      {label}
-    </span>
-  );
-}
-
-function MarqueeRow({
-  items,
-  reverse = false,
-}: {
-  items: { icon: LucideIcon; label: string }[];
-  reverse?: boolean;
-}) {
-  return (
-    <div className="overflow-hidden">
-      <div
-        className={`flex w-max gap-4 ${
-          reverse ? "animate-marquee-reverse" : "animate-marquee"
-        }`}
-      >
-        {items.map((item) => (
-          <Chip key={item.label} {...item} />
-        ))}
-        {/* display:contents keeps these as direct flex items (for a
-            seamless -50% loop) while aria-hidden removes the visual
-            duplicate from the accessibility tree. */}
-        <div className="contents" aria-hidden="true">
-          {items.map((item) => (
-            <Chip key={`dup-${item.label}`} {...item} />
-          ))}
-        </div>
-      </div>
-    </div>
-  );
-}
 
 export function Industries() {
+  const prefersReducedMotion = useReducedMotion();
+
   return (
     <section id="industries" className="bg-paper-muted py-20 lg:py-28">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
@@ -77,11 +40,33 @@ export function Industries() {
           title="Built for local service businesses"
           description="Different trades, same fundamentals: buyers search before they call. We rank the businesses that show up first."
         />
-      </div>
 
-      <div className="marquee-paused mt-14 flex flex-col gap-4 overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_8%,black_92%,transparent)]">
-        <MarqueeRow items={rowOne} />
-        <MarqueeRow items={rowTwo} reverse />
+        <div className="mt-14 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-5">
+          {industries.map((industry, index) => {
+            const Icon = industry.icon;
+            return (
+              <motion.div
+                key={industry.label}
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-80px" }}
+                transition={{
+                  duration: 0.5,
+                  delay: prefersReducedMotion ? 0 : (index % 5) * 0.06,
+                  ease: [0.16, 1, 0.3, 1] as const,
+                }}
+                className="flex flex-col items-center gap-3 rounded-2xl border border-paper-border bg-paper p-6 text-center transition-colors hover:border-accent/40"
+              >
+                <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-accent/10 text-accent-deep">
+                  <Icon size={22} aria-hidden />
+                </span>
+                <span className="text-sm font-medium text-foreground">
+                  {industry.label}
+                </span>
+              </motion.div>
+            );
+          })}
+        </div>
       </div>
     </section>
   );

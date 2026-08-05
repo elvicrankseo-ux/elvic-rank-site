@@ -38,6 +38,46 @@ const faqs = [
     answer:
       "That's common, and it works well — we handle the technical SEO and strategy layer, and coordinate directly with your team rather than duplicating effort.",
   },
+  {
+    question: "What is Technical SEO?",
+    answer:
+      "Technical SEO is the foundation that lets search engines properly crawl, index, and understand your site — site speed, mobile-friendliness, structured data, and clean architecture. Without it, even great content struggles to rank.",
+  },
+  {
+    question: "Can you rank my Google Business Profile in the map pack?",
+    answer:
+      "We can't guarantee a specific ranking — no honest agency can — but Google Business Profile optimization is one of the highest-leverage things we do for local visibility, and it's core to what we offer.",
+  },
+  {
+    question: "How much does SEO cost?",
+    answer:
+      "It depends on your market, competition, and how much work is needed. We'll give you a clear, specific number after the free audit — not a generic package price that doesn't reflect your actual situation.",
+  },
+  {
+    question: "Why do I need Local SEO if I already show up on Google?",
+    answer:
+      "Showing up when someone searches your business name isn't the same as showing up when a stranger searches for your service. Local SEO is what gets you found by people who don't already know you exist.",
+  },
+  {
+    question: "How does Website Design affect SEO?",
+    answer:
+      "Site speed, mobile usability, and clean structure are all ranking factors — and a site that's hard to navigate loses visitors even when it does rank. Design and SEO aren't separate conversations.",
+  },
+  {
+    question: "Do you offer Google Ads or Meta Ads alongside SEO?",
+    answer:
+      "Yes — paid search and social campaigns are available as a complement to SEO, built around the same intent research rather than run as a separate, disconnected strategy.",
+  },
+  {
+    question: "What's the difference between SEO and Google Ads?",
+    answer:
+      "SEO is a longer-term investment that compounds and keeps paying off; Google Ads is immediate but stops the moment you stop paying. Most businesses benefit from both, weighted differently depending on how fast they need results.",
+  },
+  {
+    question: "How do I know if my current SEO is actually working?",
+    answer:
+      "If you can't tie your SEO spend to calls, form fills, or booked jobs, that's the clearest sign something's missing. A free audit will show you exactly where you stand.",
+  },
 ];
 
 export function FAQ() {

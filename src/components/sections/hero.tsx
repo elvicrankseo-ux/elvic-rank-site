@@ -2,7 +2,15 @@
 
 import { useEffect, useRef, useState } from "react";
 import { motion, useInView, useReducedMotion } from "framer-motion";
-import { ArrowRight, Check, TrendingUp } from "lucide-react";
+import {
+  ArrowRight,
+  Check,
+  TrendingUp,
+  Search,
+  MapPin,
+  MapPinCheck,
+  LayoutTemplate,
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { siteConfig } from "@/config/site";
 
@@ -10,6 +18,13 @@ const trustPoints = [
   "No long-term contracts",
   "Transparent weekly reporting",
   "White-hat SEO only",
+];
+
+const specialtyBadges = [
+  { icon: Search, label: "Technical SEO" },
+  { icon: MapPin, label: "Local SEO" },
+  { icon: MapPinCheck, label: "Google Business Profile" },
+  { icon: LayoutTemplate, label: "Website Design" },
 ];
 
 const rankMetrics = [
@@ -93,8 +108,8 @@ export function Hero() {
             variants={fadeUp}
             className="mt-6 font-display text-4xl font-medium leading-[1.08] tracking-tight text-foreground sm:text-5xl lg:text-6xl"
           >
-            SEO that turns searches into{" "}
-            <span className="text-accent-deep">booked jobs</span>.
+            SEO That Brings More Calls, More Leads &{" "}
+            <span className="text-accent-deep">More Booked Jobs</span>
           </motion.h1>
 
           <motion.p
@@ -104,9 +119,9 @@ export function Hero() {
             variants={fadeUp}
             className="mt-6 max-w-xl text-lg leading-relaxed text-muted"
           >
-            {siteConfig.name} builds the technical foundation, content, and
-            Google Business Profile visibility that compound over time — so
-            local service businesses show up first, and get chosen first.
+            We help local businesses dominate Google through Technical SEO,
+            Local SEO, Google Business Profile Optimization, Website Design,
+            and digital marketing that generates real business growth.
           </motion.p>
 
           <motion.div
@@ -125,12 +140,35 @@ export function Hero() {
             </Button>
           </motion.div>
 
-          <motion.ul
+          <motion.div
             initial="hidden"
             animate="show"
             custom={4}
             variants={fadeUp}
-            className="mt-10 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:gap-x-8 sm:gap-y-3"
+            className="mt-8"
+          >
+            <p className="text-xs font-medium uppercase tracking-wider text-muted">
+              Trusted SEO Partner
+            </p>
+            <ul className="mt-3 flex flex-wrap gap-2">
+              {specialtyBadges.map((badge) => (
+                <li
+                  key={badge.label}
+                  className="flex items-center gap-1.5 rounded-full border border-paper-border bg-paper-muted px-3 py-1.5 text-xs font-medium text-foreground"
+                >
+                  <badge.icon size={13} className="text-accent-deep" aria-hidden />
+                  {badge.label}
+                </li>
+              ))}
+            </ul>
+          </motion.div>
+
+          <motion.ul
+            initial="hidden"
+            animate="show"
+            custom={5}
+            variants={fadeUp}
+            className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:gap-x-8 sm:gap-y-3"
           >
             {trustPoints.map((point) => (
               <li key={point} className="flex items-center gap-2 text-sm text-muted">

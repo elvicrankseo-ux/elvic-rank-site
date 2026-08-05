@@ -1,4 +1,5 @@
 import { Hero } from "@/components/sections/hero";
+import { TrustStrip } from "@/components/sections/trust-strip";
 import { Services } from "@/components/sections/services";
 import { WhyUs } from "@/components/sections/why-us";
 import { Industries } from "@/components/sections/industries";
@@ -15,6 +16,7 @@ export default function Home() {
   return (
     <main id="top" className="flex-1">
       <Hero />
+      <TrustStrip />
       <Services />
       <WhyUs />
       <Industries />

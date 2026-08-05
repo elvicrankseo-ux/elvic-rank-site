@@ -1,8 +1,8 @@
 import type { MetadataRoute } from "next";
 import { siteConfig } from "@/config/site";
 import { services } from "@/data/services";
+import { blogPosts } from "@/data/blog";
 
-// TODO(elvic): add a /blog index entry here once posts are published.
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
 
@@ -19,5 +19,23 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly" as const,
       priority: 0.8,
     })),
+    {
+      url: `${siteConfig.url}/blog`,
+      lastModified: now,
+      changeFrequency: "weekly" as const,
+      priority: 0.7,
+    },
+    ...blogPosts.map((post) => ({
+      url: `${siteConfig.url}/blog/${post.slug}`,
+      lastModified: new Date(post.publishDate),
+      changeFrequency: "monthly" as const,
+      priority: 0.6,
+    })),
+    {
+      url: `${siteConfig.url}/site-map`,
+      lastModified: now,
+      changeFrequency: "monthly" as const,
+      priority: 0.3,
+    },
   ];
 }

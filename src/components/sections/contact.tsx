@@ -15,12 +15,32 @@ import { SectionHeading } from "@/components/ui/section-heading";
 import { Button } from "@/components/ui/button";
 import { SocialLinks } from "@/components/ui/social-links";
 import { siteConfig } from "@/config/site";
+import { services } from "@/data/services";
 import { buildMailtoLink } from "@/lib/mailto";
 
-type FormState = { name: string; email: string; message: string };
+type FormState = {
+  name: string;
+  businessName: string;
+  email: string;
+  phone: string;
+  website: string;
+  serviceNeeded: string;
+  message: string;
+};
 type FormErrors = Partial<Record<keyof FormState, string>>;
 
-const initialState: FormState = { name: "", email: "", message: "" };
+const initialState: FormState = {
+  name: "",
+  businessName: "",
+  email: "",
+  phone: "",
+  website: "",
+  serviceNeeded: "",
+  message: "",
+};
+
+const inputClass =
+  "mt-1.5 w-full rounded-lg border border-paper-border bg-paper px-4 py-2.5 text-sm text-foreground placeholder:text-muted focus:border-accent-deep focus:outline-none";
 
 function validate(values: FormState): FormErrors {
   const errors: FormErrors = {};
@@ -131,7 +151,7 @@ export function Contact() {
 
   function handleChange(field: keyof FormState) {
     return (
-      event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+      event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
     ) => {
       setValues((prev) => ({ ...prev, [field]: event.target.value }));
     };
@@ -146,7 +166,16 @@ export function Contact() {
     window.location.href = buildMailtoLink(
       siteConfig.email,
       `Message from ${values.name} via elvicrank.com`,
-      [`Name: ${values.name}`, `Email: ${values.email}`, "", values.message]
+      [
+        `Name: ${values.name}`,
+        values.businessName ? `Business name: ${values.businessName}` : null,
+        `Email: ${values.email}`,
+        values.phone ? `Phone: ${values.phone}` : null,
+        values.website ? `Website: ${values.website}` : null,
+        values.serviceNeeded ? `Service needed: ${values.serviceNeeded}` : null,
+        "",
+        values.message,
+      ]
     );
     setStatus("sent");
   }
@@ -216,46 +245,117 @@ export function Contact() {
             </div>
           ) : (
             <form onSubmit={handleSubmit} noValidate className="space-y-5">
-              <div>
-                <label htmlFor={`${formId}-name`} className="text-sm font-medium text-foreground">
-                  Full name
-                </label>
-                <input
-                  id={`${formId}-name`}
-                  type="text"
-                  value={values.name}
-                  onChange={handleChange("name")}
-                  aria-invalid={Boolean(errors.name)}
-                  aria-describedby={errors.name ? `${formId}-name-error` : undefined}
-                  className="mt-1.5 w-full rounded-lg border border-paper-border bg-paper px-4 py-2.5 text-sm text-foreground placeholder:text-muted focus:border-accent-deep focus:outline-none"
-                  placeholder="Jane Doe"
-                />
-                {errors.name && (
-                  <p id={`${formId}-name-error`} className="mt-1.5 text-xs text-accent-deep">
-                    {errors.name}
-                  </p>
-                )}
+              <div className="grid gap-5 sm:grid-cols-2">
+                <div>
+                  <label htmlFor={`${formId}-name`} className="text-sm font-medium text-foreground">
+                    Full name
+                  </label>
+                  <input
+                    id={`${formId}-name`}
+                    type="text"
+                    value={values.name}
+                    onChange={handleChange("name")}
+                    aria-invalid={Boolean(errors.name)}
+                    aria-describedby={errors.name ? `${formId}-name-error` : undefined}
+                    className={inputClass}
+                    placeholder="Jane Doe"
+                  />
+                  {errors.name && (
+                    <p id={`${formId}-name-error`} className="mt-1.5 text-xs text-accent-deep">
+                      {errors.name}
+                    </p>
+                  )}
+                </div>
+
+                <div>
+                  <label htmlFor={`${formId}-business`} className="text-sm font-medium text-foreground">
+                    Business name{" "}
+                    <span className="font-normal text-muted">(optional)</span>
+                  </label>
+                  <input
+                    id={`${formId}-business`}
+                    type="text"
+                    value={values.businessName}
+                    onChange={handleChange("businessName")}
+                    className={inputClass}
+                    placeholder="Jane's Plumbing Co."
+                  />
+                </div>
               </div>
 
-              <div>
-                <label htmlFor={`${formId}-email`} className="text-sm font-medium text-foreground">
-                  Email
-                </label>
-                <input
-                  id={`${formId}-email`}
-                  type="email"
-                  value={values.email}
-                  onChange={handleChange("email")}
-                  aria-invalid={Boolean(errors.email)}
-                  aria-describedby={errors.email ? `${formId}-email-error` : undefined}
-                  className="mt-1.5 w-full rounded-lg border border-paper-border bg-paper px-4 py-2.5 text-sm text-foreground placeholder:text-muted focus:border-accent-deep focus:outline-none"
-                  placeholder="jane@business.com"
-                />
-                {errors.email && (
-                  <p id={`${formId}-email-error`} className="mt-1.5 text-xs text-accent-deep">
-                    {errors.email}
-                  </p>
-                )}
+              <div className="grid gap-5 sm:grid-cols-2">
+                <div>
+                  <label htmlFor={`${formId}-email`} className="text-sm font-medium text-foreground">
+                    Email
+                  </label>
+                  <input
+                    id={`${formId}-email`}
+                    type="email"
+                    value={values.email}
+                    onChange={handleChange("email")}
+                    aria-invalid={Boolean(errors.email)}
+                    aria-describedby={errors.email ? `${formId}-email-error` : undefined}
+                    className={inputClass}
+                    placeholder="jane@business.com"
+                  />
+                  {errors.email && (
+                    <p id={`${formId}-email-error`} className="mt-1.5 text-xs text-accent-deep">
+                      {errors.email}
+                    </p>
+                  )}
+                </div>
+
+                <div>
+                  <label htmlFor={`${formId}-phone`} className="text-sm font-medium text-foreground">
+                    Phone{" "}
+                    <span className="font-normal text-muted">(optional)</span>
+                  </label>
+                  <input
+                    id={`${formId}-phone`}
+                    type="tel"
+                    value={values.phone}
+                    onChange={handleChange("phone")}
+                    className={inputClass}
+                    placeholder="(000) 000-0000"
+                  />
+                </div>
+              </div>
+
+              <div className="grid gap-5 sm:grid-cols-2">
+                <div>
+                  <label htmlFor={`${formId}-website`} className="text-sm font-medium text-foreground">
+                    Website{" "}
+                    <span className="font-normal text-muted">(optional)</span>
+                  </label>
+                  <input
+                    id={`${formId}-website`}
+                    type="text"
+                    value={values.website}
+                    onChange={handleChange("website")}
+                    className={inputClass}
+                    placeholder="yourbusiness.com"
+                  />
+                </div>
+
+                <div>
+                  <label htmlFor={`${formId}-service`} className="text-sm font-medium text-foreground">
+                    Service needed{" "}
+                    <span className="font-normal text-muted">(optional)</span>
+                  </label>
+                  <select
+                    id={`${formId}-service`}
+                    value={values.serviceNeeded}
+                    onChange={handleChange("serviceNeeded")}
+                    className={inputClass}
+                  >
+                    <option value="">Not sure yet</option>
+                    {services.map((service) => (
+                      <option key={service.slug} value={service.title}>
+                        {service.title}
+                      </option>
+                    ))}
+                  </select>
+                </div>
               </div>
 
               <div>
@@ -269,7 +369,7 @@ export function Contact() {
                   rows={4}
                   aria-invalid={Boolean(errors.message)}
                   aria-describedby={errors.message ? `${formId}-message-error` : undefined}
-                  className="mt-1.5 w-full resize-none rounded-lg border border-paper-border bg-paper px-4 py-2.5 text-sm text-foreground placeholder:text-muted focus:border-accent-deep focus:outline-none"
+                  className={`${inputClass} resize-none`}
                   placeholder="What can we help with?"
                 />
                 {errors.message && (

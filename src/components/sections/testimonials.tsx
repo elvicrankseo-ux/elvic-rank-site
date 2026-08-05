@@ -23,7 +23,7 @@ export function Testimonials() {
         <SectionHeading
           eyebrow="Testimonials"
           title="What clients are saying"
-          description="We're a young agency building our track record in public. Real testimonials from real clients will replace these as they come in."
+          description="Real client testimonials will appear here as our clients begin seeing measurable results."
         />
 
         <div className="mt-14 grid gap-6 lg:grid-cols-3">

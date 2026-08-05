@@ -5,6 +5,14 @@ import {
   LayoutGrid,
   Link2,
   BarChart3,
+  LayoutTemplate,
+  MousePointerClick,
+  Megaphone,
+  FileSearch,
+  Tags,
+  Globe,
+  Gauge,
+  TrendingUp,
   type LucideIcon,
 } from "lucide-react";
 
@@ -307,6 +315,379 @@ export const services: Service[] = [
         question: "What happens on the monthly strategy call?",
         answer:
           "We walk through what moved, why, and what we're prioritizing next — a real conversation, not a scripted readout.",
+      },
+    ],
+  },
+  {
+    slug: "website-design",
+    icon: LayoutTemplate,
+    title: "Website Design",
+    shortDescription:
+      "Websites built to rank and convert from day one — fast, mobile-first, and structured around SEO from the first wireframe, not bolted on after launch.",
+    points: ["SEO-first architecture", "Mobile-first & fast", "Conversion-focused layout"],
+    metaTitle: "SEO Website Design Services",
+    metaDescription:
+      "SEO-focused website design for local service businesses — fast, mobile-first sites built to rank and convert, not just look good.",
+    heroIntro:
+      "Most “SEO-friendly” websites are pretty first and searchable second — an afterthought bolted on after launch. We design the other way around: site structure, page speed, and conversion paths are planned alongside the visual design, so the site you launch with is already positioned to rank.",
+    benefits: [
+      {
+        title: "SEO built in, not bolted on",
+        description:
+          "Site architecture, URL structure, and internal linking are planned before a single page is designed — not patched in after launch.",
+      },
+      {
+        title: "Fast by default",
+        description:
+          "Every design decision is weighed against its effect on load time. A beautiful site that loads slowly loses both rankings and visitors.",
+      },
+      {
+        title: "Built to convert, not just impress",
+        description:
+          "Clear calls to action and conversion paths on every page — a website's job is to generate leads, not win design awards.",
+      },
+    ],
+    faqs: [
+      {
+        question: "Will my new site keep my current rankings?",
+        answer:
+          "Yes — migrations are planned with 301 redirects and technical continuity so you don't lose the ground you've already gained.",
+      },
+      {
+        question: "Do you build on WordPress or something else?",
+        answer:
+          "We choose the platform based on your needs — usually a modern, fast framework, though WordPress is an option if you need a specific content workflow.",
+      },
+      {
+        question: "How long does a website design project take?",
+        answer:
+          "Typically 3–6 weeks depending on scope, from wireframes to launch.",
+      },
+    ],
+  },
+  {
+    slug: "google-ads",
+    icon: MousePointerClick,
+    title: "Google Ads Management",
+    shortDescription:
+      "Paid search campaigns that fill the gap while your SEO compounds — built around the same buyer intent, not a separate, disconnected strategy.",
+    points: ["Campaign strategy & setup", "Conversion tracking", "Budget optimization"],
+    metaTitle: "Google Ads Management Services",
+    metaDescription:
+      "Google Ads management for local service businesses — paid search campaigns built around real buyer intent, with conversion tracking tied to booked jobs.",
+    heroIntro:
+      "SEO takes time to compound. Google Ads can fill that gap immediately — if it's built around the same intent research as your organic strategy, not run as a disconnected side project. We set up, manage, and optimize campaigns tied directly to calls and form fills, not just clicks.",
+    benefits: [
+      {
+        title: "Built on the same intent research as SEO",
+        description:
+          "Your paid and organic strategies should reinforce each other, not compete for the same budget conversation.",
+      },
+      {
+        title: "Tracked to the booked job",
+        description:
+          "Conversion tracking is set up before a single dollar is spent, so you know exactly what's working.",
+      },
+      {
+        title: "No runaway budgets",
+        description:
+          "Clear budget caps and regular check-ins — you'll never be surprised by a bill.",
+      },
+    ],
+    faqs: [
+      {
+        question: "How much should I budget for Google Ads?",
+        answer:
+          "It depends on your market and competition — we'll give you a realistic range during the strategy call, not a one-size-fits-all number.",
+      },
+      {
+        question: "Do you require a minimum ad spend?",
+        answer:
+          "No fixed minimum, but we'll be honest if your budget is too low to generate meaningful data.",
+      },
+      {
+        question: "How is this different from just boosting a post?",
+        answer:
+          "Google Ads targets active search intent — people already looking for what you offer — which converts very differently from social boosting.",
+      },
+    ],
+  },
+  {
+    slug: "meta-ads",
+    icon: Megaphone,
+    title: "Meta Ads (Facebook & Instagram)",
+    shortDescription:
+      "Paid social campaigns that build awareness and retarget site visitors — a complement to search intent, not a replacement for it.",
+    points: ["Audience targeting & creative", "Retargeting campaigns", "Performance reporting"],
+    metaTitle: "Meta Ads (Facebook & Instagram) Management",
+    metaDescription:
+      "Meta Ads management for local service businesses — Facebook and Instagram campaigns for awareness and retargeting, reported in plain English.",
+    heroIntro:
+      "Search ads catch people looking for you. Meta ads put you in front of people before they know they're looking — and bring back the ones who visited your site but didn't convert. We build and manage campaigns that support your SEO and search ads, not compete with them for attention.",
+    benefits: [
+      {
+        title: "Retargeting that recovers lost visitors",
+        description:
+          "Most website visitors don't convert on the first visit. Retargeting keeps you in front of them until they're ready.",
+      },
+      {
+        title: "Creative that doesn't look like an ad",
+        description:
+          "Native-feeling creative outperforms obvious sales pitches in every account we've run.",
+      },
+      {
+        title: "Reported the same way as everything else",
+        description:
+          "One plain-English report, not a separate dashboard you have to learn.",
+      },
+    ],
+    faqs: [
+      {
+        question: "Is Meta Ads worth it for a local service business?",
+        answer:
+          "It depends on your sales cycle — it works best for businesses with a visual service or a longer consideration window.",
+      },
+      {
+        question: "Can you use my existing photos and videos?",
+        answer:
+          "Yes, and we'll tell you honestly if you need new creative to make the campaign work.",
+      },
+      {
+        question: "How do you measure success beyond likes and follows?",
+        answer:
+          "Leads, calls, and form fills — vanity metrics like likes don't appear in your report.",
+      },
+    ],
+  },
+  {
+    slug: "seo-audit",
+    icon: FileSearch,
+    title: "SEO Audits",
+    shortDescription:
+      "A comprehensive, no-obligation look at your site's technical health, content gaps, local visibility, and competitor positioning — the fastest way to see where you actually stand.",
+    points: ["Technical, content & local review", "Competitor benchmarking", "Prioritized action plan"],
+    metaTitle: "SEO Audit Services",
+    metaDescription:
+      "Comprehensive SEO audits for local service businesses — technical health, content gaps, local visibility, and competitor benchmarking in one report.",
+    heroIntro:
+      "Before any strategy gets built, we look at where you actually stand — not just technical crawl errors, but content gaps, local visibility, and exactly where competitors are beating you. This is the audit that becomes the foundation for everything else we do together, and it's also available as a completely free, no-obligation starting point.",
+    benefits: [
+      {
+        title: "Broader than a technical crawl",
+        description:
+          "Technical health is one input. We also look at content coverage, local visibility, and competitor positioning.",
+      },
+      {
+        title: "A foundation, not a one-off",
+        description:
+          "The audit becomes the roadmap for every other service — nothing is recommended that isn't tied back to a specific finding.",
+      },
+      {
+        title: "Free to start",
+        description:
+          "The first audit costs nothing and comes with no obligation to continue.",
+      },
+    ],
+    faqs: [
+      {
+        question: "Is this the same as the free audit on your homepage?",
+        answer:
+          "Yes — this page describes the same audit in more depth. It's a genuine starting point, not a stripped-down teaser.",
+      },
+      {
+        question: "What's the difference between this and a Technical SEO Audit?",
+        answer:
+          "This audit is broader — technical, content, local, and competitive. The technical audit goes deeper into just the technical layer for sites that need focused remediation.",
+      },
+      {
+        question: "Do I have to sign up for anything to get the audit?",
+        answer: "No — it's free and comes with no obligation.",
+      },
+    ],
+  },
+  {
+    slug: "keyword-research",
+    icon: Tags,
+    title: "Keyword Research",
+    shortDescription:
+      "Finding the exact terms your buyers search — not just high-volume keywords, but the ones that actually convert into calls and jobs.",
+    points: ["Buyer-intent mapping", "Competitor keyword gaps", "Search volume & difficulty analysis"],
+    metaTitle: "Keyword Research Services",
+    metaDescription:
+      "Keyword research for local service businesses — buyer-intent mapping and competitor gap analysis targeting terms that actually convert, not just rank.",
+    heroIntro:
+      "High search volume means nothing if the person searching isn't ready to buy. We research the exact terms your buyers use at each stage of their decision, map them to intent, and prioritize the ones that convert — not just the ones that look impressive in a rank tracker.",
+    benefits: [
+      {
+        title: "Intent over volume",
+        description:
+          "A low-volume, high-intent keyword often outperforms a high-volume, low-intent one for actual bookings.",
+      },
+      {
+        title: "Mapped to your funnel",
+        description:
+          "Every keyword is tagged to where a buyer is in their decision, so content and pages target the right stage.",
+      },
+      {
+        title: "Where competitors are weak",
+        description:
+          "Gap analysis shows exactly which terms competitors rank for that you don't — and which are worth chasing.",
+      },
+    ],
+    faqs: [
+      {
+        question: "How many keywords will I end up targeting?",
+        answer:
+          "It depends on your services and area — quality of match matters more than raw count.",
+      },
+      {
+        question: "Do you use paid tools for this?",
+        answer: "Yes, professional-grade keyword and competitor research tools, not guesswork.",
+      },
+      {
+        question: "Will this research get out of date?",
+        answer:
+          "Search behavior shifts — keyword research is revisited periodically, not done once and forgotten.",
+      },
+    ],
+  },
+  {
+    slug: "off-page-seo",
+    icon: Globe,
+    title: "Off-Page SEO",
+    shortDescription:
+      "Building your reputation and relevance signals beyond your own site — citations, brand mentions, and trust signals that support everything link building earns.",
+    points: ["Citation consistency", "Brand mention monitoring", "Trust & authority signals"],
+    metaTitle: "Off-Page SEO Services",
+    metaDescription:
+      "Off-page SEO for local service businesses — citation consistency, brand mention monitoring, and the trust signals search engines weigh beyond your site.",
+    heroIntro:
+      "What happens off your website matters as much as what's on it. We keep your business information consistent everywhere it appears, track and reclaim mentions that should be linking back to you, and build the broader trust signals that support your rankings beyond individual backlinks.",
+    benefits: [
+      {
+        title: "Consistency everywhere you're listed",
+        description:
+          "Inconsistent business information across the web quietly undermines the trust signals search engines rely on.",
+      },
+      {
+        title: "Unlinked mentions, reclaimed",
+        description:
+          "Many businesses are mentioned online without a link back. We find those and turn them into real links.",
+      },
+      {
+        title: "Signals beyond backlinks",
+        description:
+          "Off-page SEO is bigger than link building alone — we look at the full picture of how your business is represented online.",
+      },
+    ],
+    faqs: [
+      {
+        question: "How is this different from link building?",
+        answer:
+          "Link building is one part of off-page SEO. This service covers the broader picture — citations, mentions, and consistency.",
+      },
+      {
+        question: "What if my business information is already inconsistent?",
+        answer:
+          "That's common, especially after a rebrand or move — a cleanup audit is the first step.",
+      },
+      {
+        question: "Do you monitor ongoing mentions, or is this a one-time fix?",
+        answer: "Ongoing — new mentions and citation opportunities come up regularly.",
+      },
+    ],
+  },
+  {
+    slug: "website-speed-optimization",
+    icon: Gauge,
+    title: "Website Speed Optimization",
+    shortDescription:
+      "Faster load times, better Core Web Vitals, and fewer visitors lost to a page that takes too long to load — speed is a ranking factor and a conversion factor.",
+    points: ["Core Web Vitals fixes", "Image & asset optimization", "Hosting & caching review"],
+    metaTitle: "Website Speed Optimization Services",
+    metaDescription:
+      "Website speed optimization for local service businesses — Core Web Vitals fixes, image optimization, and caching improvements that speed up rankings.",
+    heroIntro:
+      "Every extra second of load time costs you both rankings and visitors who give up and leave. We diagnose exactly what's slowing your site down — oversized images, render-blocking scripts, poor caching — and fix it in priority order, measured against real Core Web Vitals data, not guesswork.",
+    benefits: [
+      {
+        title: "Speed is a ranking factor and a conversion factor",
+        description:
+          "Google measures it, and so do your visitors — a slow site loses on both fronts at once.",
+      },
+      {
+        title: "Fixes prioritized by impact",
+        description:
+          "Not every speed issue is worth fixing first. We prioritize by what actually moves your Core Web Vitals scores.",
+      },
+      {
+        title: "Measured, not assumed",
+        description:
+          "Before-and-after data on every optimization, so you can see exactly what improved.",
+      },
+    ],
+    faqs: [
+      {
+        question: "Will this require moving hosting providers?",
+        answer:
+          "Sometimes — if hosting is the bottleneck, we'll tell you plainly, but many sites can be fixed without switching.",
+      },
+      {
+        question: "How much faster can I expect my site to load?",
+        answer:
+          "It depends on the starting point — sites with heavy unoptimized images or bloated scripts often see the biggest gains.",
+      },
+      {
+        question: "Is this a one-time fix or ongoing?",
+        answer:
+          "Both are available — an initial optimization pass, with ongoing monitoring if new issues creep in.",
+      },
+    ],
+  },
+  {
+    slug: "conversion-rate-optimization",
+    icon: TrendingUp,
+    title: "Conversion Rate Optimization",
+    shortDescription:
+      "Getting more of your existing traffic to actually call, message, or fill out a form — because more visitors mean nothing if they don't convert.",
+    points: ["Landing page audits", "CTA & form optimization", "A/B testing where volume allows"],
+    metaTitle: "Conversion Rate Optimization (CRO) Services",
+    metaDescription:
+      "Conversion rate optimization for local service businesses — landing page audits, CTA improvements, and form optimization that turn traffic into booked jobs.",
+    heroIntro:
+      "Ranking higher and driving more traffic only matters if visitors actually convert once they arrive. We audit your landing pages for friction — confusing CTAs, buried contact forms, slow-loading pages — and fix what's actually costing you leads, not just what looks outdated.",
+    benefits: [
+      {
+        title: "More leads without more traffic",
+        description:
+          "Improving your conversion rate is often faster and cheaper than driving more visitors to a page that isn't converting.",
+      },
+      {
+        title: "Friction, not opinion, drives decisions",
+        description:
+          "Recommendations are based on where visitors actually drop off, not personal design preference.",
+      },
+      {
+        title: "Tested where volume allows",
+        description:
+          "For pages with enough traffic, we run structured A/B tests rather than guessing which version performs better.",
+      },
+    ],
+    faqs: [
+      {
+        question: "How much traffic do I need for CRO to make sense?",
+        answer:
+          "Meaningful A/B testing needs decent volume, but a conversion audit and fixes are valuable at any traffic level.",
+      },
+      {
+        question: "Will this involve redesigning my whole site?",
+        answer:
+          "Usually not — most CRO wins come from targeted changes to specific pages, not a full redesign.",
+      },
+      {
+        question: "How do you measure a 'conversion'?",
+        answer:
+          "Whatever matters to your business — calls, form fills, or bookings — defined clearly before we start.",
       },
     ],
   },

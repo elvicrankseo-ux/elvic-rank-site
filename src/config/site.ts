@@ -19,7 +19,7 @@ export const siteConfig = {
   // placeholder. Set to { display, e164 } once a real number exists.
   phone: null as { display: string; e164: string } | null,
 
-  email: "hello@elvicrank.com",
+  email: "info@elvicrank.com",
 
   whatsapp: {
     display: "+234 707 152 5686",

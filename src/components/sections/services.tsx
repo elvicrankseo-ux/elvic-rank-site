@@ -83,7 +83,13 @@ export function Services() {
           <p className="text-muted">
             Not sure which service moves the needle for you?
           </p>
-          <Button href={siteConfig.cta.primary.href} variant="primary" size="lg">
+          <Button
+            href={siteConfig.cta.primary.href}
+            variant="primary"
+            size="lg"
+            gaEvent="seo_audit_cta_click"
+            gaParams={{ location: "services_section" }}
+          >
             {siteConfig.cta.primary.label}
             <ArrowRight size={18} aria-hidden />
           </Button>

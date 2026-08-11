@@ -81,7 +81,13 @@ export function Testimonials() {
           className="mt-10 flex flex-col items-center gap-4 text-center"
         >
           <p className="text-muted">Worked with us already?</p>
-          <Button href="#contact" variant="outline" size="md">
+          <Button
+            href="#contact"
+            variant="outline"
+            size="md"
+            gaEvent="contact_cta_click"
+            gaParams={{ location: "testimonials_section" }}
+          >
             Share your experience
             <ArrowRight size={16} aria-hidden />
           </Button>

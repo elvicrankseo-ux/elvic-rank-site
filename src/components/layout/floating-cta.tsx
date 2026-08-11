@@ -1,5 +1,8 @@
+"use client";
+
 import { MessageCircle, Send } from "lucide-react";
 import { siteConfig } from "@/config/site";
+import { trackEvent } from "@/lib/analytics";
 
 /**
  * Site-wide floating contact affordance. Desktop/tablet gets a round
@@ -18,6 +21,7 @@ export function FloatingCta() {
         target="_blank"
         rel="noopener noreferrer"
         aria-label={`Chat with ${siteConfig.name} on WhatsApp (opens in a new tab)`}
+        onClick={() => trackEvent("whatsapp_click", { location: "floating_button" })}
         className="fixed bottom-6 right-6 z-40 hidden h-14 w-14 items-center justify-center rounded-full bg-accent text-accent-foreground shadow-lg shadow-ink/20 transition-transform duration-200 hover:scale-105 sm:flex"
       >
         <MessageCircle size={24} aria-hidden />
@@ -28,6 +32,7 @@ export function FloatingCta() {
           href={siteConfig.whatsapp.url}
           target="_blank"
           rel="noopener noreferrer"
+          onClick={() => trackEvent("whatsapp_click", { location: "mobile_sticky_bar" })}
           className="flex flex-1 items-center justify-center gap-2 py-3.5 text-sm font-medium text-foreground"
         >
           <MessageCircle size={17} aria-hidden />
@@ -35,6 +40,7 @@ export function FloatingCta() {
         </a>
         <a
           href={siteConfig.cta.primary.href}
+          onClick={() => trackEvent("seo_audit_cta_click", { location: "mobile_sticky_bar" })}
           className="flex flex-1 items-center justify-center gap-2 border-l border-paper-border bg-accent py-3.5 text-sm font-medium text-accent-foreground"
         >
           <Send size={16} aria-hidden />

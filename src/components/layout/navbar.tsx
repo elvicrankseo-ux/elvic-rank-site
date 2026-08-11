@@ -75,7 +75,13 @@ export function Navbar() {
         </ul>
 
         <div className="hidden items-center gap-4 lg:flex">
-          <Button href={siteConfig.cta.primary.href} size="sm" variant="accent">
+          <Button
+            href={siteConfig.cta.primary.href}
+            size="sm"
+            variant="accent"
+            gaEvent="seo_audit_cta_click"
+            gaParams={{ location: "navbar" }}
+          >
             {siteConfig.cta.primary.label}
           </Button>
         </div>
@@ -120,6 +126,8 @@ export function Navbar() {
               variant="accent"
               size="lg"
               onClick={() => setIsMenuOpen(false)}
+              gaEvent="seo_audit_cta_click"
+              gaParams={{ location: "navbar_mobile" }}
               className="mt-6 w-full"
             >
               {siteConfig.cta.primary.label}

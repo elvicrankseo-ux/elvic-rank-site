@@ -1,6 +1,9 @@
+"use client";
+
 import Link from "next/link";
-import type { AnchorHTMLAttributes, ButtonHTMLAttributes } from "react";
+import type { AnchorHTMLAttributes, ButtonHTMLAttributes, MouseEvent } from "react";
 import { cn } from "@/lib/utils";
+import { trackEvent } from "@/lib/analytics";
 
 const variants = {
   primary:
@@ -30,6 +33,14 @@ type CommonProps = {
   variant?: Variant;
   size?: Size;
   className?: string;
+  /**
+   * Fires a GA4 event (via trackEvent) on click, in addition to whatever
+   * onClick the caller also passes — centralizes CTA tracking here instead
+   * of duplicating trackEvent() calls at every call site. No-op if GA4
+   * isn't configured.
+   */
+  gaEvent?: string;
+  gaParams?: Record<string, string | number | boolean>;
 };
 
 type ButtonAsLink = CommonProps &
@@ -42,28 +53,42 @@ export function Button({
   variant = "primary",
   size = "md",
   className,
+  gaEvent,
+  gaParams,
   ...props
 }: ButtonAsLink | ButtonAsButton) {
   const classes = cn(base, variants[variant], sizes[size], className);
 
+  function withTracking<E extends MouseEvent<HTMLElement>>(
+    onClick?: (event: E) => void
+  ) {
+    if (!gaEvent) return onClick;
+    return (event: E) => {
+      trackEvent(gaEvent, gaParams);
+      onClick?.(event);
+    };
+  }
+
   if (props.href) {
-    const { href, ...rest } = props;
+    const { href, onClick, ...rest } = props;
+    const clickHandler = withTracking(onClick);
     if (href.startsWith("/")) {
       return (
-        <Link href={href} className={classes} {...rest}>
+        <Link href={href} className={classes} onClick={clickHandler} {...rest}>
           {props.children}
         </Link>
       );
     }
     return (
-      <a href={href} className={classes} {...rest}>
+      <a href={href} className={classes} onClick={clickHandler} {...rest}>
         {props.children}
       </a>
     );
   }
 
+  const { onClick, ...rest } = props as ButtonAsButton;
   return (
-    <button className={classes} {...(props as ButtonAsButton)}>
+    <button className={classes} onClick={withTracking(onClick)} {...rest}>
       {props.children}
     </button>
   );

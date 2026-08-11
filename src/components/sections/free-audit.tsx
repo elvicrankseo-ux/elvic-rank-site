@@ -7,6 +7,7 @@ import { SectionHeading } from "@/components/ui/section-heading";
 import { Button } from "@/components/ui/button";
 import { siteConfig } from "@/config/site";
 import { buildMailtoLink } from "@/lib/mailto";
+import { trackEvent } from "@/lib/analytics";
 
 const included = [
   {
@@ -95,6 +96,7 @@ export function FreeAudit() {
     if (Object.keys(nextErrors).length > 0) return;
 
     window.location.href = buildMailto(values);
+    trackEvent("generate_lead", { form: "free_audit" });
     setStatus("sent");
   }
 

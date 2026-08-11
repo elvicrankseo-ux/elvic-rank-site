@@ -43,7 +43,18 @@ export default async function BlogPostPage({ params }: Props) {
   const post = getBlogPostBySlug(slug);
   if (!post) notFound();
 
-  const relatedPosts = blogPosts.filter((p) => p.slug !== post.slug).slice(0, 2);
+  // Curated relationships first (see BlogPost.relatedSlugs) — falls back to
+  // the previous positional selection only for a post that hasn't been
+  // editorially mapped yet, so "More from the blog" never renders empty.
+  const curatedRelated = (post.relatedSlugs ?? [])
+    .map((relatedSlug) => getBlogPostBySlug(relatedSlug))
+    .filter(
+      (p): p is NonNullable<typeof p> => p !== undefined && p.slug !== post.slug
+    );
+  const relatedPosts =
+    curatedRelated.length > 0
+      ? curatedRelated
+      : blogPosts.filter((p) => p.slug !== post.slug).slice(0, 2);
 
   const jsonLd = [
     getArticleSchema(post),
@@ -110,7 +121,13 @@ export default async function BlogPostPage({ params }: Props) {
               A free SEO audit shows you exactly what&apos;s helping — and
               what&apos;s quietly costing you rankings.
             </p>
-            <Button href={siteConfig.cta.primary.href} variant="accent" size="lg">
+            <Button
+              href={siteConfig.cta.primary.href}
+              variant="accent"
+              size="lg"
+              gaEvent="seo_audit_cta_click"
+              gaParams={{ location: "blog_post", post: post.slug }}
+            >
               {siteConfig.cta.primary.label}
               <ArrowRight size={18} aria-hidden />
             </Button>

@@ -17,6 +17,7 @@ import { SocialLinks } from "@/components/ui/social-links";
 import { siteConfig } from "@/config/site";
 import { services } from "@/data/services";
 import { buildMailtoLink } from "@/lib/mailto";
+import { trackEvent } from "@/lib/analytics";
 
 type FormState = {
   name: string;
@@ -74,6 +75,7 @@ type QuickContact = {
   description: string;
   href: string | null;
   external?: boolean;
+  gaEvent?: string;
 };
 
 const quickContacts: QuickContact[] = [
@@ -89,16 +91,25 @@ const quickContacts: QuickContact[] = [
     description: "The fastest way to reach us directly.",
     href: siteConfig.whatsapp?.url ?? null,
     external: true,
+    gaEvent: "whatsapp_click",
   },
   {
     icon: CalendarCheck,
     title: "Book a free strategy call",
     description: "30 minutes, no pitch — just a plan for your rankings.",
     href: strategyCallMailto,
+    gaEvent: "strategy_call_click",
   },
 ];
 
-function QuickContactCard({ icon: Icon, title, description, href, external }: QuickContact) {
+function QuickContactCard({
+  icon: Icon,
+  title,
+  description,
+  href,
+  external,
+  gaEvent,
+}: QuickContact) {
   const content = (
     <>
       <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-accent/10 text-accent-deep">
@@ -136,6 +147,7 @@ function QuickContactCard({ icon: Icon, title, description, href, external }: Qu
     <a
       href={href}
       {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+      onClick={gaEvent ? () => trackEvent(gaEvent, { location: "contact_section" }) : undefined}
       className="group flex items-start gap-4 rounded-2xl border border-paper-border bg-paper p-4 transition-colors hover:border-accent/40"
     >
       {content}
@@ -177,6 +189,7 @@ export function Contact() {
         values.message,
       ]
     );
+    trackEvent("generate_lead", { form: "contact" });
     setStatus("sent");
   }
 

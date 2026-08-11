@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useRef } from "react";
 import { motion, useInView, useReducedMotion } from "framer-motion";
 import {
   ArrowRight,
@@ -27,10 +27,10 @@ const specialtyBadges = [
   { icon: LayoutTemplate, label: "Website Design" },
 ];
 
-const rankMetrics = [
-  { label: "Organic traffic", value: "+184%" },
-  { label: "Keywords in top 3", value: "47" },
-  { label: "Avg. position gain", value: "+18" },
+const reportHighlights = [
+  "Organic & local search visibility",
+  "Calls & form submissions, not just rankings",
+  "A monthly strategy call, not just a PDF",
 ];
 
 const fadeUp = {
@@ -42,31 +42,10 @@ const fadeUp = {
   }),
 };
 
-function useCountUp(target: number, shouldAnimate: boolean, duration = 1200) {
-  const [value, setValue] = useState(0);
-
-  useEffect(() => {
-    if (!shouldAnimate) return;
-    let frame: number;
-    const start = performance.now();
-    const tick = (now: number) => {
-      const progress = Math.min((now - start) / duration, 1);
-      const eased = 1 - Math.pow(1 - progress, 3);
-      setValue(Math.round(eased * target));
-      if (progress < 1) frame = requestAnimationFrame(tick);
-    };
-    frame = requestAnimationFrame(tick);
-    return () => cancelAnimationFrame(frame);
-  }, [shouldAnimate, target, duration]);
-
-  return shouldAnimate ? value : target;
-}
-
 export function Hero() {
   const prefersReducedMotion = useReducedMotion();
   const cardRef = useRef<HTMLDivElement>(null);
   const isInView = useInView(cardRef, { once: true, margin: "-80px" });
-  const score = useCountUp(92, isInView && !prefersReducedMotion);
 
   return (
     <section className="relative overflow-hidden">
@@ -131,7 +110,13 @@ export function Hero() {
             variants={fadeUp}
             className="mt-9 flex flex-col gap-4 sm:flex-row sm:items-center"
           >
-            <Button href={siteConfig.cta.primary.href} variant="accent" size="lg">
+            <Button
+              href={siteConfig.cta.primary.href}
+              variant="accent"
+              size="lg"
+              gaEvent="seo_audit_cta_click"
+              gaParams={{ location: "hero" }}
+            >
               {siteConfig.cta.primary.label}
               <ArrowRight size={18} aria-hidden />
             </Button>
@@ -194,44 +179,40 @@ export function Hero() {
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-xs font-medium uppercase tracking-wider text-muted-dark">
-                  Sample client snapshot
+                  How We Report
                 </p>
                 <p className="mt-1 font-display text-lg text-ink-foreground">
-                  Rank Health Score
+                  Plain-English SEO Reporting
                 </p>
               </div>
               <TrendingUp size={20} className="text-accent-bright" aria-hidden />
             </div>
 
-            <div className="mt-6 flex items-end gap-3">
-              <span className="font-display text-6xl font-medium text-ink-foreground">
-                {score}
-              </span>
-              <span className="mb-2 text-sm text-muted-dark">/ 100</span>
-            </div>
+            <p className="mt-6 text-sm leading-relaxed text-muted-dark">
+              Every engagement includes weekly, no-jargon reporting tied to
+              what actually matters — not just where you rank.
+            </p>
 
-            <div className="mt-3 h-2 w-full overflow-hidden rounded-full bg-ink-elevated">
-              <motion.div
-                initial={{ width: 0 }}
-                animate={{ width: isInView ? `${score}%` : 0 }}
-                transition={{ duration: 1.1, ease: [0.16, 1, 0.3, 1] as const}}
-                className="h-full rounded-full bg-gradient-to-r from-accent to-accent-bright"
-              />
-            </div>
-
-            <dl className="mt-7 space-y-4 border-t border-ink-border pt-6">
-              {rankMetrics.map((metric) => (
-                <div
-                  key={metric.label}
-                  className="flex items-center justify-between text-sm"
+            <motion.ul
+              initial={{ opacity: 0 }}
+              animate={{ opacity: isInView ? 1 : 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="mt-7 space-y-4 border-t border-ink-border pt-6"
+            >
+              {reportHighlights.map((item) => (
+                <li
+                  key={item}
+                  className="flex items-start gap-2.5 text-sm text-ink-foreground"
                 >
-                  <dt className="text-muted-dark">{metric.label}</dt>
-                  <dd className="font-medium text-ink-foreground">
-                    {metric.value}
-                  </dd>
-                </div>
+                  <Check
+                    size={16}
+                    className="mt-0.5 shrink-0 text-accent-bright"
+                    aria-hidden
+                  />
+                  {item}
+                </li>
               ))}
-            </dl>
+            </motion.ul>
           </motion.div>
         </motion.div>
       </div>

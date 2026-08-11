@@ -5,7 +5,9 @@ import { ArrowRight, Check, Send } from "lucide-react";
 import { Breadcrumbs } from "@/components/ui/breadcrumbs";
 import { Button } from "@/components/ui/button";
 import { FaqAccordion } from "@/components/ui/faq-accordion";
+import { ArticleContent } from "@/components/ui/article-content";
 import { services, getServiceBySlug } from "@/data/services";
+import { getBlogPostBySlug } from "@/data/blog";
 import { siteConfig } from "@/config/site";
 import { buildMetadata } from "@/lib/metadata";
 import {
@@ -39,9 +41,15 @@ export default async function ServicePage({ params }: Props) {
   const service = getServiceBySlug(slug);
   if (!service) notFound();
 
-  const relatedServices = services
-    .filter((s) => s.slug !== service.slug)
-    .slice(0, 3);
+  const relatedServices = service.relatedSlugs
+    .map((relatedSlug) => getServiceBySlug(relatedSlug))
+    .filter((s): s is NonNullable<typeof s> => s !== undefined);
+
+  // Only used by services without richContent — pages with richContent
+  // embed their supporting-article link inline, in context, instead.
+  const relatedArticle = service.relatedArticleSlug
+    ? getBlogPostBySlug(service.relatedArticleSlug)
+    : undefined;
 
   const jsonLd = [
     getServiceSchema(service),
@@ -88,61 +96,96 @@ export default async function ServicePage({ params }: Props) {
           </p>
 
           <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center">
-            <Button href={siteConfig.cta.primary.href} variant="accent" size="lg">
+            <Button
+              href={siteConfig.cta.primary.href}
+              variant="accent"
+              size="lg"
+              gaEvent="seo_audit_cta_click"
+              gaParams={{ location: "service_header", service: service.slug }}
+            >
               {siteConfig.cta.primary.label}
               <ArrowRight size={18} aria-hidden />
             </Button>
-            <Button href="#contact-cta" variant="outline" size="lg">
+            <Button
+              href="#contact-cta"
+              variant="outline"
+              size="lg"
+              gaEvent="strategy_call_click"
+              gaParams={{ location: "service_header", service: service.slug }}
+            >
               Book a Free Strategy Call
             </Button>
           </div>
         </div>
       </section>
 
-      {/* What's included */}
-      <section className="bg-paper-muted py-16 lg:py-20">
-        <div className="mx-auto max-w-4xl px-6 lg:px-8">
-          <h2 className="font-display text-2xl font-medium text-foreground sm:text-3xl">
-            What&apos;s included
-          </h2>
-          <ul className="mt-8 grid gap-4 sm:grid-cols-3">
-            {service.points.map((point) => (
-              <li
-                key={point}
-                className="flex items-start gap-3 rounded-2xl border border-paper-border bg-paper p-5"
-              >
-                <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-accent text-accent-foreground">
-                  <Check size={13} aria-hidden />
-                </span>
-                <span className="text-sm font-medium text-foreground">
-                  {point}
-                </span>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </section>
-
-      {/* Benefits */}
-      <section className="bg-paper py-16 lg:py-20">
-        <div className="mx-auto max-w-4xl px-6 lg:px-8">
-          <h2 className="font-display text-2xl font-medium text-foreground sm:text-3xl">
-            Why it matters
-          </h2>
-          <div className="mt-8 space-y-8">
-            {service.benefits.map((benefit) => (
-              <div key={benefit.title} className="border-l-2 border-accent pl-6">
-                <h3 className="font-display text-lg font-medium text-foreground">
-                  {benefit.title}
-                </h3>
-                <p className="mt-2 text-sm leading-relaxed text-muted">
-                  {benefit.description}
-                </p>
-              </div>
-            ))}
+      {service.richContent ? (
+        /* Pillar-style rich content, for services that need to be a fuller
+           commercial landing page (currently only Local SEO & GBP). */
+        <section className="bg-paper-muted py-16 lg:py-20">
+          <div className="mx-auto max-w-4xl px-6 lg:px-8">
+            <ArticleContent blocks={service.richContent} />
           </div>
-        </div>
-      </section>
+        </section>
+      ) : (
+        <>
+          {/* What's included */}
+          <section className="bg-paper-muted py-16 lg:py-20">
+            <div className="mx-auto max-w-4xl px-6 lg:px-8">
+              <h2 className="font-display text-2xl font-medium text-foreground sm:text-3xl">
+                What&apos;s included
+              </h2>
+              <ul className="mt-8 grid gap-4 sm:grid-cols-3">
+                {service.points.map((point) => (
+                  <li
+                    key={point}
+                    className="flex items-start gap-3 rounded-2xl border border-paper-border bg-paper p-5"
+                  >
+                    <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-accent text-accent-foreground">
+                      <Check size={13} aria-hidden />
+                    </span>
+                    <span className="text-sm font-medium text-foreground">
+                      {point}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </section>
+
+          {/* Benefits */}
+          <section className="bg-paper py-16 lg:py-20">
+            <div className="mx-auto max-w-4xl px-6 lg:px-8">
+              <h2 className="font-display text-2xl font-medium text-foreground sm:text-3xl">
+                Why it matters
+              </h2>
+              <div className="mt-8 space-y-8">
+                {service.benefits.map((benefit) => (
+                  <div key={benefit.title} className="border-l-2 border-accent pl-6">
+                    <h3 className="font-display text-lg font-medium text-foreground">
+                      {benefit.title}
+                    </h3>
+                    <p className="mt-2 text-sm leading-relaxed text-muted">
+                      {benefit.description}
+                    </p>
+                  </div>
+                ))}
+              </div>
+              {relatedArticle && (
+                <p className="mt-8 text-sm leading-relaxed text-muted">
+                  Further reading:{" "}
+                  <Link
+                    href={`/blog/${relatedArticle.slug}`}
+                    className="text-accent-deep underline underline-offset-2 hover:text-accent"
+                  >
+                    {relatedArticle.title}
+                  </Link>
+                </p>
+              )}
+            </div>
+          </section>
+        </>
+      )}
 
       {/* FAQ */}
       <section className="bg-paper-muted py-16 lg:py-20">
@@ -194,18 +237,30 @@ export default async function ServicePage({ params }: Props) {
       <section id="contact-cta" className="bg-ink py-16 lg:py-20">
         <div className="mx-auto flex max-w-4xl flex-col items-center gap-6 px-6 text-center lg:px-8">
           <h2 className="font-display text-2xl font-medium text-ink-foreground sm:text-3xl">
-            Ready to talk about {service.title.toLowerCase()}?
+            {service.ctaHeading ?? `Ready to talk about ${service.title.toLowerCase()}?`}
           </h2>
           <p className="max-w-xl text-muted-dark">
             Start with a free audit, or book a strategy call — either way,
             you&apos;ll walk away with a clearer picture of where you stand.
           </p>
           <div className="flex flex-col gap-4 sm:flex-row">
-            <Button href={siteConfig.cta.primary.href} variant="accent" size="lg">
+            <Button
+              href={siteConfig.cta.primary.href}
+              variant="accent"
+              size="lg"
+              gaEvent="seo_audit_cta_click"
+              gaParams={{ location: "service_footer", service: service.slug }}
+            >
               {siteConfig.cta.primary.label}
               <ArrowRight size={18} aria-hidden />
             </Button>
-            <Button href="/#contact" variant="outline-dark" size="lg">
+            <Button
+              href="/#contact"
+              variant="outline-dark"
+              size="lg"
+              gaEvent="contact_cta_click"
+              gaParams={{ location: "service_footer", service: service.slug }}
+            >
               Contact Us
               <Send size={16} aria-hidden />
             </Button>

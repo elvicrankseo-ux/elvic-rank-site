@@ -1,8 +1,11 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
 import { Mail, MessageCircle } from "lucide-react";
 import { siteConfig } from "@/config/site";
 import { SocialLinks } from "@/components/ui/social-links";
+import { trackEvent } from "@/lib/analytics";
 
 const quickLinks = siteConfig.nav.slice(0, 4);
 const resourceLinks = siteConfig.nav.slice(4);
@@ -104,6 +107,7 @@ export function Footer() {
                     href={siteConfig.whatsapp.url}
                     target="_blank"
                     rel="noopener noreferrer"
+                    onClick={() => trackEvent("whatsapp_click", { location: "footer" })}
                     className="flex items-center gap-2 text-sm text-ink-foreground/80 transition-colors hover:text-accent-bright"
                   >
                     <MessageCircle size={14} aria-hidden />

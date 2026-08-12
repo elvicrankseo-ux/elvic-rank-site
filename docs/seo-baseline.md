@@ -1,18 +1,26 @@
 # SEO Baseline
 
-GA4 numbers below remain "Awaiting data." As of Phase 15, the GA4 property
-and Measurement ID (`G-4XHTCF3GM0`) exist and the implementation was
-verified working correctly with that real ID locally — but the Vercel
-production environment variable that would activate it live has not been
-set (requires dashboard access outside this session), so **production is
-not sending any real data to GA4 yet.** See
-[`ga4-setup.md`](./ga4-setup.md) and
-[`analytics-verification.md`](./analytics-verification.md) for the full
-detail. **The Search Console section reflects the initial real GSC
-baseline, established in Phase 14** (GSC connection completed by the site
-owner between Phases 13 and 14). Do not fill any remaining "Awaiting data"
-rows with estimates — only real reported numbers, added when actually
-pulled from GSC/GA4.
+**Phase 16 update:** GA4 is now confirmed live and collecting on
+production (the site owner completed the Vercel environment-variable step
+between Phases 15 and 16 — verified directly against
+`https://elvicrank.com` this phase, not assumed). However, GA4
+*account-level* reporting (Users, Sessions, event counts, Realtime, etc.)
+remains inaccessible from this environment — no Google Analytics dashboard
+access exists here, only the ability to verify the client-side
+implementation itself. The GA4 table below therefore still reads "Awaiting
+data" — that's accurate, not stale; it means real data now exists in GA4's
+dashboard but hasn't been pulled from there by the site owner and reported
+back yet. See [`ga4-setup.md`](./ga4-setup.md) and
+[`analytics-verification.md`](./analytics-verification.md) for full
+detail.
+
+**Phase 16 also attempted to retrieve fresh Google Search Console data and
+could not** — no GSC connector or account access exists in this
+environment either. **The Search Console section below is still the Phase
+14 baseline** and has not been refreshed. Do not treat it as current; it's
+now over a full phase old. Do not fill any "Awaiting data" rows with
+estimates — only real reported numbers, added when actually pulled from
+GSC/GA4 by someone with account access.
 
 **Baseline date:** Initial GSC baseline captured Phase 14 — a 3-month
 trailing window as reported at that time. Exact calendar start/end dates
@@ -46,6 +54,12 @@ not statistically reliable, until volume grows. Full analysis in
 [`gsc-data-analysis.md`](./gsc-data-analysis.md).
 
 ## GA4
+
+Client-side implementation confirmed live and correct on production as of
+Phase 16 (script loads, correct Measurement ID, all events fire, no PII —
+see [`analytics-verification.md`](./analytics-verification.md)). Every
+metric below still requires actual GA4 dashboard access to report — not
+available in this environment.
 
 | Metric | Value |
 |---|---|

@@ -6,47 +6,26 @@ GA4 tracking code already exists in this codebase
 Measurement ID is hard-coded anywhere in the repository — it's read
 exclusively from `NEXT_PUBLIC_GA_MEASUREMENT_ID` at build time.
 
-**Status as of Phase 15:**
-- ✅ Steps 1–3 done — the GA4 property, Web data stream, and Measurement ID
-  (`G-4XHTCF3GM0`) already exist and were supplied by the site owner.
-- ✅ Implementation verified working end-to-end **locally**, using that real
-  ID in a git-ignored `.env.local` (never committed) — see
-  [`analytics-verification.md`](./analytics-verification.md) for the full
-  test results: the script loads with the correct ID, `window.gtag`
-  activates, and all 5 events fire correctly with no PII and no duplicates.
-- ❌ **Step 4 (setting the production environment variable on Vercel) is
-  not done.** This requires the Vercel dashboard, which the implementer has
-  no credentials or access to — see the note below.
-- ❌ Step 5 (redeploy) and everything after it is blocked on step 4.
+**Status as of Phase 16:**
+- ✅ Steps 1–5 all done. The site owner completed the Vercel environment
+  variable step between Phases 15 and 16. Verified live on production this
+  phase (not assumed): `https://elvicrank.com` loads
+  `https://www.googletagmanager.com/gtag/js?id=G-4XHTCF3GM0`, `window.gtag`
+  is a live function, and `dataLayer` is populated.
+- ✅ All 5 custom events reconfirmed firing correctly **on production**
+  this phase (not just locally): `whatsapp_click`, `strategy_call_click`,
+  `seo_audit_cta_click`, `contact_cta_click` all tested live with correct
+  params and no PII. `generate_lead` reconfirmed via code inspection only
+  (its trigger path is a real form submission — see
+  [`analytics-verification.md`](./analytics-verification.md) for why that
+  isn't live-tested).
+- ❓ **GA4 account-level data (Realtime, Users, Sessions, event counts,
+  etc.) was not accessible this phase** — no Google Analytics dashboard
+  access exists in the implementer's environment. Steps 6–8 below still
+  require the site owner to check the actual GA4 dashboard.
 
-## 1–3. Property, stream, Measurement ID
-Already complete — Measurement ID is `G-4XHTCF3GM0`.
-
-## 4. Add the environment variable to Vercel — ⚠️ action required
-
-**This step could not be completed by the implementer — it requires Vercel
-dashboard access.** To finish activating GA4 in production, the site owner
-needs to:
-
-1. Go to the Vercel dashboard → the `elvic-rank` project → Settings →
-   Environment Variables.
-2. Add a new variable:
-   - Name: `NEXT_PUBLIC_GA_MEASUREMENT_ID`
-   - Value: `G-4XHTCF3GM0`
-   - Environment: Production (and Preview too, if you want GA4 active on
-     preview deployments for testing — optional, not required).
-3. Save.
-
-For local testing, this repository already has a git-ignored `.env.local`
-with the real ID set — see [`.env.example`](../.env.example) if you need to
-recreate it on another machine. `.env.local` is never committed.
-
-## 5. Redeploy
-
-Once the Vercel environment variable is saved, trigger a new deployment
-(push any commit, or use Vercel's "Redeploy" button) — Next.js reads
-`NEXT_PUBLIC_*` variables at build time, so an existing deployment won't
-pick up a newly-added variable without a fresh build.
+## 1–5. Property, stream, Measurement ID, environment variable, deploy
+All complete. Measurement ID is `G-4XHTCF3GM0`, live in production.
 
 ## 6. Open GA4 Realtime
 
@@ -70,8 +49,9 @@ engagement signals, not conversions, and don't need to be marked.
 
 ---
 
-**Until step 4 is completed on Vercel and a redeploy runs, GA4 collects
-nothing on production.** No real production data exists yet — see
-[`seo-baseline.md`](./seo-baseline.md) for what "Awaiting data" means in
-practice, and [`analytics-verification.md`](./analytics-verification.md)
-for exactly what was and wasn't verified this phase.
+**GA4 is now live and collecting on production as of Phase 16.** What
+remains outstanding is account-level reporting access (Realtime, Users,
+Sessions, per-event counts) — see
+[`seo-baseline.md`](./seo-baseline.md) for what "Awaiting data" still means
+in practice, and [`analytics-verification.md`](./analytics-verification.md)
+for the exact, current verified/not-verified breakdown.

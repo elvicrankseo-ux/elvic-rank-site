@@ -1,8 +1,19 @@
-# GSC Data Analysis — Phase 14
+# GSC Data Analysis — Phase 14 (attempted refresh in Phase 16, blocked)
 
 First analysis of real Google Search Console data since GSC was connected
 (between Phases 13 and 14). See [`seo-baseline.md`](./seo-baseline.md) for
 the raw baseline this analysis is built on.
+
+> **Phase 16 note:** Phase 16 explicitly attempted to retrieve fresher GSC
+> data (a new 28-day and/or 3-month pull) before drawing any new
+> conclusions or making any content/SEO changes. **No GSC connector or
+> account access exists in this environment**, so no fresher data could be
+> retrieved. Per Phase 16's own stop conditions, no new query/page/CTR/
+> cannibalization analysis was performed and no content or copy changes
+> were made this phase on the basis of SEO opportunity — everything below
+> remains the Phase 14 analysis, now acknowledged as out of date. The next
+> phase that has real GSC access should replace this entire file with a
+> fresh pull, not patch it further.
 
 ## Data Limitations (read this first)
 

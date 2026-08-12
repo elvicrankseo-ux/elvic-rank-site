@@ -834,6 +834,47 @@ export const services: Service[] = [
       },
     ],
     relatedSlugs: ["on-page-seo", "website-speed-optimization", "conversion-rate-optimization"],
+    richContent: [
+      { type: "heading", text: "SEO-First Website Design" },
+      {
+        type: "paragraph",
+        text: "Most \"SEO-friendly\" websites are pretty first and searchable second — site structure, page speed, and conversion paths patched in after launch instead of planned from the start. We build the other way around: architecture, URL structure, and internal linking are mapped out before a single page is designed, so the site you launch with is already positioned to rank, not retrofitted later.",
+      },
+
+      { type: "heading", text: "What's Included" },
+      { type: "subheading", text: "Site Architecture and URL Structure" },
+      {
+        type: "paragraph",
+        text: "A clean, logical hierarchy planned before design begins — no orphaned pages, no buried service pages, no restructuring six months after launch.",
+      },
+      { type: "subheading", text: "Speed by Default" },
+      {
+        type: "paragraph",
+        text: "Every design decision is weighed against its effect on load time, since a beautiful site that loads slowly loses both rankings and visitors — the same priorities covered in depth by [website speed optimization](/services/website-speed-optimization).",
+      },
+      { type: "subheading", text: "Conversion-Focused Layout" },
+      {
+        type: "paragraph",
+        text: "Clear calls to action and conversion paths on every page — a website's job is to generate leads, not win design awards, following the same principles [conversion rate optimization](/services/conversion-rate-optimization) work is built around.",
+      },
+      { type: "subheading", text: "On-Page Foundations Built In" },
+      {
+        type: "paragraph",
+        text: "Metadata, headings, and page structure mapped to real search intent from day one, so [on-page SEO](/services/on-page-seo) work later isn't spent undoing structural mistakes made during design.",
+      },
+
+      { type: "heading", text: "Migrating Without Losing Rankings" },
+      {
+        type: "paragraph",
+        text: "If you already have a site, migrations are planned with 301 redirects and technical continuity so you don't lose the ground you've already gained — not treated as an afterthought once the new site is ready to launch.",
+      },
+
+      { type: "heading", text: "Platform and Timeline" },
+      {
+        type: "paragraph",
+        text: "We choose the platform based on your needs — usually a modern, fast framework, though WordPress is an option if you need a specific content workflow. Most projects take 3–6 weeks depending on scope, from wireframes to launch.",
+      },
+    ],
   },
   {
     slug: "google-ads",
@@ -988,6 +1029,47 @@ export const services: Service[] = [
       },
     ],
     relatedSlugs: ["google-ads", "conversion-rate-optimization", "seo-audit"],
+    richContent: [
+      { type: "heading", text: "Meta Ads for Local Service Businesses" },
+      {
+        type: "paragraph",
+        text: "Search ads catch people looking for you. Meta ads put you in front of people before they know they're looking — and bring back the ones who visited your site but didn't convert. This is a complement to search intent, not a replacement for it, and works best paired with the same targeting logic behind your [Google Ads](/services/google-ads) campaigns.",
+      },
+
+      { type: "heading", text: "What's Included" },
+      { type: "subheading", text: "Audience Targeting" },
+      {
+        type: "paragraph",
+        text: "Campaigns built around who's actually likely to need your service — by location, interests, and behavior — not a generic broad-reach setup.",
+      },
+      { type: "subheading", text: "Retargeting Campaigns" },
+      {
+        type: "paragraph",
+        text: "Most website visitors don't convert on the first visit. Retargeting keeps you in front of the ones who left without booking, until they're ready.",
+      },
+      { type: "subheading", text: "Creative That Doesn't Look Like an Ad" },
+      {
+        type: "paragraph",
+        text: "Native-feeling creative outperforms obvious sales pitches in every account we've run — real work, real results people can picture themselves needing, not stock imagery.",
+      },
+      { type: "subheading", text: "Performance Reporting" },
+      {
+        type: "paragraph",
+        text: "One plain-English report alongside the rest of your marketing, not a separate dashboard you have to learn — the same reporting approach covered in [SEO reporting and analytics](/services/seo-reporting-analytics).",
+      },
+
+      { type: "heading", text: "How Meta Ads Works With Search" },
+      {
+        type: "paragraph",
+        text: "Meta ads and search ads solve different problems — one reaches people actively searching, the other reaches people before they start. Run together, they reinforce each other rather than compete for budget attention, and both ultimately depend on a site that converts once someone arrives, which is where [conversion rate optimization](/services/conversion-rate-optimization) comes in.",
+      },
+
+      { type: "heading", text: "Measuring What Actually Matters" },
+      {
+        type: "paragraph",
+        text: "Leads, calls, and form fills — vanity metrics like likes and follows don't appear in your report. We can't promise a specific number of leads or a guaranteed return, but every dollar spent is tied back to what it actually produced.",
+      },
+    ],
   },
   {
     slug: "seo-audit",
@@ -1253,6 +1335,42 @@ export const services: Service[] = [
       },
     ],
     relatedSlugs: ["link-building", "local-seo-google-business-profile", "seo-audit"],
+    richContent: [
+      { type: "heading", text: "Off-Page SEO for Local Service Businesses" },
+      {
+        type: "paragraph",
+        text: "What happens off your website matters as much as what's on it. This covers the brand mentions, reputation, and trust signals search engines weigh beyond your own pages — with backlinks treated as one signal among several, not the whole strategy.",
+      },
+
+      { type: "heading", text: "What's Included" },
+      { type: "subheading", text: "Unlinked Brand Mention Monitoring and Reclamation" },
+      {
+        type: "paragraph",
+        text: "Many businesses are mentioned online without a link back — a news article, a directory listing, a community post. We find those and turn them into real, linked citations.",
+      },
+      { type: "subheading", text: "Digital Reputation and Trust Signals" },
+      {
+        type: "paragraph",
+        text: "Off-page SEO is bigger than link building alone — it's your reputation and trust signals across the web, not just who's linking to you.",
+      },
+      { type: "subheading", text: "Citation and Listing Consistency" },
+      {
+        type: "paragraph",
+        text: "Inconsistent business information across the web quietly undermines the trust signals search engines rely on. This is a supporting signal here, working alongside the deeper citation work covered in [Local SEO and Google Business Profile](/services/local-seo-google-business-profile) services.",
+      },
+
+      { type: "heading", text: "Off-Page SEO vs. Link Building" },
+      {
+        type: "paragraph",
+        text: "[Link building](/services/link-building) is one part of off-page SEO — earning specific, relevant backlinks. Off-page SEO is the broader picture: brand mentions, reputation, and consistency across every place your business appears online, not just the sites linking to you.",
+      },
+
+      { type: "heading", text: "Ongoing, Not One-Time" },
+      {
+        type: "paragraph",
+        text: "New mentions and citation opportunities come up regularly, so this is monitored on an ongoing basis rather than treated as a single cleanup pass — though if your business information is already inconsistent, especially after a rebrand or move, that cleanup audit is the natural starting point.",
+      },
+    ],
   },
   {
     slug: "website-speed-optimization",
@@ -1301,8 +1419,43 @@ export const services: Service[] = [
       },
     ],
     relatedSlugs: ["technical-seo-audit", "website-design", "on-page-seo"],
-    relatedArticleSlug: "website-speed-and-google-rankings",
     lastUpdated: "2026-08-10",
+    richContent: [
+      { type: "heading", text: "Website Speed Optimization for Local Service Businesses" },
+      {
+        type: "paragraph",
+        text: "Every extra second of load time costs you both rankings and visitors who give up and leave. We diagnose exactly what's slowing your site down and fix it in priority order, measured against real Core Web Vitals data — the same metrics covered as part of a broader [technical SEO audit](/services/technical-seo-audit), but with speed as the sole focus here.",
+      },
+
+      { type: "heading", text: "What's Included" },
+      { type: "subheading", text: "Image and Asset Optimization" },
+      {
+        type: "paragraph",
+        text: "Oversized, unoptimized images are often the single biggest fix available — compressed, correctly sized, and served in modern formats where supported.",
+      },
+      { type: "subheading", text: "Core Web Vitals Fixes" },
+      {
+        type: "paragraph",
+        text: "Largest Contentful Paint, Interaction to Next Paint, and Cumulative Layout Shift addressed directly — render-blocking scripts removed or deferred, layout shift eliminated by reserving space for images and embeds.",
+      },
+      { type: "subheading", text: "Hosting and Caching Review" },
+      {
+        type: "paragraph",
+        text: "Sometimes hosting is the real bottleneck — we'll tell you plainly if that's the case, but many sites can be fixed without switching providers at all.",
+      },
+
+      { type: "heading", text: "How Speed Affects Rankings and Conversions" },
+      {
+        type: "paragraph",
+        text: "Speed sits at an unusual intersection: it's both a confirmed Google ranking factor and a direct driver of whether a visitor sticks around long enough to become a lead. For the full picture of how this connects to your rankings specifically, see [Website Speed and Google Rankings](/blog/website-speed-and-google-rankings).",
+      },
+
+      { type: "heading", text: "Measured, Not Assumed" },
+      {
+        type: "paragraph",
+        text: "Before-and-after data on every optimization, so you can see exactly what improved — an initial pass, with ongoing monitoring available if new issues creep in.",
+      },
+    ],
   },
   {
     slug: "conversion-rate-optimization",

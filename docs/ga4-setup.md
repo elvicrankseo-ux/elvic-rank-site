@@ -2,46 +2,51 @@
 
 GA4 tracking code already exists in this codebase
 ([`src/components/analytics/google-analytics.tsx`](../src/components/analytics/google-analytics.tsx)
-+ [`src/lib/analytics.ts`](../src/lib/analytics.ts)) but is **not currently
-active** — it's gated entirely behind one environment variable that has not
-been set anywhere. Nothing loads, and no event fires, until you complete the
-steps below. This is intentional: no placeholder or fake Measurement ID is
-hard-coded anywhere in the repository.
++ [`src/lib/analytics.ts`](../src/lib/analytics.ts)). No placeholder or fake
+Measurement ID is hard-coded anywhere in the repository — it's read
+exclusively from `NEXT_PUBLIC_GA_MEASUREMENT_ID` at build time.
 
-## 1. Create a GA4 property
+**Status as of Phase 15:**
+- ✅ Steps 1–3 done — the GA4 property, Web data stream, and Measurement ID
+  (`G-4XHTCF3GM0`) already exist and were supplied by the site owner.
+- ✅ Implementation verified working end-to-end **locally**, using that real
+  ID in a git-ignored `.env.local` (never committed) — see
+  [`analytics-verification.md`](./analytics-verification.md) for the full
+  test results: the script loads with the correct ID, `window.gtag`
+  activates, and all 5 events fire correctly with no PII and no duplicates.
+- ❌ **Step 4 (setting the production environment variable on Vercel) is
+  not done.** This requires the Vercel dashboard, which the implementer has
+  no credentials or access to — see the note below.
+- ❌ Step 5 (redeploy) and everything after it is blocked on step 4.
 
-In [Google Analytics](https://analytics.google.com), create a new property
-for Elvic Rank if one doesn't already exist (Admin → Create → Property).
+## 1–3. Property, stream, Measurement ID
+Already complete — Measurement ID is `G-4XHTCF3GM0`.
 
-## 2. Create/select a Web data stream
+## 4. Add the environment variable to Vercel — ⚠️ action required
 
-Inside the property: Admin → Data Streams → Add stream → Web. Enter
-`https://elvicrank.com` as the site URL.
+**This step could not be completed by the implementer — it requires Vercel
+dashboard access.** To finish activating GA4 in production, the site owner
+needs to:
 
-## 3. Obtain the Measurement ID
+1. Go to the Vercel dashboard → the `elvic-rank` project → Settings →
+   Environment Variables.
+2. Add a new variable:
+   - Name: `NEXT_PUBLIC_GA_MEASUREMENT_ID`
+   - Value: `G-4XHTCF3GM0`
+   - Environment: Production (and Preview too, if you want GA4 active on
+     preview deployments for testing — optional, not required).
+3. Save.
 
-On the same Web stream's detail page, copy the **Measurement ID** — it's
-formatted like `G-XXXXXXXXXX`.
-
-## 4. Add the environment variable
-
-Add this to your hosting provider's **production** environment variables
-(e.g. Vercel: Project → Settings → Environment Variables):
-
-```
-NEXT_PUBLIC_GA_MEASUREMENT_ID=G-XXXXXXXXXX
-```
-
-Replace `G-XXXXXXXXXX` with your real ID from step 3 — **the placeholder
-above must never be used in production.** If you're testing locally first,
-copy [`.env.example`](../.env.example) to `.env.local` and set it there
-instead; `.env.local` is git-ignored and never committed.
+For local testing, this repository already has a git-ignored `.env.local`
+with the real ID set — see [`.env.example`](../.env.example) if you need to
+recreate it on another machine. `.env.local` is never committed.
 
 ## 5. Redeploy
 
-Environment variable changes require a new deploy to take effect — Next.js
-reads `NEXT_PUBLIC_*` variables at build time. Trigger a redeploy from your
-hosting provider (or push a commit) after saving the variable.
+Once the Vercel environment variable is saved, trigger a new deployment
+(push any commit, or use Vercel's "Redeploy" button) — Next.js reads
+`NEXT_PUBLIC_*` variables at build time, so an existing deployment won't
+pick up a newly-added variable without a fresh build.
 
 ## 6. Open GA4 Realtime
 
@@ -65,7 +70,8 @@ engagement signals, not conversions, and don't need to be marked.
 
 ---
 
-**Until steps 1–5 are complete, GA4 collects nothing.** No data referenced
-elsewhere in this documentation set exists yet — see
+**Until step 4 is completed on Vercel and a redeploy runs, GA4 collects
+nothing on production.** No real production data exists yet — see
 [`seo-baseline.md`](./seo-baseline.md) for what "Awaiting data" means in
-practice.
+practice, and [`analytics-verification.md`](./analytics-verification.md)
+for exactly what was and wasn't verified this phase.

@@ -1,11 +1,18 @@
 # SEO Baseline
 
-GA4 numbers below remain "Awaiting data" — no GA4 property/Measurement ID
-is connected yet (see [`ga4-setup.md`](./ga4-setup.md)). **The Search
-Console section now reflects the initial real GSC baseline, established in
-Phase 14** (GSC connection completed by the site owner between Phases 13
-and 14). Do not fill any remaining "Awaiting data" rows with estimates —
-only real reported numbers, added when actually pulled from GSC/GA4.
+GA4 numbers below remain "Awaiting data." As of Phase 15, the GA4 property
+and Measurement ID (`G-4XHTCF3GM0`) exist and the implementation was
+verified working correctly with that real ID locally — but the Vercel
+production environment variable that would activate it live has not been
+set (requires dashboard access outside this session), so **production is
+not sending any real data to GA4 yet.** See
+[`ga4-setup.md`](./ga4-setup.md) and
+[`analytics-verification.md`](./analytics-verification.md) for the full
+detail. **The Search Console section reflects the initial real GSC
+baseline, established in Phase 14** (GSC connection completed by the site
+owner between Phases 13 and 14). Do not fill any remaining "Awaiting data"
+rows with estimates — only real reported numbers, added when actually
+pulled from GSC/GA4.
 
 **Baseline date:** Initial GSC baseline captured Phase 14 — a 3-month
 trailing window as reported at that time. Exact calendar start/end dates

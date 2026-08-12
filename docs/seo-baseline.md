@@ -1,32 +1,42 @@
 # SEO Baseline
 
-This defines the metrics to record once Search Console and GA4 have
-accumulated enough real data. **Every number below is "Awaiting data" —
-none of this has been measured yet**, because neither GSC nor GA4 is
-connected to real accounts as of Phase 13 (see
-[`google-search-console-setup.md`](./google-search-console-setup.md) and
-[`ga4-setup.md`](./ga4-setup.md)). Do not fill this in with estimates or
-guesses — only real reported numbers.
+GA4 numbers below remain "Awaiting data" — no GA4 property/Measurement ID
+is connected yet (see [`ga4-setup.md`](./ga4-setup.md)). **The Search
+Console section now reflects the initial real GSC baseline, established in
+Phase 14** (GSC connection completed by the site owner between Phases 13
+and 14). Do not fill any remaining "Awaiting data" rows with estimates —
+only real reported numbers, added when actually pulled from GSC/GA4.
 
-**Baseline date:** _(fill in once first real data is recorded)_
+**Baseline date:** Initial GSC baseline captured Phase 14 — a 3-month
+trailing window as reported at that time. Exact calendar start/end dates
+were not provided; record them the next time this file is updated so
+future comparisons have a precise window.
 **Site launched with current content:** 2026-08-11 (Phase 12 deployment —
 this is when the 3 newest articles and all Phase 2-10 content depth work
 first went live in production)
 
-## Search Console
+## Search Console — Initial Baseline (Phase 14, 3-month trailing window)
 
 | Metric | Value |
 |---|---|
-| Clicks (28-day) | Awaiting data |
-| Impressions (28-day) | Awaiting data |
-| Average CTR | Awaiting data |
-| Average position | Awaiting data |
-| Top queries | Awaiting data |
-| Top pages | Awaiting data |
-| Branded query share | Awaiting data |
-| Non-branded query share | Awaiting data |
-| Notable country breakdown | Awaiting data |
-| Notable device breakdown | Awaiting data |
+| Total clicks | **2** |
+| Total impressions | **48** |
+| Average CTR | **4.2%** |
+| Average position | **13.6** |
+| Queries with visibility (as surfaced) | elvic · rank velocity websites converts · google local business seo · rank locally on google · local seo google business profile · local visibility on google |
+| Top pages | Awaiting data — GSC was not queried for the Pages tab this phase; only the Queries list was provided. See `docs/gsc-data-analysis.md` for how to pull this next. |
+| Branded query share | Awaiting data — only 1 of 6 visible queries ("elvic") reads as branded; a precise share requires the full query list with individual impression counts, not provided this phase |
+| Non-branded query share | Awaiting data — same limitation |
+| Notable country breakdown | Awaiting data — not provided this phase |
+| Notable device breakdown | Awaiting data — not provided this phase |
+
+**Important caveat:** this is an extremely small sample (2 clicks, 48
+impressions over 3 months) from what Phase 11/12 confirmed is a
+newly-deployed site. Per-query impressions, clicks, CTR, and position were
+**not** provided — only the aggregate totals above and a list of 6 query
+strings. Treat every conclusion drawn from this baseline as directional,
+not statistically reliable, until volume grows. Full analysis in
+[`gsc-data-analysis.md`](./gsc-data-analysis.md).
 
 ## GA4
 

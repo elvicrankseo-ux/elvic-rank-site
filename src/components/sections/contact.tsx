@@ -55,20 +55,6 @@ function validate(values: FormState): FormErrors {
   return errors;
 }
 
-const strategyCallMailto = buildMailtoLink(
-  siteConfig.email,
-  "Free Strategy Call Request",
-  [
-    "Hi Elvic Rank,",
-    "",
-    "I'd like to book a free strategy call. Here's some info to help you prepare:",
-    "",
-    "Business name:",
-    "Website:",
-    "Preferred days/times (with timezone):",
-  ]
-);
-
 type QuickContact = {
   icon: LucideIcon;
   title: string;
@@ -97,7 +83,8 @@ const quickContacts: QuickContact[] = [
     icon: CalendarCheck,
     title: "Book a free strategy call",
     description: "30 minutes, no pitch — just a plan for your rankings.",
-    href: strategyCallMailto,
+    href: siteConfig.calendlyUrl,
+    external: true,
     gaEvent: "strategy_call_click",
   },
 ];

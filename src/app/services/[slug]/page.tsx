@@ -107,7 +107,9 @@ export default async function ServicePage({ params }: Props) {
               <ArrowRight size={18} aria-hidden />
             </Button>
             <Button
-              href="#contact-cta"
+              href={siteConfig.calendlyUrl}
+              target="_blank"
+              rel="noopener noreferrer"
               variant="outline"
               size="lg"
               gaEvent="strategy_call_click"

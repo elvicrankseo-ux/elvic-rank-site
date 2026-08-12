@@ -26,6 +26,11 @@ export const siteConfig = {
     url: "https://wa.me/2347071525686",
   } as { display: string; url: string } | null,
 
+  // Strategy-call booking destination. Every "Book a Free Strategy Call"
+  // CTA site-wide should link here — never hardcode this URL directly in
+  // a component.
+  calendlyUrl: "https://calendly.com/elvicrankseo/30min",
+
   // Deliberately no street address: Elvic Rank operates as a remote agency.
   location: {
     mode: "remote" as const,

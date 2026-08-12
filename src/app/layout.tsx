@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Geist, Geist_Mono, Fraunces } from "next/font/google";
+import { Geist, Fraunces } from "next/font/google";
 import { siteConfig } from "@/config/site";
 import { getOrganizationSchema, getWebsiteSchema } from "@/lib/schema";
 import { Navbar } from "@/components/layout/navbar";
@@ -13,10 +13,10 @@ const geistSans = Geist({
   subsets: ["latin"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+// Geist Mono was previously loaded here but never applied to any element
+// (confirmed via codebase-wide search — no component uses `font-mono` or
+// var(--font-geist-mono)). Removed as a measured performance fix: one
+// fewer font file fetched on every page load, Phase 19.
 
 const fraunces = Fraunces({
   variable: "--font-fraunces",
@@ -62,7 +62,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} ${fraunces.variable} h-full antialiased`}
+      className={`${geistSans.variable} ${fraunces.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-paper pb-14 text-foreground sm:pb-0">
         <GoogleAnalytics />

@@ -6,6 +6,15 @@ GA4 tracking code already exists in this codebase
 Measurement ID is hard-coded anywhere in the repository — it's read
 exclusively from `NEXT_PUBLIC_GA_MEASUREMENT_ID` at build time.
 
+**Status as of Phase 17:** Unchanged from Phase 16, reconfirmed live again
+this phase — script, Measurement ID, `gtag`, and 4 of 5 events re-tested
+directly on production (`/`, `/services/google-ads`). The site owner did
+supply a GA4 **realtime** screenshot this phase (2-4 active users, 11 page
+views — see [`seo-baseline.md`](./seo-baseline.md#ga4--phase-17-data-realtime-observation-only-not-a-28-day-baseline)),
+which confirms real events are reaching GA4, but dashboard-level reporting
+(Users, Sessions, Realtime, Key Events config) is still not something this
+environment can access directly — steps 6–8 remain the site owner's to do.
+
 **Status as of Phase 16:**
 - ✅ Steps 1–5 all done. The site owner completed the Vercel environment
   variable step between Phases 15 and 16. Verified live on production this

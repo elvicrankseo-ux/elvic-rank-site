@@ -1,9 +1,16 @@
-# Analytics Verification — Phase 15 (local), reconfirmed on production Phase 16
+# Analytics Verification — Phase 15 (local), reconfirmed on production Phases 16 and 17
 
 Real GA4 Measurement ID `G-4XHTCF3GM0` was supplied by the site owner in
 Phase 15. This document records exactly what was and wasn't verified with
 it, and was updated in Phase 16 once the site owner completed the Vercel
 environment variable step and GA4 went live on production.
+
+**Phase 17 reconfirmation:** re-tested live on production again this
+phase — `whatsapp_click` (homepage) and `strategy_call_click`
+(`/services/google-ads`) both fired correctly with expected params and no
+PII; canonical/schema/sitemap/robots all reconfirmed correct; zero console
+errors. No regressions found. No code changes were made to the analytics
+implementation this phase — none were needed.
 
 ## What was verified locally (Phase 15, with the real Measurement ID)
 

@@ -1,5 +1,15 @@
 # SEO Baseline
 
+**Phase 17 update:** No new GSC or GA4 dashboard data was accessible this
+phase either. The site owner supplied one GA4 **realtime** screenshot
+(2-4 active users, 11 page views, 3 `seo_audit_cta_click` events) — labeled
+below as **PHASE 17 DATA (realtime observation only)**, explicitly not
+used for any behavioral conclusion per this phase's own rules. The GSC
+section remains the **HISTORICAL BASELINE** from Phase 14 — still not
+refreshed, now three phases old. See
+[`phase-17-data-analysis.md`](./phase-17-data-analysis.md) for the full
+analysis.
+
 **Phase 16 update:** GA4 is now confirmed live and collecting on
 production (the site owner completed the Vercel environment-variable step
 between Phases 15 and 16 — verified directly against
@@ -30,7 +40,7 @@ future comparisons have a precise window.
 this is when the 3 newest articles and all Phase 2-10 content depth work
 first went live in production)
 
-## Search Console — Initial Baseline (Phase 14, 3-month trailing window)
+## Search Console — HISTORICAL BASELINE (Phase 14, 3-month trailing window)
 
 | Metric | Value |
 |---|---|
@@ -53,13 +63,14 @@ strings. Treat every conclusion drawn from this baseline as directional,
 not statistically reliable, until volume grows. Full analysis in
 [`gsc-data-analysis.md`](./gsc-data-analysis.md).
 
-## GA4
+## GA4 — 28-day / mature-period data: Awaiting data
 
 Client-side implementation confirmed live and correct on production as of
-Phase 16 (script loads, correct Measurement ID, all events fire, no PII —
-see [`analytics-verification.md`](./analytics-verification.md)). Every
-metric below still requires actual GA4 dashboard access to report — not
-available in this environment.
+Phase 16, reconfirmed Phase 17 (script loads, correct Measurement ID, all
+events fire, no PII — see
+[`analytics-verification.md`](./analytics-verification.md)). Every metric
+below still requires actual GA4 dashboard access to report — not available
+in this environment.
 
 | Metric | Value |
 |---|---|
@@ -72,6 +83,26 @@ available in this environment.
 | `strategy_call_click` count | Awaiting data |
 | `seo_audit_cta_click` count | Awaiting data |
 | `contact_cta_click` count | Awaiting data |
+
+## GA4 — PHASE 17 DATA (realtime observation only, NOT a 28-day baseline)
+
+**OBSERVATION** — supplied by the site owner as a GA4 realtime screenshot.
+Explicitly not sufficient for any behavioral conclusion (too small a
+sample, no defined date range, may include the owner's own testing
+traffic — see [`phase-17-data-analysis.md`](./phase-17-data-analysis.md)
+§5 and §22). Recorded here only so it isn't lost, not as a trend baseline.
+
+| Metric | Value |
+|---|---|
+| Active users (last 30 min) | 2 |
+| Active users (last 5 min) | 1 |
+| Page views | 11 |
+| First visits | 4 |
+| Sessions | 4 |
+| Generic click events | 3 |
+| Scroll events | 3 |
+| `seo_audit_cta_click` | 3 |
+| Pages seen | Homepage; Keyword Research service page |
 
 ## Business Outcomes
 

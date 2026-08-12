@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { motion, useReducedMotion } from "framer-motion";
 import { CheckCircle2, LoaderCircle, Clock } from "lucide-react";
 import { SectionHeading } from "@/components/ui/section-heading";
@@ -8,18 +9,24 @@ const projectStatuses = [
   {
     icon: CheckCircle2,
     label: "Website Design",
+    href: "/services/website-design",
     status: "Completed",
     state: "done" as const,
   },
   {
     icon: LoaderCircle,
     label: "Google Business Profile Optimization",
+    href: "/services/local-seo-google-business-profile",
     status: "In Progress",
     state: "active" as const,
   },
   {
     icon: Clock,
     label: "SEO Campaign",
+    // No href: this line item spans multiple services (audit, on-page,
+    // content, etc.) rather than mapping to one specific page, and it
+    // hasn't started yet — a link here would be arbitrary, not genuine.
+    href: undefined,
     status: "Coming Soon",
     state: "pending" as const,
   },
@@ -84,9 +91,18 @@ export function CaseStudies() {
                         }
                       />
                     </span>
-                    <span className="text-sm font-medium text-foreground">
-                      {item.label}
-                    </span>
+                    {item.href ? (
+                      <Link
+                        href={item.href}
+                        className="text-sm font-medium text-foreground underline-offset-2 hover:text-accent-deep hover:underline"
+                      >
+                        {item.label}
+                      </Link>
+                    ) : (
+                      <span className="text-sm font-medium text-foreground">
+                        {item.label}
+                      </span>
+                    )}
                   </div>
                   <span className="shrink-0 text-sm font-medium text-muted">
                     {item.status}

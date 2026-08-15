@@ -1119,6 +1119,11 @@ export const services: Service[] = [
         question: "Do I have to sign up for anything to get the audit?",
         answer: "No — it's free and comes with no obligation.",
       },
+      {
+        question: "How will I actually receive my audit results?",
+        answer:
+          "We reply directly — by email or WhatsApp, whichever you used to reach out — with your findings and the three prioritized quick-wins. No gated PDF, no automated report, no sales sequence in between.",
+      },
     ],
     relatedSlugs: ["technical-seo-audit", "on-page-seo", "local-seo-google-business-profile"],
     lastUpdated: "2026-08-10",

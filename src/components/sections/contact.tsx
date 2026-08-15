@@ -383,6 +383,10 @@ export function Contact() {
                 Send Message
                 <Send size={16} aria-hidden />
               </Button>
+              <p className="text-center text-xs text-muted">
+                Sending opens your email app with this message pre-filled —
+                no backend, no automated reply.
+              </p>
             </form>
           )}
         </motion.div>

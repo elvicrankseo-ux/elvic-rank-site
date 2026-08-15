@@ -118,6 +118,12 @@ export default async function ServicePage({ params }: Props) {
               Book a Free Strategy Call
             </Button>
           </div>
+          <p className="mt-4 text-sm text-muted">
+            Not sure which to pick? The audit is self-serve — send your
+            details and we reply directly. The strategy call is a live
+            30-minute conversation if you&apos;d rather talk it through
+            first.
+          </p>
         </div>
       </section>
 

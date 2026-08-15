@@ -19,6 +19,11 @@ const faqs = [
       "A technical health check, a snapshot of your local/map-pack visibility, and three prioritized quick-wins you could act on immediately — whether or not you end up working with us.",
   },
   {
+    question: "What actually happens on a free strategy call?",
+    answer:
+      "A direct, no-slides conversation about your business, your current SEO situation, and whether working together actually makes sense — not a scripted pitch. You'll walk away with a clearer picture of your priorities either way, and there's no pressure to commit on the call itself.",
+  },
+  {
     question: "Do you work with businesses outside the US?",
     answer:
       "Yes — we work remotely with local service businesses across the US, Canada, the UK, Australia, and Africa.",

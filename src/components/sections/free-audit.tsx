@@ -281,7 +281,7 @@ export function FreeAudit() {
               </Button>
 
               <p className="text-center text-xs text-muted-dark">
-                No spam, no obligation. We&apos;ll reply from a real person, not a bot.
+                Submitting opens your email app with your details pre-filled. No obligation and no automated sales sequence.
               </p>
             </form>
           )}

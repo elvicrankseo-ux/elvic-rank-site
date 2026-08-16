@@ -18,6 +18,7 @@ which section of the page the interaction happened in.
 |---|---|---|---|
 | `generate_lead` | Measures successful lead submission | Successful submission of either lead form (validation must pass first) | Conversion |
 | `whatsapp_click` | Measures WhatsApp contact intent | Click on any WhatsApp link | Conversion |
+| `telegram_click` | Measures Telegram contact intent | Click on any Telegram link | Conversion |
 | `strategy_call_click` | Measures strategy-call intent | Click on a "Book a Free Strategy Call" CTA | Engagement |
 | `seo_audit_cta_click` | Measures free-audit CTA engagement | Click on a "Book Your Free SEO Audit" CTA | Engagement |
 | `contact_cta_click` | Measures general contact-intent engagement | Click on a "Contact Us" / contact-section CTA | Engagement |
@@ -42,6 +43,20 @@ Fires only after client-side validation passes (`if (Object.keys(nextErrors).len
 
 All four point at the same `siteConfig.whatsapp.url` — single source of truth, no hard-coded duplicates. `onClick` never calls `preventDefault()`, so a tracking failure (or GA4 being unconfigured) can never block the WhatsApp link from opening.
 
+### `telegram_click`
+| Location | File | Params |
+|---|---|---|
+| Contact section quick-contact card | `src/components/sections/contact.tsx` | `{ location: "contact_section" }` |
+| Footer | `src/components/layout/footer.tsx` | `{ location: "footer" }` |
+
+Added Phase 27 as an additional, low-friction contact channel alongside
+WhatsApp. Both point at the same `siteConfig.telegram.url` (a pre-built
+`t.me` deep link with the pre-filled message already URL-encoded — see
+`src/config/site.ts`). Deliberately **not** added to the floating
+CTA/mobile sticky bar (already WhatsApp + Free Audit, and a third slot
+would crowd it) — see `docs/phase-27-telegram-integration.md` for the
+placement reasoning.
+
 ### `strategy_call_click`
 | Location | File | Params |
 |---|---|---|
@@ -64,7 +79,14 @@ All four point at the same `siteConfig.whatsapp.url` — single source of truth,
 | Location | File | Params |
 |---|---|---|
 | Service page closing CTA ("Contact Us") | `src/app/services/[slug]/page.tsx` | `{ location: "service_footer", service: <slug> }` |
-| Homepage Testimonials section ("Share your experience") | `src/components/sections/testimonials.tsx` | `{ location: "testimonials_section" }` |
+
+*(Correction: this table previously listed the homepage Testimonials
+section's CTA here. Phase 23 changed that button from "Share your
+experience" → `#contact` to "See Current Work" → `#case-studies`,
+deliberately without an event — its destination and purpose changed to
+internal navigation, not a contact action, and no existing event
+fits "viewed case studies." Corrected here, noticed while updating this
+doc for Phase 27's Telegram addition — not itself a Phase 27 change.)*
 
 ## Deliberately not tracked
 

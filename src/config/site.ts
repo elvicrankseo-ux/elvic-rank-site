@@ -26,6 +26,16 @@ export const siteConfig = {
     url: "https://wa.me/2347071525686",
   } as { display: string; url: string } | null,
 
+  // Telegram — an additional, low-friction contact channel alongside
+  // WhatsApp. The pre-filled message is encoded once here so no call site
+  // has to duplicate the encoding logic.
+  telegram: {
+    display: "@Elvicrank",
+    url: `https://t.me/Elvicrank?text=${encodeURIComponent(
+      "Hi Elvic Rank, I'd like to learn more about your services and how you can help my business."
+    )}`,
+  } as { display: string; url: string } | null,
+
   // Strategy-call booking destination. Every "Book a Free Strategy Call"
   // CTA site-wide should link here — never hardcode this URL directly in
   // a component.

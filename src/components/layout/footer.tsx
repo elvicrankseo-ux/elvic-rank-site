@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { Mail, MessageCircle } from "lucide-react";
+import { Mail, MessageCircle, Send } from "lucide-react";
 import { siteConfig } from "@/config/site";
 import { SocialLinks } from "@/components/ui/social-links";
 import { trackEvent } from "@/lib/analytics";
@@ -112,6 +112,20 @@ export function Footer() {
                   >
                     <MessageCircle size={14} aria-hidden />
                     WhatsApp
+                  </a>
+                </li>
+              )}
+              {siteConfig.telegram && (
+                <li>
+                  <a
+                    href={siteConfig.telegram.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={() => trackEvent("telegram_click", { location: "footer" })}
+                    className="flex items-center gap-2 text-sm text-ink-foreground/80 transition-colors hover:text-accent-bright"
+                  >
+                    <Send size={14} aria-hidden />
+                    Telegram
                   </a>
                 </li>
               )}

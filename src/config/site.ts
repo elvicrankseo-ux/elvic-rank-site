@@ -13,7 +13,17 @@ export const siteConfig = {
   description:
     "SEO agency for local service businesses. Technical audits, content, and Google Business Profile growth that turn visibility into booked jobs.",
   domain: "elvicrank.com",
-  url: "https://elvicrank.com",
+  // Phase 28: confirmed via direct HTTP testing (twice, across two phases)
+  // that Vercel's platform-level redirect goes apex -> www (a single,
+  // stable, non-looping 308), and www is the domain that actually serves
+  // the app (Next.js response headers present only on www, not apex).
+  // This is the real, currently-serving production URL — every
+  // canonical/OG/sitemap/schema URL in the app derives from this single
+  // constant, so this one change is the entire fix. Do NOT add a
+  // next.config.ts redirect alongside this — Vercel's existing redirect
+  // already handles apex -> www correctly; adding another one caused the
+  // Phase 26 outage. See docs/phase-28-domain-canonicalization-audit.md.
+  url: "https://www.elvicrank.com",
 
   // No business phone number yet — deliberately absent rather than a fake
   // placeholder. Set to { display, e164 } once a real number exists.

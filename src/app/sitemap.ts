@@ -2,6 +2,7 @@ import type { MetadataRoute } from "next";
 import { siteConfig } from "@/config/site";
 import { services } from "@/data/services";
 import { blogPosts } from "@/data/blog";
+import { industries } from "@/data/industries";
 
 /**
  * Fallback lastModified for pages that don't track their own change date —
@@ -34,6 +35,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
         : SITE_LAST_UPDATED,
       changeFrequency: "monthly" as const,
       priority: 0.8,
+    })),
+    ...industries.map((industry) => ({
+      url: `${siteConfig.url}/industries/${industry.slug}`,
+      lastModified: SITE_LAST_UPDATED,
+      changeFrequency: "monthly" as const,
+      priority: 0.7,
     })),
     {
       url: `${siteConfig.url}/blog`,

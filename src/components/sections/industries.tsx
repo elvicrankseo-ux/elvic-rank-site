@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { motion, useReducedMotion } from "framer-motion";
 import {
   HardHat,
@@ -16,9 +17,13 @@ import {
 } from "lucide-react";
 import { SectionHeading } from "@/components/ui/section-heading";
 
-const industries: { icon: LucideIcon; label: string }[] = [
+// href is optional — only set once a dedicated /industries/[slug] page
+// actually exists for that trade (see src/data/industries.ts). Cards
+// without one render as plain text, same honest pattern used for the
+// homepage case-studies list.
+const industryCards: { icon: LucideIcon; label: string; href?: string }[] = [
   { icon: HardHat, label: "Roofing" },
-  { icon: Truck, label: "Towing" },
+  { icon: Truck, label: "Towing", href: "/industries/towing-companies" },
   { icon: Scale, label: "Law Firms" },
   { icon: UtensilsCrossed, label: "Restaurants" },
   { icon: Stethoscope, label: "Medical Clinics" },
@@ -42,8 +47,20 @@ export function Industries() {
         />
 
         <div className="mt-14 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-5">
-          {industries.map((industry, index) => {
+          {industryCards.map((industry, index) => {
             const Icon = industry.icon;
+            const cardClass =
+              "flex flex-col items-center gap-3 rounded-2xl border border-paper-border bg-paper p-6 text-center transition-colors hover:border-accent/40";
+            const inner = (
+              <>
+                <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-accent/10 text-accent-deep">
+                  <Icon size={22} aria-hidden />
+                </span>
+                <span className="text-sm font-medium text-foreground">
+                  {industry.label}
+                </span>
+              </>
+            );
             return (
               <motion.div
                 key={industry.label}
@@ -55,14 +72,14 @@ export function Industries() {
                   delay: prefersReducedMotion ? 0 : (index % 5) * 0.06,
                   ease: [0.16, 1, 0.3, 1] as const,
                 }}
-                className="flex flex-col items-center gap-3 rounded-2xl border border-paper-border bg-paper p-6 text-center transition-colors hover:border-accent/40"
               >
-                <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-accent/10 text-accent-deep">
-                  <Icon size={22} aria-hidden />
-                </span>
-                <span className="text-sm font-medium text-foreground">
-                  {industry.label}
-                </span>
+                {industry.href ? (
+                  <Link href={industry.href} className={cardClass}>
+                    {inner}
+                  </Link>
+                ) : (
+                  <div className={cardClass}>{inner}</div>
+                )}
               </motion.div>
             );
           })}

@@ -73,6 +73,30 @@ export function getServiceSchema(service: {
   };
 }
 
+/** Service JSON-LD for individual /industries/[slug] acquisition pages. */
+export function getIndustryPageSchema(industry: {
+  title: string;
+  metaDescription: string;
+  slug: string;
+}) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    serviceType: industry.title,
+    name: industry.title,
+    description: industry.metaDescription,
+    provider: { "@id": `${siteConfig.url}/#organization` },
+    areaServed: [
+      "United States",
+      "Canada",
+      "United Kingdom",
+      "Australia",
+      "Africa",
+    ],
+    url: `${siteConfig.url}/industries/${industry.slug}`,
+  };
+}
+
 /** Article JSON-LD for individual /blog/[slug] posts. */
 export function getArticleSchema(post: {
   title: string;

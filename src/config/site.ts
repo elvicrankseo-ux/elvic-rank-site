@@ -38,11 +38,13 @@ export const siteConfig = {
 
   // Telegram — an additional, low-friction contact channel alongside
   // WhatsApp. The pre-filled message is encoded once here so no call site
-  // has to duplicate the encoding logic.
+  // has to duplicate the encoding logic. Message text per Phase 29's
+  // explicit revision (previously "Hi Elvic Rank, I'd like to learn more
+  // about your services and how you can help my business." from Phase 27).
   telegram: {
     display: "@Elvicrank",
     url: `https://t.me/Elvicrank?text=${encodeURIComponent(
-      "Hi Elvic Rank, I'd like to learn more about your services and how you can help my business."
+      "Hello Elvic Rank, I would like to learn more about your SEO and digital marketing services."
     )}`,
   } as { display: string; url: string } | null,
 

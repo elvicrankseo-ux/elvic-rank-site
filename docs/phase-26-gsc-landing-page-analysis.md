@@ -149,17 +149,21 @@ working-as-intended SEO behavior).
 receiving these 20 queries; nothing in either export shows a second
 page competing for the same terms.
 
-## A Separate, Real, Confirmed Technical Finding
+## A Separate, Real, Confirmed Technical Finding (and a correction)
 
 Independent of the query cluster: both `https://elvicrank.com/` and
 `https://www.elvicrank.com/` appear as **separate URLs** in the 3-month
-Pages report, both receiving real impressions. Verified live in
-production this phase (Task 6/15's canonical check): `www.elvicrank.com`
-returns **HTTP 200 directly, with no redirect**, while its HTML
-correctly declares `<link rel="canonical" href="https://elvicrank.com/">`.
-A canonical tag alone does not prevent Google from crawling and listing
-the duplicate host separately, as this data shows it has. **Implemented
-this phase** — see `docs/phase-26-summary.md` §13.
+Pages report, both receiving real impressions. A `www → apex` redirect
+was implemented on the strength of this finding, but **caused a
+production outage** — Vercel's platform already redirects
+`apex → www`, so the two redirects looped. Reverted within the same
+phase. Follow-up testing (via `curl -L`, which follows redirects
+correctly, unlike the `Invoke-WebRequest` calls used earlier) confirmed
+the real live state: **`www.elvicrank.com` is the platform's actual
+primary domain** — the opposite of what `siteConfig.url` and every
+canonical tag in the codebase declare. This is now a P0 owner-decision
+item rather than something to fix again automatically. Full incident
+timeline in `docs/phase-26-summary.md`'s correction notice.
 
 ## Data Limitations
 - No landing-page dimension exists for any query **outside** the

@@ -1,5 +1,58 @@
 # PHASE 26 — COMPLETE
 
+## ⚠️ CORRECTION — POST-DEPLOY INCIDENT AND REVERT
+
+**The www/apex redirect described in §13 below was implemented, deployed,
+found to cause a production outage, and reverted — all within this same
+phase.** Documenting this honestly rather than editing the record to
+hide it:
+
+1. **What was assumed:** that `elvicrank.com` (apex) was the live,
+   platform-level primary domain, and `www.elvicrank.com` simply had no
+   redirect configured — based on live testing that showed `www` serving
+   200 with no redirect, and the codebase's `siteConfig.url`/canonical
+   tags all declaring the apex as canonical.
+2. **What was missed:** whether the **apex** itself had a
+   platform-level (Vercel dashboard) redirect was never independently
+   tested before implementing a code-level `www → apex` redirect.
+3. **What actually happened after deploy:** Vercel's own domain
+   configuration turned out to already redirect **apex → www** — the
+   opposite direction. Combined with the new code-level `www → apex`
+   redirect, this created an infinite redirect loop. Confirmed via
+   direct HTTP requests: `elvicrank.com/` → 308 → `www.elvicrank.com/`
+   → 308 → `elvicrank.com/` → ... The entire production site became
+   unreachable (`ERR_TOO_MANY_REDIRECTS`) for the duration this was
+   live.
+4. **Immediate fix:** reverted `next.config.ts` to its pre-phase state
+   in a follow-up commit (`d5a353a`), redeployed, and verified via
+   `curl -L` that the site is fully reachable again: `elvicrank.com` →
+   1 redirect → `www.elvicrank.com` → 200, real content, GA4 confirmed
+   present.
+5. **The real, corrected finding:** the site's actual live primary
+   domain, per Vercel's platform configuration, is **`www.elvicrank.com`**
+   — apex redirects to it, not the reverse. This directly **contradicts**
+   `siteConfig.url` (`https://elvicrank.com`) and every canonical tag,
+   sitemap URL, and schema `url` field in the codebase, all of which
+   declare the apex as canonical. **This mismatch predates this phase**
+   — it was not caused by the redirect attempt, only exposed by it.
+6. **Why no further fix was attempted this phase:** a second unverified
+   change to domain/redirect handling, immediately after the first one
+   caused an outage, is exactly the kind of compounding risk this
+   project's standing rules exist to prevent. Resolving this properly
+   requires an **owner decision** (is `www` or apex the intended primary
+   domain going forward?) plus visibility into the actual Vercel
+   dashboard domain settings, which this environment does not have.
+   Documented as OWNER ACTION REQUIRED — see the updated §14/§24 below.
+
+**Net result of this incident:** zero net code change (the repository
+is byte-for-byte back to its pre-phase `next.config.ts`), a brief
+production outage that was caught and fixed within the same session,
+and a real, previously-unknown, now-documented finding that needs an
+owner decision before anyone (including a future phase) touches
+domain redirects again.
+
+---
+
 ## 1. OBJECTIVE
 Connect the real GSC query data from Phase 25 to actual landing pages,
 determine whether the previously-assumed (architecture-based) page
@@ -74,28 +127,26 @@ blog article and service page jointly already own this intent.
 to the service page and to `how-to-rank-locally-on-google`.
 
 ## 13. IMPLEMENTATION
-**One change, evidence-backed:**
-- **File:** `next.config.ts`
-- **Change:** added a permanent (308) redirect from any
-  `www.elvicrank.com` path to the equivalent `elvicrank.com` path.
-- **Evidence:** GSC's 3-month Pages report lists `www.elvicrank.com/`
-  and `elvicrank.com/` as separate URLs, both with real impressions;
-  live production testing this phase confirmed `www.elvicrank.com`
-  returns HTTP 200 directly (no redirect currently exists), despite the
-  page correctly declaring the apex domain as canonical.
-- **Why this, not a bigger change:** this is the smallest possible fix
-  — a standard, documented Next.js `redirects()` config entry (verified
-  against this project's own `node_modules/next/dist/docs` per
-  AGENTS.md), touching no component, no content, no title, no schema.
-- **Verification:** TypeScript clean, ESLint clean, production build
-  32/32 routes (redirect config accepted without error). Verified live
-  on production after deploy — see §19.
+**Attempted, deployed, caused an outage, reverted. Net change: none.**
+See the correction notice at the top of this document for the full
+timeline. In brief: a `www → apex` redirect was added to
+`next.config.ts` based on incomplete evidence (apex's own
+platform-level redirect behavior was never tested), it conflicted with
+Vercel's existing `apex → www` redirect and created a loop, and it was
+reverted in commit `d5a353a` within the same phase. The repository is
+back to its exact pre-phase state for this file.
 
 ## 14. CHANGES NOT IMPLEMENTED
 - Title/meta rewrite of the GBP blog article — insufficient evidence
   (§10).
 - New page for Cluster A/B — fails the distinct-intent test (§11).
 - Additional internal links — none missing (§12).
+- **A www/apex redirect** — attempted, caused an outage, reverted (see
+  correction notice and §13). **Not re-attempted this phase.** Fixing
+  this correctly requires an owner decision on which domain
+  (`elvicrank.com` or `www.elvicrank.com`) should be primary, plus
+  visibility into Vercel's actual dashboard domain configuration, which
+  this environment cannot see or safely guess at twice.
 - A fix for the GA4 "(not set)" landing-page anomaly — flagged as an
   **OWNER ACTION**, since it requires GA4 dashboard access this
   environment doesn't have to diagnose the actual cause.
@@ -116,25 +167,25 @@ environment. 0 Key Events in the GA4 export — **FACT**, not inferred
 
 ## 17. TECHNICAL REGRESSION
 TypeScript: **Pass**. ESLint: **Pass**. Production build: **Pass,
-32/32 routes**, redirect config accepted. Sitemap: unchanged, 25/25 —
-the redirect doesn't add or remove any indexable route. Robots:
-unchanged. Canonical: unchanged (already correct; the redirect is a
-complementary fix, not a replacement for it). Schema: unchanged.
-Internal links: unaffected (redirect only applies to the `www` host,
-not internal `next/link` navigation which already uses relative paths
-on the apex domain).
+32/32 routes** — both for the (reverted) attempted change and for the
+final reverted state. Sitemap: unchanged, 25/25. Robots: unchanged.
+Canonical: unchanged (still declares the apex — now confirmed to
+actively **mismatch** the platform's real primary domain, see
+correction notice). Schema: unchanged. Internal links: unaffected
+throughout (`next/link` uses relative paths, unaffected by host-level
+redirect behavior either way).
 
 ## 18. MOBILE / UX STATUS
-**Not applicable to this change.** A host-level redirect has no
-rendering, layout, or component surface — there is nothing for a
-375px/768px/desktop check to reveal. Stated honestly rather than
-performing a check that wouldn't test anything relevant, per this
-phase's own instruction not to claim untested work.
+**Not applicable.** The (reverted) change was a host-level redirect
+with no rendering, layout, or component surface.
 
 ## 19. PRODUCTION STATUS
-Deployed and verified live — see chat for the direct confirmation:
-`https://www.elvicrank.com` now redirects (308) to
-`https://elvicrank.com`, path and query preserved.
+**Currently live and healthy, confirmed via `curl -L`:**
+`elvicrank.com` → 1 redirect → `www.elvicrank.com` → 200, real
+content, GA4 (`G-4XHTCF3GM0`) confirmed present in the served HTML.
+This reflects the reverted (original, pre-phase) state — see the
+correction notice for the brief outage that occurred and was fixed
+in between.
 
 ## 20. DOCUMENTATION CREATED
 - `docs/phase-26-gsc-landing-page-analysis.md`
@@ -143,37 +194,48 @@ Deployed and verified live — see chat for the direct confirmation:
 - `docs/phase-26-summary.md`
 
 ## 21. FILES CHANGED
-Modified: `next.config.ts`. New: the 4 docs above. No other file
-touched.
+`next.config.ts` — modified then reverted (net: unchanged vs. the
+start of this phase). New: the 4 docs listed in §20 (this file was
+subsequently edited again to add the correction notice).
 
 ## 22. COMMIT HASH
-Reported after commit (see chat) — this file is written immediately
-before that commit.
+`7896e7f` (the www/apex redirect + all 4 docs — **later found to
+cause an outage**), `d5a353a` (the revert), plus a follow-up commit
+correcting this document's record of what happened (see chat for its
+hash).
 
 ## 23. DATA LIMITATIONS
 Landing-page GSC data exists for exactly one page; every other page's
-query attribution remains architecture-based inference (not
-downgraded from Phase 25's honest labeling — just not yet upgradeable
-either). GA4 and GSC windows don't align exactly. GSC's own query
-anonymization undercounts real query diversity in the 3-month report.
-The GA4 "(not set)" landing-page rows are unexplained.
+query attribution remains architecture-based inference. GA4 and GSC
+windows don't align exactly. GSC's own query anonymization undercounts
+real query diversity in the 3-month report. The GA4 "(not set)"
+landing-page rows are unexplained. **New this phase:** this
+environment has no visibility into Vercel's actual dashboard domain
+configuration — the apex/www primary-domain question can be observed
+via HTTP testing but not resolved without that access.
 
 ## 24. OWNER ACTIONS REQUIRED
-Investigate the GA4 "(not set)" landing-page tracking gap (5 sessions,
-highest engagement of any row, no identifiable page) — requires GA4
-dashboard access this environment doesn't have. Everything else from
-Phase 20's standing checklist remains unchanged (phone number, GBP
-verification, founder identity, directory signups).
+**P0 — new, from this phase's incident:** decide which domain is
+intended as primary — `elvicrank.com` or `www.elvicrank.com` — and
+either update Vercel's dashboard domain settings to match the
+codebase's canonical declaration, or have a future phase update
+`siteConfig.url`/canonical/schema to match Vercel's actual
+`www.elvicrank.com` primary configuration. Until this is decided, the
+codebase and the live platform configuration actively disagree about
+which URL is canonical. Investigate the GA4 "(not set)" landing-page
+tracking gap. Everything else from Phase 20's standing checklist
+remains unchanged (phone number, GBP verification, founder identity,
+directory signups).
 
 ## 25. SINGLE HIGHEST-PRIORITY NEXT ACTION
-**Supply a GSC export with the landing-page dimension retained
-sitewide (not pre-filtered to one page).** This phase could only
-confirm real landing-page attribution for one URL because the supplied
-export happened to be filtered to it. A sitewide page-inclusive export
-is the one input that would let a future phase check whether the
-*commercial* service page — the one place that actually converts —
-is receiving any of its own separate query traffic, which remains
-completely unknown after this phase.
+**Resolve the apex/www primary-domain mismatch (§24, P0) before
+anything else SEO-related.** This is a bigger-priority finding than
+this phase originally set out to find: the site's canonical
+declaration (apex) and its actual live routing (www is primary,
+confirmed via direct HTTP testing) disagree with each other right now,
+in production. A GSC export with sitewide landing-page data (this
+phase's original recommendation) is still valuable and remains the
+second priority.
 
 ## 26. NEXT PHASE RECOMMENDATION
 Do not start Phase 27 automatically, per this phase's stop condition.

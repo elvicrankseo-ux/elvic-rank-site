@@ -24,9 +24,14 @@ const faqs = [
       "A direct, no-slides conversation about your business, your current SEO situation, and whether working together actually makes sense — not a scripted pitch. You'll walk away with a clearer picture of your priorities either way, and there's no pressure to commit on the call itself.",
   },
   {
+    question: "Do you only work with restoration and emergency service companies?",
+    answer:
+      "That's our specialization — restoration (water, fire, storm, mold, and related damage) and emergency services (towing, emergency plumbing, HVAC, and electrical) — because these businesses share the same core dynamic: customers searching Google urgently, right now, because something has already gone wrong. That focus is what lets us build a strategy specific to how your customers actually search, instead of generic advice.",
+  },
+  {
     question: "Do you work with businesses outside the US?",
     answer:
-      "Yes — we work remotely with local service businesses across the US, Canada, the UK, Australia, and Africa.",
+      "Yes — we work remotely with restoration and emergency service businesses across the US, Canada, the UK, Australia, and Africa.",
   },
   {
     question: "How is local SEO different from regular SEO?",

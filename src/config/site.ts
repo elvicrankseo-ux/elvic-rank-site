@@ -10,8 +10,14 @@ export const siteConfig = {
   name: "Elvic Rank",
   legalName: "Elvic Rank",
   tagline: "SEO That Compounds",
+  // Phase 31 repositioning: Elvic Rank specializes in restoration and
+  // emergency service businesses (water/fire/mold/storm/disaster/biohazard
+  // restoration, plus towing, emergency plumbing, HVAC, and electrical) —
+  // categories that share one defining trait: customers search Google
+  // urgently, because something has already gone wrong, and decide fast.
+  // See docs/phase-31-niche-pivot.md for the full reasoning.
   description:
-    "SEO agency for local service businesses. Technical audits, content, and Google Business Profile growth that turn visibility into booked jobs.",
+    "SEO and lead generation for restoration and emergency service businesses. Local SEO, Google Business Profile, and technical audits that turn urgent Google searches into booked jobs.",
   domain: "elvicrank.com",
   // Phase 28: confirmed via direct HTTP testing (twice, across two phases)
   // that Vercel's platform-level redirect goes apex -> www (a single,
@@ -57,7 +63,7 @@ export const siteConfig = {
   location: {
     mode: "remote" as const,
     servingLine:
-      "Helping local service businesses across the United States, Canada, the United Kingdom, Australia, and Africa grow through SEO, Google Business Profile optimization, website design, and digital marketing.",
+      "Helping restoration and emergency service businesses across the United States, Canada, the United Kingdom, Australia, and Africa turn urgent Google searches into booked jobs through local SEO, Google Business Profile optimization, and technical SEO.",
   },
 
   social: {
@@ -66,14 +72,16 @@ export const siteConfig = {
     tiktok: "https://tiktok.com/@elvicrank",
   },
 
+  // Phase 31: restructured around the restoration/emergency-service
+  // specialization (first 4 items are the ones Footer's quickLinks slice
+  // surfaces — kept the most important entries there deliberately).
   nav: [
     { label: "Services", href: "/#services" },
-    { label: "Why Us", href: "/#why-us" },
+    { label: "Restoration SEO", href: "/industries/restoration-seo" },
+    { label: "Emergency SEO", href: "/industries/emergency-service-seo" },
     { label: "Industries", href: "/#industries" },
-    { label: "Process", href: "/#process" },
-    { label: "Current Projects", href: "/#case-studies" },
+    { label: "Resources", href: "/blog" },
     { label: "About", href: "/#about" },
-    { label: "Blog", href: "/blog" },
     { label: "FAQ", href: "/#faq" },
   ],
 
@@ -81,9 +89,13 @@ export const siteConfig = {
   // rendered on every page, not just the homepage — a bare "#audit" only
   // scrolls correctly when already on "/".
   cta: {
-    primary: { label: "Book Your Free SEO Audit", href: "/#audit" },
+    // Kept compact deliberately — this label is reused in tight spaces
+    // (navbar, mobile sticky bar) as well as full-size buttons. Hero.tsx
+    // uses its own longer, more descriptive button text where there's
+    // room for it, rather than this shared constant.
+    primary: { label: "Get Your Free SEO Audit", href: "/#audit" },
     // Only consumed by Hero — safe to point at Services rather than Contact.
-    secondary: { label: "View Our Services", href: "/#services" },
+    secondary: { label: "See How We Help Restoration Companies", href: "/industries/restoration-seo" },
   },
 } as const;
 

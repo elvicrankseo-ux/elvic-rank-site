@@ -2,37 +2,15 @@
 
 import Link from "next/link";
 import { motion, useReducedMotion } from "framer-motion";
-import {
-  HardHat,
-  Truck,
-  Scale,
-  UtensilsCrossed,
-  Stethoscope,
-  Building2,
-  Hammer,
-  Wrench,
-  Car,
-  Briefcase,
-  type LucideIcon,
-} from "lucide-react";
 import { SectionHeading } from "@/components/ui/section-heading";
+import { industries } from "@/data/industries";
 
-// href is optional — only set once a dedicated /industries/[slug] page
-// actually exists for that trade (see src/data/industries.ts). Cards
-// without one render as plain text, same honest pattern used for the
-// homepage case-studies list.
-const industryCards: { icon: LucideIcon; label: string; href?: string }[] = [
-  { icon: HardHat, label: "Roofing" },
-  { icon: Truck, label: "Towing", href: "/industries/towing-companies" },
-  { icon: Scale, label: "Law Firms" },
-  { icon: UtensilsCrossed, label: "Restaurants" },
-  { icon: Stethoscope, label: "Medical Clinics" },
-  { icon: Building2, label: "Real Estate" },
-  { icon: Hammer, label: "Construction" },
-  { icon: Wrench, label: "Home Services" },
-  { icon: Car, label: "Automotive" },
-  { icon: Briefcase, label: "Professional Services" },
-];
+// Pulled directly from src/data/industries.ts (the same data that powers
+// each /industries/[slug] page) rather than a separately maintained list,
+// so this grid can never drift out of sync with what pages actually
+// exist. Hub pages (isHub: true) are reachable from primary nav instead —
+// this grid shows the 10 individual verticals.
+const industryCards = industries.filter((industry) => !industry.isHub);
 
 export function Industries() {
   const prefersReducedMotion = useReducedMotion();
@@ -42,28 +20,16 @@ export function Industries() {
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <SectionHeading
           eyebrow="Industries"
-          title="Built for local service businesses"
-          description="Different trades, same fundamentals: buyers search before they call. We rank the businesses that show up first."
+          title="Built for restoration & emergency service businesses"
+          description="Two categories, one shared fundamental: customers search Google because something has already gone wrong, and they call whoever shows up first."
         />
 
         <div className="mt-14 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-5">
           {industryCards.map((industry, index) => {
             const Icon = industry.icon;
-            const cardClass =
-              "flex flex-col items-center gap-3 rounded-2xl border border-paper-border bg-paper p-6 text-center transition-colors hover:border-accent/40";
-            const inner = (
-              <>
-                <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-accent/10 text-accent-deep">
-                  <Icon size={22} aria-hidden />
-                </span>
-                <span className="text-sm font-medium text-foreground">
-                  {industry.label}
-                </span>
-              </>
-            );
             return (
               <motion.div
-                key={industry.label}
+                key={industry.slug}
                 initial={{ opacity: 0, y: 16 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-80px" }}
@@ -73,13 +39,17 @@ export function Industries() {
                   ease: [0.16, 1, 0.3, 1] as const,
                 }}
               >
-                {industry.href ? (
-                  <Link href={industry.href} className={cardClass}>
-                    {inner}
-                  </Link>
-                ) : (
-                  <div className={cardClass}>{inner}</div>
-                )}
+                <Link
+                  href={`/industries/${industry.slug}`}
+                  className="flex flex-col items-center gap-3 rounded-2xl border border-paper-border bg-paper p-6 text-center transition-colors hover:border-accent/40"
+                >
+                  <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-accent/10 text-accent-deep">
+                    <Icon size={22} aria-hidden />
+                  </span>
+                  <span className="text-sm font-medium text-foreground">
+                    {industry.label}
+                  </span>
+                </Link>
               </motion.div>
             );
           })}

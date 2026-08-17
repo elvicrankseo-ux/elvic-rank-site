@@ -53,6 +53,10 @@ export default async function IndustryPage({ params }: Props) {
     .map((s) => getServiceBySlug(s))
     .filter((s): s is NonNullable<typeof s> => s !== undefined);
 
+  const relatedIndustries = (industry.relatedIndustrySlugs ?? [])
+    .map((s) => getIndustryBySlug(s))
+    .filter((i): i is NonNullable<typeof i> => i !== undefined);
+
   const jsonLd = [
     getIndustryPageSchema(industry),
     getBreadcrumbSchema([
@@ -64,6 +68,12 @@ export default async function IndustryPage({ params }: Props) {
   ];
 
   const Icon = industry.icon;
+  // Avoids "Restoration SEO SEO Audit" on the two hub pages, whose label
+  // already ends in "SEO" — niche pages (e.g. "Towing", "Water Damage
+  // Restoration") don't have that suffix, so they get the full phrase.
+  const auditCtaLabel = industry.label.trim().endsWith("SEO")
+    ? `Get a Free ${industry.label} Audit`
+    : `Get a Free ${industry.label} SEO Audit`;
 
   return (
     <main className="flex-1">
@@ -105,7 +115,7 @@ export default async function IndustryPage({ params }: Props) {
               gaEvent="seo_audit_cta_click"
               gaParams={{ location: "industry_header", industry: industry.slug }}
             >
-              Get a Free Towing SEO Audit
+              {auditCtaLabel}
               <ArrowRight size={18} aria-hidden />
             </Button>
             <Button
@@ -167,6 +177,42 @@ export default async function IndustryPage({ params }: Props) {
                     <RelatedIcon size={20} className="text-accent-deep" aria-hidden />
                     <span className="mt-3 text-sm font-medium text-foreground">
                       {related.title}
+                    </span>
+                    <span className="mt-2 flex items-center gap-1 text-xs font-medium text-accent-deep">
+                      Learn more
+                      <ArrowRight
+                        size={12}
+                        aria-hidden
+                        className="transition-transform duration-200 group-hover:translate-x-1"
+                      />
+                    </span>
+                  </Link>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* Related industries — hub↔niche cross-links */}
+      {relatedIndustries.length > 0 && (
+        <section className="bg-paper-muted py-16 lg:py-20">
+          <div className="mx-auto max-w-4xl px-6 lg:px-8">
+            <h2 className="font-display text-2xl font-medium text-foreground sm:text-3xl">
+              {industry.isHub ? "Explore each category" : "Related industries"}
+            </h2>
+            <div className="mt-8 grid gap-4 sm:grid-cols-3">
+              {relatedIndustries.map((related) => {
+                const RelatedIcon = related.icon;
+                return (
+                  <Link
+                    key={related.slug}
+                    href={`/industries/${related.slug}`}
+                    className="group flex flex-col rounded-2xl border border-paper-border bg-paper p-5 transition-colors hover:border-accent/40"
+                  >
+                    <RelatedIcon size={20} className="text-accent-deep" aria-hidden />
+                    <span className="mt-3 text-sm font-medium text-foreground">
+                      {related.label}
                     </span>
                     <span className="mt-2 flex items-center gap-1 text-xs font-medium text-accent-deep">
                       Learn more

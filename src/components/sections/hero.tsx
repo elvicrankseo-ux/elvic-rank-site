@@ -6,10 +6,9 @@ import {
   ArrowRight,
   Check,
   TrendingUp,
-  Search,
-  MapPin,
+  Droplets,
   MapPinCheck,
-  LayoutTemplate,
+  Zap,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { siteConfig } from "@/config/site";
@@ -21,10 +20,9 @@ const trustPoints = [
 ];
 
 const specialtyBadges = [
-  { icon: Search, label: "Technical SEO" },
-  { icon: MapPin, label: "Local SEO" },
+  { icon: Droplets, label: "Restoration SEO" },
+  { icon: Zap, label: "Emergency Service SEO" },
   { icon: MapPinCheck, label: "Google Business Profile" },
-  { icon: LayoutTemplate, label: "Website Design" },
 ];
 
 const reportHighlights = [
@@ -77,7 +75,7 @@ export function Hero() {
             className="inline-flex items-center gap-2 rounded-full border border-paper-border bg-paper-muted px-4 py-1.5 text-sm font-medium text-muted"
           >
             <span className="h-1.5 w-1.5 rounded-full bg-accent" aria-hidden />
-            SEO for local service businesses
+            SEO for restoration &amp; emergency service businesses
           </motion.div>
 
           <motion.h1
@@ -87,8 +85,8 @@ export function Hero() {
             variants={fadeUp}
             className="mt-6 font-display text-4xl font-medium leading-[1.08] tracking-tight text-foreground sm:text-5xl lg:text-6xl"
           >
-            SEO That Brings More Calls, More Leads &{" "}
-            <span className="text-accent-deep">More Booked Jobs</span>
+            SEO That Gets Restoration &amp; Emergency Service Companies{" "}
+            <span className="text-accent-deep">More Calls</span>
           </motion.h1>
 
           <motion.p
@@ -98,9 +96,10 @@ export function Hero() {
             variants={fadeUp}
             className="mt-6 max-w-xl text-lg leading-relaxed text-muted"
           >
-            We help local businesses dominate Google through Technical SEO,
-            Local SEO, Google Business Profile Optimization, Website Design,
-            and digital marketing that generates real business growth.
+            Elvic Rank helps restoration and emergency service businesses —
+            water, fire, and storm damage, mold remediation, towing, and
+            more — dominate Google Search and Google Maps, so urgent
+            searches turn into booked jobs, not a competitor&apos;s call.
           </motion.p>
 
           <motion.div
@@ -117,7 +116,7 @@ export function Hero() {
               gaEvent="seo_audit_cta_click"
               gaParams={{ location: "hero" }}
             >
-              {siteConfig.cta.primary.label}
+              Get Your Free SEO &amp; Google Visibility Audit
               <ArrowRight size={18} aria-hidden />
             </Button>
             <Button href={siteConfig.cta.secondary.href} variant="outline" size="lg">

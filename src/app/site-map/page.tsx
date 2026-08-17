@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Breadcrumbs } from "@/components/ui/breadcrumbs";
 import { siteConfig } from "@/config/site";
 import { services } from "@/data/services";
+import { industries } from "@/data/industries";
 import { blogPosts } from "@/data/blog";
 import { buildMetadata } from "@/lib/metadata";
 
@@ -52,12 +53,12 @@ export default function SiteMapPage() {
           Every page on this site, in one place.
         </p>
 
-        <div className="mt-10 grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-10 grid gap-10 sm:grid-cols-2 lg:grid-cols-5">
           <LinkColumn
             title="Main"
             links={[
               { label: "Home", href: "/" },
-              ...siteConfig.nav.filter((item) => item.label !== "Blog"),
+              ...siteConfig.nav.filter((item) => item.label !== "Resources"),
               { label: "Contact", href: "/#contact" },
             ]}
           />
@@ -66,6 +67,13 @@ export default function SiteMapPage() {
             links={services.map((service) => ({
               label: service.title,
               href: `/services/${service.slug}`,
+            }))}
+          />
+          <LinkColumn
+            title="Industries"
+            links={industries.map((industry) => ({
+              label: industry.label,
+              href: `/industries/${industry.slug}`,
             }))}
           />
           <LinkColumn

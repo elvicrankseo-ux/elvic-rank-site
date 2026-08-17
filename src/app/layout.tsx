@@ -24,7 +24,7 @@ const fraunces = Fraunces({
   axes: ["opsz", "SOFT", "WONK"],
 });
 
-const homeTitle = `${siteConfig.name} | SEO Agency for Local Service Businesses`;
+const homeTitle = `${siteConfig.name} | Restoration & Emergency Service SEO Agency`;
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),

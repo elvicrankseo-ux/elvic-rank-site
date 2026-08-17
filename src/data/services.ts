@@ -204,6 +204,10 @@ export const services: Service[] = [
           "You get a prioritized report ranked by impact, not a raw list of every issue found.",
         ],
       },
+      {
+        type: "paragraph",
+        text: "For restoration and emergency service businesses specifically, page speed and mobile reliability aren't just ranking factors — they're conversion factors, since a customer searching mid-emergency on a weak connection won't wait for a slow page. See [restoration SEO](/industries/restoration-seo) and [emergency service SEO](/industries/emergency-service-seo) for how this fits into the broader strategy.",
+      },
     ],
   },
   {
@@ -408,6 +412,10 @@ export const services: Service[] = [
       {
         type: "paragraph",
         text: "None of this works best in isolation, either — local SEO is strongest as one piece of a [broader SEO strategy](/blog/seo-strategy-for-local-service-businesses) that also covers the technical, content, and authority side of your site.",
+      },
+      {
+        type: "paragraph",
+        text: "This is especially critical for restoration and emergency service businesses, where a huge share of demand arrives through exactly this kind of urgent, local, map-pack-driven search. See our dedicated guides to [restoration SEO](/industries/restoration-seo) and [emergency service SEO](/industries/emergency-service-seo) for how this applies specifically to those categories.",
       },
     ],
   },
@@ -874,6 +882,10 @@ export const services: Service[] = [
         type: "paragraph",
         text: "We choose the platform based on your needs — usually a modern, fast framework, though WordPress is an option if you need a specific content workflow. Most projects take 3–6 weeks depending on scope, from wireframes to launch.",
       },
+      {
+        type: "paragraph",
+        text: "For restoration and emergency service businesses, this means a site built around click-to-call visibility and mobile speed from the first wireframe — see [restoration SEO](/industries/restoration-seo) and [emergency service SEO](/industries/emergency-service-seo) for the fuller strategy this fits into.",
+      },
     ],
   },
   {
@@ -979,6 +991,10 @@ export const services: Service[] = [
       {
         type: "paragraph",
         text: "That speed comes at an ongoing cost — every click on a Google ad costs money for as long as the campaign runs — which is why it tends to work best paired with a longer-term SEO strategy rather than run alone indefinitely. We can't promise a specific number of leads or a guaranteed return, but we can commit to transparent reporting on exactly what your budget is producing.",
+      },
+      {
+        type: "paragraph",
+        text: "For restoration and emergency service businesses, paid search is often the fastest way to capture high-intent \"near me\" and emergency searches while local SEO builds — see [emergency service SEO](/industries/emergency-service-seo) for how the two work together for this category specifically.",
       },
     ],
   },
@@ -1196,6 +1212,10 @@ export const services: Service[] = [
           "We identify where competitors are currently outperforming you and why.",
           "You get a single report with findings prioritized by impact, and a clear starting point.",
         ],
+      },
+      {
+        type: "paragraph",
+        text: "For restoration and emergency service businesses, this same audit is the starting point for our [restoration SEO](/industries/restoration-seo) and [emergency service SEO](/industries/emergency-service-seo) work — free, and specifically framed around Google Maps visibility and call conversion.",
       },
     ],
   },

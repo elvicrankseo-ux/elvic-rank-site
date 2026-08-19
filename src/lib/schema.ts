@@ -11,13 +11,7 @@ export function getOrganizationSchema() {
     description: siteConfig.description,
     ...(siteConfig.phone ? { telephone: siteConfig.phone.e164 } : {}),
     email: siteConfig.email,
-    areaServed: [
-      "United States",
-      "Canada",
-      "United Kingdom",
-      "Australia",
-      "Africa",
-    ],
+    areaServed: ["United States"],
     sameAs: Object.values(siteConfig.social),
   };
 }
@@ -62,13 +56,7 @@ export function getServiceSchema(service: {
     name: service.title,
     description: service.metaDescription,
     provider: { "@id": `${siteConfig.url}/#organization` },
-    areaServed: [
-      "United States",
-      "Canada",
-      "United Kingdom",
-      "Australia",
-      "Africa",
-    ],
+    areaServed: ["United States"],
     url: `${siteConfig.url}/services/${service.slug}`,
   };
 }
@@ -86,13 +74,7 @@ export function getIndustryPageSchema(industry: {
     name: industry.title,
     description: industry.metaDescription,
     provider: { "@id": `${siteConfig.url}/#organization` },
-    areaServed: [
-      "United States",
-      "Canada",
-      "United Kingdom",
-      "Australia",
-      "Africa",
-    ],
+    areaServed: ["United States"],
     url: `${siteConfig.url}/industries/${industry.slug}`,
   };
 }

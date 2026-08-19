@@ -63,7 +63,7 @@ export const siteConfig = {
   location: {
     mode: "remote" as const,
     servingLine:
-      "Helping restoration and emergency service businesses across the United States, Canada, the United Kingdom, Australia, and Africa turn urgent Google searches into booked jobs through local SEO, Google Business Profile optimization, and technical SEO.",
+      "Helping U.S. restoration and emergency service businesses turn urgent Google searches into booked jobs through local SEO, Google Business Profile optimization, and technical SEO.",
   },
 
   social: {

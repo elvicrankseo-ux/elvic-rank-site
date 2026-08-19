@@ -31,7 +31,7 @@ const faqs = [
   {
     question: "Do you work with businesses outside the US?",
     answer:
-      "Yes — we work remotely with restoration and emergency service businesses across the US, Canada, the UK, Australia, and Africa.",
+      "Yes — we work remotely with restoration and emergency service businesses across the United States.",
   },
   {
     question: "How is local SEO different from regular SEO?",

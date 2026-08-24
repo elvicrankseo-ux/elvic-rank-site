@@ -9,7 +9,11 @@
 export const siteConfig = {
   name: "Elvic Rank",
   legalName: "Elvic Rank",
-  tagline: "SEO That Compounds",
+  // Phase 33 positioning refinement: the core promise, not yet rendered
+  // anywhere directly (kept as the single source of truth in case a
+  // future component wants it) — Hero.tsx's H1 is the visible expression
+  // of this same promise.
+  tagline: "SEO, Websites & Google Growth for Restoration & Emergency Service Businesses",
   // Phase 31 repositioning: Elvic Rank specializes in restoration and
   // emergency service businesses (water/fire/mold/storm/disaster/biohazard
   // restoration, plus towing, emergency plumbing, HVAC, and electrical) —
@@ -90,12 +94,11 @@ export const siteConfig = {
   // scrolls correctly when already on "/".
   cta: {
     // Kept compact deliberately — this label is reused in tight spaces
-    // (navbar, mobile sticky bar) as well as full-size buttons. Hero.tsx
-    // uses its own longer, more descriptive button text where there's
-    // room for it, rather than this shared constant.
-    primary: { label: "Get Your Free SEO Audit", href: "/#audit" },
-    // Only consumed by Hero — safe to point at Services rather than Contact.
-    secondary: { label: "See How We Help Restoration Companies", href: "/industries/restoration-seo" },
+    // (navbar, mobile sticky bar) as well as full-size buttons.
+    primary: { label: "Get a Free Growth Audit", href: "/#audit" },
+    // Only consumed by Hero — points at the real case-study section
+    // ("View Our Work" should mean actual work, not a services list).
+    secondary: { label: "View Our Work", href: "/#case-studies" },
   },
 } as const;
 

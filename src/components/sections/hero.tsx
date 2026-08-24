@@ -85,8 +85,8 @@ export function Hero() {
             variants={fadeUp}
             className="mt-6 font-display text-4xl font-medium leading-[1.08] tracking-tight text-foreground sm:text-5xl lg:text-6xl"
           >
-            SEO That Gets Restoration &amp; Emergency Service Companies{" "}
-            <span className="text-accent-deep">More Calls</span>
+            SEO, Websites &amp; Google Growth for{" "}
+            <span className="text-accent-deep">Restoration &amp; Emergency Service Businesses</span>
           </motion.h1>
 
           <motion.p
@@ -96,10 +96,9 @@ export function Hero() {
             variants={fadeUp}
             className="mt-6 max-w-xl text-lg leading-relaxed text-muted"
           >
-            Elvic Rank helps restoration and emergency service businesses —
-            water, fire, and storm damage, mold remediation, towing, and
-            more — dominate Google Search and Google Maps, so urgent
-            searches turn into booked jobs, not a competitor&apos;s call.
+            Get found, get called, and get booked with SEO, Google Maps
+            optimization, and conversion-focused websites designed for
+            emergency-service companies.
           </motion.p>
 
           <motion.div
@@ -116,7 +115,7 @@ export function Hero() {
               gaEvent="seo_audit_cta_click"
               gaParams={{ location: "hero" }}
             >
-              Get Your Free SEO &amp; Google Visibility Audit
+              {siteConfig.cta.primary.label}
               <ArrowRight size={18} aria-hidden />
             </Button>
             <Button href={siteConfig.cta.secondary.href} variant="outline" size="lg">

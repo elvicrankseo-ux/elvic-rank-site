@@ -9,6 +9,7 @@ import {
   Wrench,
   Thermometer,
   Zap,
+  LayoutTemplate,
   type LucideIcon,
 } from "lucide-react";
 import type { ContentBlock } from "@/lib/content-blocks";
@@ -59,6 +60,24 @@ export type Industry = {
   /** Slugs into this same file — hub↔niche cross-links. */
   relatedIndustrySlugs?: string[];
   ctaHeading?: string;
+  /**
+   * Overrides the header CTA button's default computed label
+   * (`Get a Free ${label} SEO Audit`, or `... Audit` if label already
+   * ends in "SEO" — see industries/[slug]/page.tsx). Needed for pages
+   * like Restoration Web Design, where the default phrasing would
+   * awkwardly read "Get a Free Restoration Web Design SEO Audit."
+   * Sprint 01.
+   */
+  auditCtaLabel?: string;
+  /**
+   * True for pages that describe a SERVICE angle applied to the niche
+   * (e.g. Restoration Web Design) rather than a customer vertical.
+   * These stay reachable via internal links/nav but are excluded from
+   * the homepage Industries grid, which lists "who we serve," not
+   * "what we build for them" — showing a service-angle page there
+   * would misrepresent it as a business type. Sprint 01.
+   */
+  excludeFromGrid?: boolean;
 };
 
 export const industries: Industry[] = [
@@ -91,6 +110,7 @@ export const industries: Industry[] = [
       "storm-damage-restoration",
       "disaster-restoration",
       "biohazard-cleanup",
+      "restoration-web-design",
     ],
     richContent: [
       { type: "heading", text: "Why Restoration Companies Need Local SEO" },
@@ -148,7 +168,7 @@ export const industries: Industry[] = [
       { type: "heading", text: "Conversion: Turning Visibility Into Calls" },
       {
         type: "paragraph",
-        text: "A restoration website's only real job is getting the phone to ring or the emergency form filled out. That means a click-to-call number visible without scrolling on every page, clear service-area and service coverage, and a site that loads fast on mobile — a customer standing in water damage won't wait for a bloated page. We audit and fix exactly this kind of conversion friction as part of [technical SEO](/services/technical-seo-audit) and website work.",
+        text: "A restoration website's only real job is getting the phone to ring or the emergency form filled out. That means a click-to-call number visible without scrolling on every page, clear service-area and service coverage, and a site that loads fast on mobile — a customer standing in water damage won't wait for a bloated page. We audit and fix exactly this kind of conversion friction as part of [technical SEO](/services/technical-seo-audit) and website work — see [Restoration Web Design](/industries/restoration-web-design) for how we approach a site built around this from the first wireframe, not patched in after launch.",
       },
 
       { type: "heading", text: "Measuring What Actually Matters" },
@@ -501,6 +521,103 @@ export const industries: Industry[] = [
   },
 
   // ---------------------------------------------------------------
+  // RESTORATION WEB DESIGN — a service angle, not a customer vertical.
+  // excludeFromGrid: true keeps it out of the homepage "who we serve"
+  // grid while remaining fully reachable via the restoration hub, the
+  // Website Design service page, and the homepage. Sprint 01.
+  // ---------------------------------------------------------------
+  {
+    slug: "restoration-web-design",
+    icon: LayoutTemplate,
+    label: "Restoration Web Design",
+    group: "restoration",
+    excludeFromGrid: true,
+    title: "Restoration Web Design Built to Convert",
+    metaTitle: "Restoration Web Design",
+    metaDescription:
+      "SEO-ready, conversion-focused website design for restoration companies — built around emergency search behavior, click-to-call, and trust, not a generic template.",
+    heroIntro:
+      "A restoration company's website has one job: turn someone in a stressful, urgent moment into a phone call. We design and build websites specifically for that behavior — fast, mobile-first, SEO-ready from the first wireframe, and built to convert, not just look good.",
+    ctaHeading: "See Where Your Restoration Website Is Losing Leads",
+    auditCtaLabel: "Get a Free Restoration Website Audit",
+    relatedServiceSlugs: ["website-design", "conversion-rate-optimization", "local-seo-google-business-profile", "technical-seo-audit"],
+    relatedIndustrySlugs: ["restoration-seo", "water-damage-restoration", "fire-smoke-restoration"],
+    richContent: [
+      { type: "heading", text: "Why Restoration Websites Need to Be Different" },
+      {
+        type: "paragraph",
+        text: "Most website design treats every visitor the same — browse, compare, maybe come back later. A restoration website can't afford that assumption. The person landing on it often has water actively spreading, smoke damage from an hour ago, or a mold problem they just discovered — they're deciding, right now, whether to call. A generic \"pretty but slow\" website built for a business with a normal buying cycle actively costs a restoration company real jobs.",
+      },
+      {
+        type: "heading", text: "Emergency Conversion Design" },
+      {
+        type: "paragraph",
+        text: "This is the framework we design restoration websites around: every page is built for someone deciding in seconds, not days. That means the phone number is never more than a glance away, the page loads fast enough to matter on a weak mobile connection, and the visitor never has to hunt for what they actually came to find out — do you do this, do you serve my area, can I reach you right now.",
+      },
+      {
+        type: "heading", text: "Built Around How Restoration Customers Actually Behave" },
+      {
+        type: "list",
+        items: [
+          "Mobile-first by default — most restoration searches happen on a phone, often one-handed, often in a hurry.",
+          "Click-to-call on every page, not buried in a contact page three clicks deep.",
+          "Service clarity — clear, specific pages for the damage types actually handled, not one vague \"restoration services\" page.",
+          "Location clarity — the service area stated plainly, not implied.",
+          "Real trust signals — licensing, certifications, and genuine reviews, never fabricated numbers or stock-photo credibility.",
+          "Fast loading — every extra second before the page is usable is a visitor who calls a competitor instead.",
+        ],
+      },
+      { type: "heading", text: "SEO Architecture Built In, Not Bolted On" },
+      {
+        type: "paragraph",
+        text: "A restoration website that looks great but can't be crawled or indexed properly is invisible exactly when it matters most. Site structure, URL patterns, and internal linking are planned before a single page is designed, so the [restoration SEO](/industries/restoration-seo) and [local SEO / Google Business Profile](/services/local-seo-google-business-profile) work built on top of it actually has a foundation to work with — not something patched in after launch, which is how most \"SEO-friendly\" redesigns actually work.",
+      },
+      { type: "heading", text: "Get Found → Get Chosen → Get More Jobs" },
+      {
+        type: "paragraph",
+        text: "A restoration website's role in that framework is the middle step — Get Chosen. SEO and Google Maps ([Get Found](/industries/restoration-seo)) bring the visibility; the website's job is converting that visibility into a call once someone actually lands on it. A site that ranks well but loses the visitor at the first scroll is solving only part of the problem — which is why we treat design and SEO as one coordinated system, not two separate projects.",
+      },
+      { type: "heading", text: "Conversion Tracking From Day One" },
+      {
+        type: "paragraph",
+        text: "A new site should be measurable from launch — which pages generate calls, which don't, and where visitors actually drop off — so decisions about what to improve next are based on real behavior, not guesswork. This is the same principle behind our [conversion rate optimization](/services/conversion-rate-optimization) and [tracking and reporting](/services/seo-reporting-analytics) work, applied from the start rather than added later.",
+      },
+      { type: "heading", text: "Migrating an Existing Site Without Losing Ground" },
+      {
+        type: "paragraph",
+        text: "If a restoration company already has a website and existing rankings, a redesign is planned with technical continuity — proper redirects, preserved URL structure where it's already working — so the migration doesn't quietly undo SEO progress that took months to build. We treat an existing site's earned visibility as something to protect, not casually restart.",
+      },
+    ],
+    faqs: [
+      {
+        question: "How is this different from generic website design?",
+        answer:
+          "Generic website design optimizes for how the site looks. Restoration web design starts from how a restoration customer actually behaves — urgent, mobile, deciding in seconds — and designs backward from that, with SEO structure built in from the first wireframe rather than added afterward.",
+      },
+      {
+        question: "Do you redesign existing sites, or only build new ones?",
+        answer:
+          "Both — a full new build, or a redesign of an existing site planned to protect whatever SEO progress and rankings it's already earned.",
+      },
+      {
+        question: "Do you build the SEO into the site, or is that separate?",
+        answer:
+          "The site's architecture, URL structure, and technical foundation are planned alongside the design — the same team, the same project, not a website handed off and hoping SEO gets bolted on afterward.",
+      },
+      {
+        question: "How long does a restoration website project take?",
+        answer:
+          "Typically 3–6 weeks depending on scope, from wireframes to launch — the same realistic range as our general website design work, since the process is the same, just applied with restoration-specific priorities.",
+      },
+      {
+        question: "Will a new website guarantee more calls?",
+        answer:
+          "No — no honest agency can guarantee that. What we can commit to is removing the friction that demonstrably costs a restoration business calls (slow loading, buried phone numbers, unclear service areas) and building on a foundation that gives the SEO work an actual chance to convert.",
+      },
+    ],
+  },
+
+  // ---------------------------------------------------------------
   // HUB: EMERGENCY SERVICE SEO
   // ---------------------------------------------------------------
   {
@@ -516,7 +633,7 @@ export const industries: Industry[] = [
     heroIntro:
       "Towing, emergency plumbing, no-heat HVAC calls, power outages — these businesses share one defining trait: the customer needs help right now, is searching from a phone, and will call whoever shows up first in the moment. We build the local SEO and Google visibility system built specifically around that behavior.",
     ctaHeading: "Get Your Free Emergency Service SEO Audit",
-    relatedServiceSlugs: ["local-seo-google-business-profile", "technical-seo-audit", "google-ads"],
+    relatedServiceSlugs: ["local-seo-google-business-profile", "technical-seo-audit", "google-ads", "website-design"],
     relatedIndustrySlugs: ["towing-companies", "emergency-plumbing", "emergency-hvac", "emergency-electrical"],
     richContent: [
       { type: "heading", text: "What Makes an \"Emergency Service\" Business Different" },
@@ -532,7 +649,7 @@ export const industries: Industry[] = [
       { type: "heading", text: "Phone-Call Conversion Above All" },
       {
         type: "paragraph",
-        text: "For every business in this category, the phone call is the conversion — not a form fill, not a newsletter signup. That means a click-to-call number visible without scrolling, on every page, and a site that loads fast enough on a weak mobile connection to actually deliver that number before the visitor gives up and calls a competitor instead.",
+        text: "For every business in this category, the phone call is the conversion — not a form fill, not a newsletter signup. That means a click-to-call number visible without scrolling, on every page, and a site that loads fast enough on a weak mobile connection to actually deliver that number before the visitor gives up and calls a competitor instead. This is exactly what our [Website Design](/services/website-design) work is built around when the site itself is the bottleneck.",
       },
       { type: "heading", text: "24/7 Availability and Google Business Profile" },
       {

@@ -8,9 +8,13 @@ import { industries } from "@/data/industries";
 // Pulled directly from src/data/industries.ts (the same data that powers
 // each /industries/[slug] page) rather than a separately maintained list,
 // so this grid can never drift out of sync with what pages actually
-// exist. Hub pages (isHub: true) are reachable from primary nav instead —
-// this grid shows the 10 individual verticals.
-const industryCards = industries.filter((industry) => !industry.isHub);
+// exist. Hub pages (isHub: true) are reachable from primary nav instead,
+// and excludeFromGrid pages (e.g. Restoration Web Design — a service
+// angle, not a customer vertical) are reachable via contextual links
+// elsewhere — this grid shows only the 10 individual customer verticals.
+const industryCards = industries.filter(
+  (industry) => !industry.isHub && !industry.excludeFromGrid
+);
 
 export function Industries() {
   const prefersReducedMotion = useReducedMotion();

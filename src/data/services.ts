@@ -884,7 +884,7 @@ export const services: Service[] = [
       },
       {
         type: "paragraph",
-        text: "For restoration and emergency service businesses, this means a site built around click-to-call visibility and mobile speed from the first wireframe — see [restoration SEO](/industries/restoration-seo) and [emergency service SEO](/industries/emergency-service-seo) for the fuller strategy this fits into.",
+        text: "For restoration companies specifically, this means a site built around click-to-call visibility and mobile speed from the first wireframe — see [Restoration Web Design](/industries/restoration-web-design) for how we approach this in depth, and [emergency service SEO](/industries/emergency-service-seo) for how it fits into the broader strategy for other emergency-service trades.",
       },
     ],
   },

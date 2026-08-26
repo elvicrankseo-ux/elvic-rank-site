@@ -114,7 +114,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         type: "paragraph",
-        text: "Your profile is one input into a bigger picture — for a fuller breakdown of every factor Google actually weighs, see [how to rank locally on Google](/blog/how-to-rank-locally-on-google).",
+        text: "Your profile is one input into a bigger picture — for a fuller breakdown of every factor Google actually weighs, see [how to rank locally on Google](/blog/how-to-rank-locally-on-google). This matters even more for businesses where customers search because something has already gone wrong — see how it applies specifically to [restoration SEO](/industries/restoration-seo) and [emergency service SEO](/industries/emergency-service-seo).",
       },
     ],
     relatedSlugs: ["how-local-seo-generates-leads", "how-to-rank-locally-on-google"],
@@ -208,6 +208,10 @@ export const blogPosts: BlogPost[] = [
         type: "paragraph",
         text: "If you only have time to check one thing this week, run your homepage and your top service page through a Core Web Vitals test. Slow, shifting pages are the single most common issue we find, and they're usually fixable without a full rebuild — a properly scoped [technical SEO audit](/services/technical-seo-audit) will tell you exactly what's costing you and in what order to fix it.",
       },
+      {
+        type: "paragraph",
+        text: "This matters even more for restoration and emergency service businesses, where a customer searching mid-emergency on a weak mobile connection won't wait for a slow page — see [restoration SEO](/industries/restoration-seo) for how technical health fits into that broader strategy.",
+      },
     ],
     relatedSlugs: ["website-speed-and-google-rankings"],
   },
@@ -278,6 +282,10 @@ export const blogPosts: BlogPost[] = [
       {
         type: "paragraph",
         text: "Most local service businesses that grow steadily over multiple years end up running both, in different proportions at different stages. The mistake to avoid isn't picking the \"wrong\" one first — it's treating them as competing budgets instead of a coordinated strategy built around the same buyer intent. If you're not sure where you currently stand, a [free SEO audit](/services/seo-audit) is the fastest way to find out.",
+      },
+      {
+        type: "paragraph",
+        text: "For restoration and emergency service businesses specifically, this decision often matters even more — see [emergency service SEO](/industries/emergency-service-seo) for how paid and organic search work together for a category built almost entirely on urgent, high-intent searches.",
       },
     ],
     relatedSlugs: ["how-local-seo-generates-leads"],
@@ -360,6 +368,10 @@ export const blogPosts: BlogPost[] = [
         type: "paragraph",
         text: "For a deeper look at exactly which ranking factors drive that visibility in the first place, see [how to rank locally on Google](/blog/how-to-rank-locally-on-google).",
       },
+      {
+        type: "paragraph",
+        text: "This \"lead interception, not traffic\" principle is the entire foundation of how we approach [restoration SEO](/industries/restoration-seo) and [emergency service SEO](/industries/emergency-service-seo) — and once that visibility exists, [conversion rate optimization](/services/conversion-rate-optimization) is what actually turns it into a booked job rather than a bounce.",
+      },
     ],
     relatedSlugs: ["how-google-business-profile-helps-local-businesses", "how-to-rank-locally-on-google"],
   },
@@ -438,6 +450,10 @@ export const blogPosts: BlogPost[] = [
       {
         type: "paragraph",
         text: "Speed optimization is one of the rare pieces of SEO work that pays off on both sides at once — better rankings and a visitor who's still there long enough to actually call. If it's been a while since anyone checked, it's worth a look before investing further budget in traffic that a slow page will only partly convert. It's also one piece of a broader [technical SEO audit](/services/technical-seo-audit), if you want the full picture.",
+      },
+      {
+        type: "paragraph",
+        text: "For a restoration company, this isn't a nice-to-have — a customer searching mid-emergency on a weak connection will leave a slow page before it even finishes loading. See [Restoration Web Design](/industries/restoration-web-design) for how we build speed into a restoration site from the first wireframe rather than fixing it after the fact.",
       },
     ],
     relatedSlugs: ["technical-seo-checklist"],
@@ -584,6 +600,10 @@ export const blogPosts: BlogPost[] = [
       {
         type: "paragraph",
         text: "For the fuller picture of how citations fit alongside every other local ranking factor, see [how to rank locally on Google](/blog/how-to-rank-locally-on-google).",
+      },
+      {
+        type: "paragraph",
+        text: "This matters even more for restoration and emergency service businesses, where an inconsistent phone number or an outdated address on even one directory can be the difference between a call and a missed job — see [restoration SEO](/industries/restoration-seo) for how citation accuracy fits into that broader strategy.",
       },
 
       { type: "heading", text: "Local Citation FAQ" },
@@ -805,6 +825,10 @@ export const blogPosts: BlogPost[] = [
       {
         type: "paragraph",
         text: "Some situations are manageable on your own with consistent attention; others benefit from outside help. Signs it may be worth bringing in support include a highly competitive local market where every advantage matters, business listings that have become inconsistent across multiple directories over time, a Google Business Profile that was set up once and never maintained, visibility that's noticeably behind comparable competitors, technical problems on your website getting in the way, or simply not having the time to keep up with the ongoing maintenance this work actually requires. If any of that sounds familiar, that's exactly the gap our [local SEO team](/services/local-seo-google-business-profile) is built to close — auditing where you currently stand and handling the ongoing work rather than a one-time fix.",
+      },
+      {
+        type: "paragraph",
+        text: "This all matters most for businesses whose customers search because something has already gone wrong — see how these ranking factors apply specifically to [restoration SEO](/industries/restoration-seo) and [emergency service SEO](/industries/emergency-service-seo), where a missing Local Pack position can mean a lost job, not just a lost click.",
       },
 
       { type: "heading", text: "Local Ranking FAQ" },
@@ -1030,6 +1054,10 @@ export const blogPosts: BlogPost[] = [
       {
         type: "paragraph",
         text: "Some of this is manageable in-house with consistent time and attention. Professional help tends to make the most sense in a genuinely competitive market, when a business covers multiple service areas that each need their own attention, when organic or local visibility has stayed weak despite effort, when technical problems are getting in the way, when business listings have become inconsistent over time, when the website isn't converting the traffic it already gets, or simply when there isn't the internal time or expertise to keep a coordinated strategy moving and measured over time. None of that is a guarantee that professional help produces a specific result — it's a description of when the coordination this article describes becomes hard to sustain without dedicated attention.",
+      },
+      {
+        type: "paragraph",
+        text: "This entire sequence — keyword research through conversion and measurement — is exactly how we build a strategy for restoration and emergency service businesses specifically, where nearly every search is high-intent and a slow or disconnected approach costs real jobs. See [restoration SEO](/industries/restoration-seo) and [emergency service SEO](/industries/emergency-service-seo) for how this framework applies to those categories in practice.",
       },
 
       { type: "heading", text: "SEO Strategy FAQ" },

@@ -71,9 +71,13 @@ export default async function IndustryPage({ params }: Props) {
   // Avoids "Restoration SEO SEO Audit" on the two hub pages, whose label
   // already ends in "SEO" — niche pages (e.g. "Towing", "Water Damage
   // Restoration") don't have that suffix, so they get the full phrase.
-  const auditCtaLabel = industry.label.trim().endsWith("SEO")
-    ? `Get a Free ${industry.label} Audit`
-    : `Get a Free ${industry.label} SEO Audit`;
+  // `auditCtaLabel` on the data itself overrides this for pages where
+  // the computed phrase reads awkwardly (e.g. Restoration Web Design).
+  const auditCtaLabel =
+    industry.auditCtaLabel ??
+    (industry.label.trim().endsWith("SEO")
+      ? `Get a Free ${industry.label} Audit`
+      : `Get a Free ${industry.label} SEO Audit`);
 
   return (
     <main className="flex-1">

@@ -41,9 +41,14 @@ export const siteConfig = {
 
   email: "info@elvicrank.com",
 
+  // Technical SEO cleanup: points directly at WhatsApp's final destination
+  // rather than the wa.me short-link (wa.me returns a 302 to this exact
+  // URL — verified via direct HTTP request) to remove an unnecessary
+  // redirect hop from every internal reference to it. Same phone number,
+  // same resulting chat — no behavior change.
   whatsapp: {
     display: "+234 707 152 5686",
-    url: "https://wa.me/2347071525686",
+    url: "https://api.whatsapp.com/send?phone=2347071525686",
   } as { display: string; url: string } | null,
 
   // Telegram — an additional, low-friction contact channel alongside
@@ -70,10 +75,14 @@ export const siteConfig = {
       "Helping U.S. restoration and emergency service businesses turn urgent Google searches into booked jobs through local SEO, Google Business Profile optimization, and technical SEO.",
   },
 
+  // instagram/tiktok point directly at their final destinations (both
+  // https://instagram.com/... and https://tiktok.com/@... 301-redirect to
+  // the www. form — verified via direct HTTP request) to remove an
+  // unnecessary redirect hop. Same profiles, same usernames.
   social: {
-    instagram: "https://instagram.com/elvicrank",
+    instagram: "https://www.instagram.com/elvicrank",
     x: "https://x.com/elvicrank",
-    tiktok: "https://tiktok.com/@elvicrank",
+    tiktok: "https://www.tiktok.com/@elvicrank",
   },
 
   // Phase 31: restructured around the restoration/emergency-service

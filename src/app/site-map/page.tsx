@@ -9,7 +9,7 @@ import { buildMetadata } from "@/lib/metadata";
 
 export const metadata: Metadata = buildMetadata({
   title: "Sitemap",
-  description: `A full list of every page on the ${siteConfig.name} website.`,
+  description: `A full list of every page on the ${siteConfig.name} website — services, industries we serve, blog articles, and key resources, all in one place.`,
   path: "/site-map",
 });
 

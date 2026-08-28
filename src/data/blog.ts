@@ -642,9 +642,9 @@ export const blogPosts: BlogPost[] = [
     slug: "how-to-rank-locally-on-google",
     title: "How to Rank Locally on Google: A Practical Guide for Service Businesses",
     category: "Local SEO",
-    metaTitle: "How to Rank Locally on Google: Practical Guide for Service Businesses",
+    metaTitle: "How to Rank Locally on Google",
     metaDescription:
-      "Learn how to rank locally on Google with practical local SEO strategies for Google Business Profile, local visibility, citations, reviews, and location-based searches.",
+      "Learn how to rank locally on Google with practical local SEO strategies for Google Business Profile, citations, reviews, and location-based search.",
     excerpt:
       "What actually moves the needle for local Google visibility — Google Business Profile, reviews, citations, and the ranking factors you can and can't control, explained without the guesswork.",
     publishDate: "2026-08-11",
@@ -876,9 +876,9 @@ export const blogPosts: BlogPost[] = [
     slug: "seo-strategy-for-local-service-businesses",
     title: "SEO Strategy for Local Service Businesses: A Practical Guide",
     category: "Strategy",
-    metaTitle: "SEO Strategy for Local Service Businesses: A Practical Guide",
+    metaTitle: "SEO Strategy for Local Service Businesses",
     metaDescription:
-      "Learn how to build an SEO strategy for a local service business using keyword research, technical SEO, local SEO, content, authority building, and conversion-focused optimization.",
+      "Learn how to build an SEO strategy for a local service business — keyword research, technical SEO, content, authority, and conversion optimization.",
     excerpt:
       "SEO advice usually arrives as a list of disconnected tactics. Here's how keyword research, technical SEO, local visibility, content, authority, and conversion optimization actually fit together as one coordinated strategy.",
     publishDate: "2026-08-11",

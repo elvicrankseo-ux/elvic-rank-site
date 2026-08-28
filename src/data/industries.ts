@@ -93,7 +93,7 @@ export const industries: Industry[] = [
     title: "Restoration SEO Services That Generate More Calls",
     metaTitle: "Restoration SEO Services",
     metaDescription:
-      "SEO for restoration companies — Google Business Profile, local SEO, and service-area strategy built around how customers search after water, fire, storm, or mold damage.",
+      "SEO for restoration companies — Google Business Profile, local SEO, and service-area strategy built around how customers search after property damage.",
     heroIntro:
       "Nobody plans for a restoration job — a pipe bursts, a fire starts, a storm hits, and the customer is on their phone searching Google within minutes, not researching for weeks. We build the local SEO, Google Business Profile, and website foundation that puts restoration companies in front of that search at the exact moment it happens.",
     ctaHeading: "Get Your Free Restoration SEO Audit",
@@ -218,7 +218,7 @@ export const industries: Industry[] = [
     title: "Water Damage Restoration SEO",
     metaTitle: "Water Damage Restoration SEO",
     metaDescription:
-      "SEO for water damage and flood restoration companies — Google Business Profile, local visibility, and service pages built around emergency water damage searches.",
+      "SEO for water damage and flood restoration companies — Google Business Profile, local visibility, and service pages built around emergency search behavior.",
     heroIntro:
       "\"Water damage restoration near me\" and \"emergency flood cleanup\" are searches from someone with active water in their home right now, not someone planning ahead. We build the local SEO and Google Business Profile foundation that puts water damage and flood restoration companies in front of that search first.",
     relatedServiceSlugs: ["local-seo-google-business-profile", "technical-seo-audit", "website-design"],
@@ -282,7 +282,7 @@ export const industries: Industry[] = [
     title: "Fire & Smoke Damage Restoration SEO",
     metaTitle: "Fire & Smoke Damage Restoration SEO",
     metaDescription:
-      "SEO for fire and smoke damage restoration companies — Google visibility, Google Business Profile, and content built around how fire damage customers actually search.",
+      "SEO for fire and smoke damage restoration companies — Google Business Profile and content built around how fire damage customers actually search.",
     heroIntro:
       "Fire damage searches happen in the aftermath of one of the most stressful events a homeowner can face — and they happen fast, often from a phone, often involving an insurance company already in the picture. We build the local SEO and Google visibility that puts fire and smoke restoration companies in front of that search.",
     relatedServiceSlugs: ["local-seo-google-business-profile", "technical-seo-audit", "content-strategy-seo"],
@@ -431,7 +431,7 @@ export const industries: Industry[] = [
     title: "Disaster Restoration SEO",
     metaTitle: "Disaster Restoration SEO",
     metaDescription:
-      "SEO for full-service disaster restoration companies covering multiple damage types — local visibility, Google Business Profile, and service-area strategy at scale.",
+      "SEO for full-service disaster restoration companies — local visibility, Google Business Profile, and a strategy built to turn urgent searches into calls.",
     heroIntro:
       "Full-service disaster restoration companies cover water, fire, mold, and storm damage under one roof — which means competing for visibility across several distinct search categories at once, each with its own search behavior. We build the local SEO strategy that covers that full range without diluting focus on any one of them.",
     relatedServiceSlugs: ["local-seo-google-business-profile", "on-page-seo", "seo-audit"],
@@ -535,7 +535,7 @@ export const industries: Industry[] = [
     title: "Restoration Web Design Built to Convert",
     metaTitle: "Restoration Web Design",
     metaDescription:
-      "SEO-ready, conversion-focused website design for restoration companies — built around emergency search behavior, click-to-call, and trust, not a generic template.",
+      "SEO-ready, conversion-focused website design for restoration companies — built around emergency search behavior, click-to-call, and trust signals.",
     heroIntro:
       "A restoration company's website has one job: turn someone in a stressful, urgent moment into a phone call. We design and build websites specifically for that behavior — fast, mobile-first, SEO-ready from the first wireframe, and built to convert, not just look good.",
     ctaHeading: "See Where Your Restoration Website Is Losing Leads",
@@ -815,7 +815,7 @@ export const industries: Industry[] = [
     title: "Emergency Plumbing SEO",
     metaTitle: "Emergency Plumbing SEO",
     metaDescription:
-      "SEO for emergency plumbing companies — Google Business Profile, local visibility, and mobile-first conversion built around burst-pipe, no-water, and after-hours searches.",
+      "SEO for emergency plumbing companies — Google Business Profile, local visibility, and mobile-first conversion built around after-hours emergency searches.",
     heroIntro:
       "A burst pipe or an overflowing toilet doesn't wait for business hours — \"emergency plumber near me\" and \"24 hour plumber\" are searches from someone with active water damage happening right now. We build the local SEO and Google Business Profile foundation that puts emergency plumbers in front of that search.",
     relatedServiceSlugs: ["local-seo-google-business-profile", "technical-seo-audit", "google-ads"],
@@ -911,7 +911,7 @@ export const industries: Industry[] = [
     title: "Emergency Electrical SEO",
     metaTitle: "Emergency Electrical SEO",
     metaDescription:
-      "SEO for emergency electrical companies — Google Business Profile and local visibility built around power outage, electrical fault, and after-hours emergency searches.",
+      "SEO for emergency electrical companies — Google Business Profile and local visibility built around power outage and after-hours emergency searches.",
     heroIntro:
       "A power outage limited to one home, a burning smell from an outlet, sparking wiring — these are searches driven by genuine safety concern, not routine maintenance planning. We build the local SEO and Google Business Profile foundation that puts emergency electricians in front of that search.",
     relatedServiceSlugs: ["local-seo-google-business-profile", "technical-seo-audit"],

@@ -339,7 +339,7 @@ export const industries: Industry[] = [
     heroIntro:
       "Mold searches are driven by a mix of urgency and health concern — \"mold remediation near me,\" \"black mold removal,\" \"mold inspection company.\" We build the local SEO and Google Business Profile foundation that puts mold remediation companies in front of that search.",
     relatedServiceSlugs: ["local-seo-google-business-profile", "content-strategy-seo", "seo-audit"],
-    relatedIndustrySlugs: ["restoration-seo"],
+    relatedIndustrySlugs: ["restoration-seo", "disaster-restoration"],
     richContent: [
       { type: "heading", text: "How Mold Remediation Customers Search" },
       {
@@ -434,8 +434,8 @@ export const industries: Industry[] = [
       "SEO for full-service disaster restoration companies — local visibility, Google Business Profile, and a strategy built to turn urgent searches into calls.",
     heroIntro:
       "Full-service disaster restoration companies cover water, fire, mold, and storm damage under one roof — which means competing for visibility across several distinct search categories at once, each with its own search behavior. We build the local SEO strategy that covers that full range without diluting focus on any one of them.",
-    relatedServiceSlugs: ["local-seo-google-business-profile", "on-page-seo", "seo-audit"],
-    relatedIndustrySlugs: ["restoration-seo", "water-damage-restoration", "fire-smoke-restoration", "storm-damage-restoration"],
+    relatedServiceSlugs: ["local-seo-google-business-profile", "on-page-seo", "seo-audit", "technical-seo-audit"],
+    relatedIndustrySlugs: ["restoration-seo", "water-damage-restoration", "fire-smoke-restoration", "storm-damage-restoration", "mold-remediation"],
     richContent: [
       { type: "heading", text: "The Multi-Category Challenge" },
       {
@@ -445,7 +445,7 @@ export const industries: Industry[] = [
       { type: "heading", text: "Structuring the Site Around Real Search Intent" },
       {
         type: "paragraph",
-        text: "The fix is architectural: dedicated pages for each major damage category the company genuinely handles, all linking to and reinforcing each other, rather than one page attempting to cover everything. This is exactly the [on-page SEO](/services/on-page-seo) and site-architecture work that lets a multi-service company compete for every relevant search instead of diluting its own authority across too broad a page.",
+        text: "The fix is architectural: dedicated pages for each major damage category the company genuinely handles — [water damage](/industries/water-damage-restoration), [fire and smoke damage](/industries/fire-smoke-restoration), [storm damage](/industries/storm-damage-restoration), and [mold remediation](/industries/mold-remediation) where that service is genuinely offered — all linking to and reinforcing each other, rather than one page attempting to cover everything. This is exactly the [on-page SEO](/services/on-page-seo) and site-architecture work that lets a multi-service company compete for every relevant search instead of diluting its own authority across too broad a page.",
       },
       { type: "heading", text: "Google Business Profile at Scale" },
       {
@@ -468,6 +468,11 @@ export const industries: Industry[] = [
         question: "Will separate pages for each damage type compete with each other?",
         answer:
           "No, if built correctly — each page targets a genuinely distinct search intent (water vs. fire vs. storm), so there's no overlap or cannibalization risk when they're structured around real, different customer situations.",
+      },
+      {
+        question: "How long does SEO take for a disaster restoration company?",
+        answer:
+          "There's no honest universal timeline — it depends on your market's competitiveness and where you're starting from. Google Business Profile improvements are often visible within weeks; broader organic ranking movement typically builds over a longer period. We won't promise a specific timeline.",
       },
     ],
   },

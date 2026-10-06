@@ -20,11 +20,11 @@ export function MobileTabBar() {
   return (
     <nav
       aria-label="Mobile navigation"
-      className="fixed inset-x-0 bottom-0 z-50 sm:hidden"
+      className="fixed inset-x-4 bottom-4 z-50 sm:hidden"
       style={{ paddingBottom: "env(safe-area-inset-bottom)" }}
     >
       {/* Frosted glass background */}
-      <div className="relative flex h-16 items-stretch border-t border-black/8 bg-white/80 backdrop-blur-xl">
+      <div className="relative flex h-16 items-stretch border border-white/40 bg-white/60 backdrop-blur-xl rounded-3xl shadow-[0_8px_32px_0_rgba(0,0,0,0.1)] overflow-hidden">
         {tabs.map((tab) => {
           const Icon = tab.icon;
           const isActive =
@@ -42,10 +42,6 @@ export function MobileTabBar() {
               className="flex flex-1 flex-col items-center justify-center gap-1 transition-all duration-200 active:scale-95"
               aria-current={isActive ? "page" : undefined}
             >
-              {/* Active indicator pill */}
-              {isActive && (
-                <span className="absolute top-0 h-0.5 w-10 rounded-b-full bg-accent-deep" />
-              )}
 
               <span
                 className={cn(

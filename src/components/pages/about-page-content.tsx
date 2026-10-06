@@ -30,7 +30,7 @@ export function AboutPageContent() {
         className="pointer-events-none absolute top-[10%] left-1/2 -translate-x-1/2 -z-10 h-[40rem] w-[40rem] rounded-full bg-accent/15 blur-[120px]"
       />
 
-      <div className="mx-auto max-w-7xl px-6 pt-24 sm:pt-32 lg:px-8">
+      <div className="mx-auto max-w-7xl px-6 pt-8 sm:pt-12 lg:px-8">
         {/* Intro Section - Clean Text, No Box */}
         <motion.div 
           initial="hidden"

@@ -59,14 +59,14 @@ function LayoutA({ service }: { service: Service }) {
       <section className="py-16 bg-paper-muted">
         <div className="mx-auto max-w-6xl px-6">
           <div className="grid md:grid-cols-2 gap-6">
-            <div className="bg-ink text-white p-10 md:p-12 rounded-[2.5rem]">
-              <div className="flex items-center gap-3 mb-6 text-accent-bright">
+            <div className="bg-ink text-foreground p-10 md:p-12 rounded-[2.5rem] [box-shadow:var(--shadow-neo-flat)]">
+              <div className="flex items-center gap-3 mb-6 text-accent-deep">
                 <AlertTriangle size={24} />
                 <h2 className="font-display text-2xl font-bold">The Problem</h2>
               </div>
               <ul className="space-y-4">
                 {service.problemsSolved.map((p, i) => (
-                  <li key={i} className="flex gap-4"><span className="text-accent-bright font-bold">×</span><span className="text-white/80">{p}</span></li>
+                  <li key={i} className="flex gap-4"><span className="text-accent-deep font-bold">×</span><span className="text-muted">{p}</span></li>
                 ))}
               </ul>
             </div>
@@ -99,14 +99,14 @@ function LayoutA({ service }: { service: Service }) {
       </section>
 
       {/* Included & Benefits */}
-      <section className="py-20 bg-ink text-white rounded-t-[3rem] -mt-6 relative z-20">
+      <section className="py-20 bg-ink text-foreground rounded-t-[3rem] -mt-6 relative z-20 [box-shadow:var(--shadow-neo-flat)]">
         <div className="mx-auto max-w-6xl px-6 grid lg:grid-cols-2 gap-16">
           <div>
             <h2 className="font-display text-3xl font-bold mb-8">What's Included</h2>
             <ul className="space-y-4">
               {service.points.map((point) => (
-                <li key={point} className="flex items-center gap-4 bg-white/5 p-4 rounded-2xl border border-white/10">
-                  <div className="w-8 h-8 rounded-full bg-accent-deep flex items-center justify-center"><Check size={16} /></div>
+                <li key={point} className="flex items-center gap-4 bg-paper-muted p-4 rounded-2xl [box-shadow:var(--shadow-neo-sm)]">
+                  <div className="w-8 h-8 rounded-full bg-accent-deep/10 text-accent-deep flex items-center justify-center"><Check size={16} /></div>
                   <span className="font-medium">{point}</span>
                 </li>
               ))}
@@ -116,9 +116,9 @@ function LayoutA({ service }: { service: Service }) {
             <h2 className="font-display text-3xl font-bold mb-8">Why It Matters</h2>
             <div className="space-y-6">
               {service.benefits.map((b) => (
-                <div key={b.title} className="border-l-2 border-accent-bright pl-6 py-2">
+                <div key={b.title} className="border-l-2 border-accent-deep pl-6 py-2">
                   <h3 className="font-display text-xl font-bold mb-2">{b.title}</h3>
-                  <p className="text-white/70">{b.description}</p>
+                  <p className="text-muted">{b.description}</p>
                 </div>
               ))}
             </div>
@@ -138,20 +138,20 @@ function LayoutB({ service }: { service: Service }) {
   return (
     <div className="flex flex-col w-full">
       {/* Split Hero */}
-      <section className="bg-ink text-white pt-24 pb-20 lg:pt-32 lg:pb-28">
+      <section className="bg-ink text-foreground pt-24 pb-20 lg:pt-32 lg:pb-28">
         <div className="mx-auto max-w-7xl px-6 grid lg:grid-cols-2 gap-12 items-center">
           <div>
             <Breadcrumbs items={[{ name: "Home", href: "/" }, { name: "Services", href: "/services" }, { name: service.title }]} />
             <h1 className="mt-8 font-display text-5xl md:text-6xl lg:text-7xl font-bold leading-tight">{service.title}</h1>
           </div>
-          <div className="lg:pl-12 lg:border-l border-white/10">
-            <div className="mb-6 w-16 h-16 bg-white/5 rounded-2xl flex items-center justify-center text-accent-bright">
+          <div className="lg:pl-12 lg:border-l border-paper-border">
+            <div className="mb-6 w-16 h-16 bg-paper-muted rounded-2xl flex items-center justify-center text-accent-deep [box-shadow:var(--shadow-neo-sm)]">
               <Icon size={32} />
             </div>
-            <p className="text-xl leading-relaxed text-white/80 mb-8">{service.heroIntro}</p>
+            <p className="text-xl leading-relaxed text-muted mb-8">{service.heroIntro}</p>
             <div className="flex gap-4">
               <Button href={siteConfig.cta.primary.href} variant="accent" size="lg">{siteConfig.cta.primary.label}</Button>
-              <Button href={siteConfig.calendlyUrl} variant="outline-dark" size="lg">Let's Talk</Button>
+              <Button href={siteConfig.calendlyUrl} variant="outline" size="lg">Let's Talk</Button>
             </div>
           </div>
         </div>
@@ -241,15 +241,14 @@ function LayoutC({ service }: { service: Service }) {
       {/* Contained Hero */}
       <section className="py-12 bg-paper">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
-          <div className="bg-ink rounded-[3rem] p-10 md:p-20 text-center relative overflow-hidden">
-            <div className="absolute inset-0 bg-[url('/noise.png')] opacity-5" />
+          <div className="bg-ink rounded-[3rem] p-10 md:p-20 text-center relative overflow-hidden [box-shadow:var(--shadow-neo-flat)]">
             <div className="relative z-10 flex flex-col items-center">
               <Breadcrumbs items={[{ name: "Home", href: "/" }, { name: "Services", href: "/services" }, { name: service.title }]} />
-              <div className="mt-8 mb-6 p-4 bg-white/5 rounded-full text-accent-bright border border-white/10">
+              <div className="mt-8 mb-6 p-4 bg-paper-muted rounded-full text-accent-deep border border-paper-border [box-shadow:var(--shadow-neo-sm)]">
                 <Icon size={40} />
               </div>
-              <h1 className="font-display text-5xl md:text-6xl font-bold text-white mb-6 max-w-3xl leading-tight">{service.title}</h1>
-              <p className="text-xl text-white/80 max-w-2xl mx-auto mb-10">{service.heroIntro}</p>
+              <h1 className="font-display text-5xl md:text-6xl font-bold text-foreground mb-6 max-w-3xl leading-tight">{service.title}</h1>
+              <p className="text-xl text-muted max-w-2xl mx-auto mb-10">{service.heroIntro}</p>
               <Button href={siteConfig.cta.primary.href} variant="accent" size="lg" className="px-10 py-6 text-lg font-bold">{siteConfig.cta.primary.label}</Button>
             </div>
           </div>
@@ -266,7 +265,7 @@ function LayoutC({ service }: { service: Service }) {
             <ul className="space-y-3">
               {service.problemsSolved.map((p, i) => (
                 <li key={i} className="flex gap-3 text-muted">
-                  <AlertTriangle size={18} className="text-red-500/80 shrink-0 mt-1" />
+                  <AlertTriangle size={18} className="text-accent-deep shrink-0 mt-1" />
                   <span>{p}</span>
                 </li>
               ))}
@@ -307,7 +306,7 @@ function LayoutC({ service }: { service: Service }) {
             <div className="space-y-8">
               {service.benefits.map((b) => (
                 <div key={b.title} className="flex gap-4">
-                  <div className="w-10 h-10 rounded-full bg-accent-deep text-white flex items-center justify-center shrink-0">
+                  <div className="w-10 h-10 rounded-full bg-accent-deep/10 text-accent-deep flex items-center justify-center shrink-0">
                     <Lightbulb size={18} />
                   </div>
                   <div>
@@ -318,14 +317,14 @@ function LayoutC({ service }: { service: Service }) {
               ))}
             </div>
           </div>
-          <div className="lg:col-span-7 bg-ink text-white p-10 md:p-12 rounded-[2.5rem]">
-            <h2 className="font-display text-3xl font-bold mb-8 text-accent-bright">How We Work</h2>
+          <div className="lg:col-span-7 bg-ink text-foreground p-10 md:p-12 rounded-[2.5rem] [box-shadow:var(--shadow-neo-flat)]">
+            <h2 className="font-display text-3xl font-bold mb-8 text-accent-deep">How We Work</h2>
             <div className="grid sm:grid-cols-2 gap-6">
               {service.process.map((step, idx) => (
-                <div key={idx} className="bg-white/5 p-6 rounded-2xl border border-white/10">
-                   <div className="text-sm font-bold text-accent-bright tracking-wider uppercase mb-2">Step 0{idx + 1}</div>
+                <div key={idx} className="bg-paper p-6 rounded-2xl [box-shadow:var(--shadow-neo-sm)]">
+                   <div className="text-sm font-bold text-accent-deep tracking-wider uppercase mb-2">Step 0{idx + 1}</div>
                    <h3 className="font-display text-xl font-bold mb-2">{step.title}</h3>
-                   <p className="text-white/70 text-sm">{step.description}</p>
+                   <p className="text-muted text-sm">{step.description}</p>
                 </div>
               ))}
             </div>
@@ -410,14 +409,13 @@ export default async function ServicePage({ params }: Props) {
       </section>
 
       {/* Shared Final CTA */}
-      <section className="bg-ink py-24 lg:py-32 relative overflow-hidden">
-        <div className="absolute inset-0 bg-[url('/noise.png')] opacity-5 mix-blend-overlay" />
+      <section className="bg-ink py-24 lg:py-32 relative overflow-hidden [box-shadow:var(--shadow-neo-flat)]">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-accent/10 rounded-full blur-[120px] pointer-events-none" />
         <div className="relative z-10 mx-auto flex max-w-4xl flex-col items-center gap-8 px-6 text-center">
-          <h2 className="font-display text-4xl lg:text-6xl font-bold text-white leading-tight">
+          <h2 className="font-display text-4xl lg:text-6xl font-bold text-foreground leading-tight">
             {service.ctaHeading ?? `Ready to grow with ${service.title}?`}
           </h2>
-          <p className="max-w-2xl text-xl text-white/80">
+          <p className="max-w-2xl text-xl text-muted">
             Start with a free visibility audit, or book a strategy call — either way,
             you'll walk away with a clear roadmap to scalable growth.
           </p>
@@ -426,7 +424,7 @@ export default async function ServicePage({ params }: Props) {
               {siteConfig.cta.primary.label}
               <ArrowRight size={20} aria-hidden />
             </Button>
-            <Button href="/contact" variant="outline-dark" size="lg" className="px-10 py-6 text-lg font-bold">
+            <Button href="/contact" variant="outline" size="lg" className="px-10 py-6 text-lg font-bold">
               Contact Us <Send size={18} aria-hidden />
             </Button>
           </div>

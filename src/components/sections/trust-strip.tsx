@@ -19,15 +19,15 @@ const trustPoints: { icon: LucideIcon; label: string }[] = [
 
 export function TrustStrip() {
   return (
-    <section className="border-y border-paper-border bg-paper-muted py-8">
+    <section className="py-12 relative z-10">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <ul className="flex flex-wrap items-center justify-center gap-x-8 gap-y-4">
+        <ul className="flex flex-wrap items-center justify-center gap-x-6 gap-y-6">
           {trustPoints.map((point) => (
             <li
               key={point.label}
-              className="flex items-center gap-2 text-sm font-medium text-muted"
+              className="flex items-center gap-2.5 text-sm font-bold text-foreground bg-ink rounded-full px-6 py-3 transition-all duration-300 [box-shadow:var(--shadow-neo-flat)] hover:[box-shadow:var(--shadow-neo-pressed)] hover:-translate-y-0.5 cursor-default"
             >
-              <point.icon size={16} className="text-accent-deep" aria-hidden />
+              <point.icon size={18} className="text-accent-deep" aria-hidden />
               {point.label}
             </li>
           ))}

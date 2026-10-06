@@ -66,6 +66,14 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       data-scroll-behavior="smooth"
     >
       <body className="min-h-full flex flex-col overflow-x-clip w-full max-w-[100vw] bg-paper pb-14 text-foreground sm:pb-0 relative">
+        {/* Global Texture for Depth */}
+        <div 
+          className="fixed inset-0 pointer-events-none z-[0]"
+          style={{
+            backgroundImage: "radial-gradient(circle at 1px 1px, rgba(15,17,21,0.08) 1px, transparent 0)",
+            backgroundSize: "20px 20px"
+          }}
+        />
         <GoogleAnalytics />
         {jsonLd.map((schema) => (
           <script

@@ -72,15 +72,6 @@ const quickContacts: QuickContact[] = [
     href: `mailto:${siteConfig.email}`,
   },
   {
-    icon: MessageCircle,
-    title: "WhatsApp",
-    description: "The fastest way to reach us directly.",
-    href: siteConfig.whatsapp?.url ?? null,
-    external: true,
-    gaEvent: "whatsapp_click",
-  },
-
-  {
     icon: CalendarCheck,
     title: "Book a free strategy call",
     description: "30 minutes, no pitch — just a plan for your rankings.",

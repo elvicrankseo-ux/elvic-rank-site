@@ -104,9 +104,9 @@ export const siteConfig = {
   cta: {
     // Kept compact deliberately — this label is reused in tight spaces
     // (navbar, mobile sticky bar) as well as full-size buttons.
-    primary: { label: "Get a Free Growth Audit", href: "/#audit" },
+    primary: { label: "Get a Free Visibility Audit", href: "/#audit" },
     // Only consumed by Hero — points at the testimonials section since case studies were removed.
-    secondary: { label: "View Our Work", href: "/#testimonials" },
+    secondary: { label: "Explore Our Services", href: "/services" },
   },
 } as const;
 

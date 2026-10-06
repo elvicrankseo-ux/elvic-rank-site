@@ -17,35 +17,35 @@ const steps: { number: string; icon: LucideIcon; title: string; description: str
     icon: Search,
     title: "Discover",
     description:
-      "We audit your digital footprint, analyze competitors, and map exactly where you're losing visibility — and why.",
+      "Understand the business, market, competitors, customers, and current digital presence.",
   },
   {
     number: "02",
     icon: Compass,
     title: "Strategize",
     description:
-      "A complete digital roadmap built around your business goals, target audience, and best growth channels.",
+      "Identify the best combination of technology, visibility, marketing, and growth channels.",
   },
   {
     number: "03",
     icon: ClipboardCheck,
     title: "Build",
     description:
-      "We build a fast, conversion-focused website and setup the technical foundation to support long-term growth.",
+      "Create or improve the website, content, infrastructure, and digital assets.",
   },
   {
     number: "04",
     icon: Rocket,
     title: "Optimize",
     description:
-      "Ongoing SEO, local optimization, and content creation that puts your business exactly where buyers are searching.",
+      "Improve SEO, Local SEO, GEO, conversion paths, and technical performance.",
   },
   {
     number: "05",
     icon: BarChart3,
     title: "Grow",
     description:
-      "Traffic means nothing without leads. We use paid ads and continuous refinement to scale your customer acquisition.",
+      "Use advertising, content, social media, AI, and ongoing optimization to increase visibility and opportunities.",
   },
 ];
 

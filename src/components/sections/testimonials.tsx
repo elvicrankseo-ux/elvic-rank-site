@@ -30,7 +30,7 @@ export function Testimonials() {
   const prefersReducedMotion = useReducedMotion();
 
   return (
-    <section id="testimonials" className="bg-paper py-20 lg:py-28">
+    <section id="testimonials" className="bg-paper pt-10 pb-10 lg:pt-16 lg:pb-16">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <SectionHeading
           eyebrow="Trust, built honestly"
@@ -38,7 +38,7 @@ export function Testimonials() {
           description="We do not fill this site with invented quotes, ratings, or results. As client work matures, we will publish verified proof with the context behind it."
         />
 
-        <div className="mt-14 grid gap-6 lg:grid-cols-3">
+        <div className="mt-14 grid gap-8 lg:grid-cols-3">
           {trustPrinciples.map((principle, index) => {
             const Icon = principle.icon;
             return (
@@ -52,17 +52,22 @@ export function Testimonials() {
                   delay: prefersReducedMotion ? 0 : index * 0.1,
                   ease: [0.16, 1, 0.3, 1] as const,
                 }}
-                className="rounded-2xl border border-paper-border bg-paper-muted p-8"
+                className="group relative overflow-hidden rounded-3xl bg-paper p-8 lg:p-10 [box-shadow:var(--shadow-neo-pressed)] border border-black/5"
               >
-                <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-accent/10 text-accent-deep">
-                  <Icon size={20} aria-hidden />
-                </span>
-                <h3 className="mt-6 font-display text-lg font-medium text-foreground">
+                {/* Floating inner icon badge */}
+                <div className="absolute top-8 right-8 flex h-14 w-14 items-center justify-center rounded-full bg-paper [box-shadow:var(--shadow-neo-flat)] transition-transform duration-300 group-hover:scale-110 group-hover:text-accent-deep">
+                  <Icon size={24} aria-hidden className="text-accent" />
+                </div>
+                
+                <h3 className="mt-12 font-display text-2xl font-bold text-foreground">
                   {principle.title}
                 </h3>
-                <p className="mt-3 text-sm leading-relaxed text-muted">
+                <p className="mt-4 text-base leading-relaxed text-muted-dark">
                   {principle.description}
                 </p>
+                
+                {/* Decorative sunken line */}
+                <div className="mt-8 h-1 w-12 rounded-full bg-accent/20 [box-shadow:var(--shadow-neo-pressed)]" aria-hidden />
               </motion.div>
             );
           })}

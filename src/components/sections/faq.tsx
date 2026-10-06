@@ -92,22 +92,30 @@ const faqs = [
 
 export function FAQ() {
   const jsonLd = getFaqSchema(faqs);
+  const half = Math.ceil(faqs.length / 2);
+  const leftFaqs = faqs.slice(0, half);
+  const rightFaqs = faqs.slice(half);
 
   return (
-    <section id="faq" className="bg-paper-muted py-20 lg:py-28">
+    <section id="faq" className="relative overflow-hidden pt-4 pb-20 lg:pt-8 lg:pb-28">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <div className="mx-auto max-w-3xl px-6 lg:px-8">
+      <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <SectionHeading
           eyebrow="FAQ"
           title="Questions worth asking before you hire us"
           description="Straight answers. If yours isn't here, ask us directly."
         />
 
-        <div className="mt-12">
-          <FaqAccordion items={faqs} />
+        <div className="mt-16 grid gap-8 lg:grid-cols-2 lg:gap-16 items-start">
+          <div className="flex flex-col gap-2">
+            <FaqAccordion items={leftFaqs} />
+          </div>
+          <div className="flex flex-col gap-2">
+            <FaqAccordion items={rightFaqs} />
+          </div>
         </div>
       </div>
     </section>

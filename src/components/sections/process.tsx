@@ -53,7 +53,7 @@ export function Process() {
   const prefersReducedMotion = useReducedMotion();
 
   return (
-    <section id="process" className="bg-paper py-20 lg:py-28">
+    <section id="process" className="relative overflow-hidden pt-10 pb-10 lg:pt-16 lg:pb-16">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <SectionHeading
           eyebrow="Our process"
@@ -61,81 +61,97 @@ export function Process() {
           description="Five steps, one accountable partner. No black box, no vanishing after the contract's signed."
         />
 
-        {/* Desktop: horizontal timeline. justify-between flush-aligns the
-            first/last item to the row edges, so the line's inset only
-            needs to match half of an item's width (w-48 = 192px -> 96px
-            = left-24/right-24) to land exactly on each centered badge,
-            regardless of how the middle gaps distribute or how many
-            items there are. */}
-        <div className="relative mt-16 hidden lg:flex lg:justify-between lg:gap-6">
+        {/* Desktop: horizontal timeline */}
+        <div className="relative mt-32 hidden lg:flex lg:justify-between lg:gap-6">
           <div
             aria-hidden
-            className="absolute left-24 right-24 top-6 h-px bg-paper-border"
+            className="absolute left-24 right-24 top-6 h-px bg-gradient-to-r from-transparent via-accent/30 to-transparent"
           />
           {steps.map((step, index) => {
             const Icon = step.icon;
             return (
               <motion.div
                 key={step.number}
-                initial={{ opacity: 0, y: 16 }}
+                initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-80px" }}
+                viewport={{ once: true, margin: "-50px" }}
                 transition={{
-                  duration: 0.5,
+                  duration: 0.6,
                   delay: prefersReducedMotion ? 0 : index * 0.1,
-                  ease: [0.16, 1, 0.3, 1] as const,
+                  ease: "easeOut",
                 }}
-                className="relative flex w-48 flex-col items-center text-center"
+                className="group relative flex w-56 flex-col items-center text-center"
               >
-                <span className="relative z-10 flex h-12 w-12 items-center justify-center rounded-full border-2 border-accent-deep bg-paper font-display text-lg font-medium text-accent-deep">
+                {/* Massive Background Number */}
+                <span className="absolute -top-16 z-0 font-display text-[8rem] font-bold leading-none text-accent/5 transition-colors duration-500 group-hover:text-accent/10 select-none">
                   {step.number}
                 </span>
-                <Icon size={20} className="mt-5 text-accent-deep" aria-hidden />
-                <h3 className="mt-3 font-display text-lg font-medium text-foreground">
-                  {step.title}
-                </h3>
-                <p className="mt-2 text-sm leading-relaxed text-muted">
-                  {step.description}
-                </p>
+
+                <div className="relative z-10 flex h-12 w-12 items-center justify-center rounded-full bg-paper border border-accent/20 transition-transform duration-300 group-hover:scale-110 group-hover:bg-accent group-hover:border-accent">
+                  <span className="font-display text-sm font-bold text-accent group-hover:text-white transition-colors duration-300">
+                    {step.number}
+                  </span>
+                </div>
+                
+                <div className="relative z-10 mt-10 flex flex-col items-center">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-accent-deep/5 text-accent-deep transition-transform duration-300 group-hover:-translate-y-2 group-hover:text-accent-bright">
+                    <Icon size={24} aria-hidden />
+                  </div>
+                  <h3 className="mt-4 font-display text-lg font-bold text-foreground transition-colors duration-300 group-hover:text-accent-deep">
+                    {step.title}
+                  </h3>
+                  <p className="mt-3 text-sm leading-relaxed text-muted transition-colors duration-300 group-hover:text-foreground">
+                    {step.description}
+                  </p>
+                </div>
               </motion.div>
             );
           })}
         </div>
 
         {/* Mobile / tablet: vertical timeline */}
-        <div className="mt-14 flex flex-col lg:hidden">
+        <div className="mt-20 flex flex-col lg:hidden">
           {steps.map((step, index) => {
             const Icon = step.icon;
             const isLast = index === steps.length - 1;
             return (
               <motion.div
                 key={step.number}
-                initial={{ opacity: 0, y: 16 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-80px" }}
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, margin: "-50px" }}
                 transition={{
                   duration: 0.5,
-                  delay: prefersReducedMotion ? 0 : index * 0.08,
-                  ease: [0.16, 1, 0.3, 1] as const,
+                  delay: prefersReducedMotion ? 0 : index * 0.1,
+                  ease: "easeOut",
                 }}
-                className="flex gap-5"
+                className="group flex gap-6"
               >
                 <div className="flex flex-col items-center">
-                  <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border-2 border-accent-deep bg-paper font-display text-lg font-medium text-accent-deep">
-                    {step.number}
-                  </span>
+                  <div className="relative z-10 flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-paper border border-accent/20 transition-colors duration-300 group-hover:bg-accent group-hover:border-accent">
+                    <span className="font-display text-xs font-bold text-accent group-hover:text-white transition-colors duration-300">
+                      {step.number}
+                    </span>
+                  </div>
                   {!isLast && (
-                    <span aria-hidden className="mt-2 w-px flex-1 bg-paper-border" />
+                    <div aria-hidden className="my-2 w-px flex-1 bg-gradient-to-b from-accent/30 to-transparent" />
                   )}
                 </div>
-                <div className={isLast ? "pb-0" : "pb-10"}>
-                  <Icon size={18} className="text-accent-deep" aria-hidden />
-                  <h3 className="mt-2 font-display text-lg font-medium text-foreground">
-                    {step.title}
-                  </h3>
-                  <p className="mt-2 text-sm leading-relaxed text-muted">
-                    {step.description}
-                  </p>
+                <div className={`relative flex-1 ${isLast ? "pb-0" : "pb-16"}`}>
+                  <span className="absolute -left-2 -top-6 z-0 font-display text-[6rem] font-bold leading-none text-accent/5 select-none transition-colors duration-500 group-hover:text-accent/10">
+                    {step.number}
+                  </span>
+                  <div className="relative z-10 flex flex-col">
+                    <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-accent-deep/5 text-accent-deep mb-3 transition-colors duration-300 group-hover:text-accent-bright">
+                      <Icon size={20} aria-hidden />
+                    </div>
+                    <h3 className="font-display text-lg font-bold text-foreground transition-colors duration-300 group-hover:text-accent-deep">
+                      {step.title}
+                    </h3>
+                    <p className="mt-2 text-sm leading-relaxed text-muted transition-colors duration-300 group-hover:text-foreground">
+                      {step.description}
+                    </p>
+                  </div>
                 </div>
               </motion.div>
             );

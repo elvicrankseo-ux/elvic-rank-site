@@ -20,37 +20,40 @@ export function Industries() {
   const prefersReducedMotion = useReducedMotion();
 
   return (
-    <section id="industries" className="bg-paper-muted py-20 lg:py-28">
-      <div className="mx-auto max-w-7xl px-6 lg:px-8">
+    <section id="industries" className="relative overflow-hidden pt-10 pb-10 lg:pt-16 lg:pb-16">
+      {/* Subtle Background Glow */}
+      <div className="absolute right-0 top-1/2 h-[30rem] w-[30rem] -translate-y-1/2 rounded-full bg-accent-deep/5 blur-[100px] pointer-events-none" aria-hidden />
+
+      <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8">
         <SectionHeading
           eyebrow="Industries"
           title="Built for restoration & emergency service businesses"
           description="Two categories, one shared fundamental: customers search Google because something has already gone wrong, and they call whoever shows up first."
         />
 
-        <div className="mt-14 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-5">
+        <div className="mt-16 flex flex-wrap justify-center gap-4 lg:gap-6">
           {industryCards.map((industry, index) => {
             const Icon = industry.icon;
             return (
               <motion.div
                 key={industry.slug}
-                initial={{ opacity: 0, y: 16 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-80px" }}
+                initial={{ opacity: 0, scale: 0.9, y: 20 }}
+                whileInView={{ opacity: 1, scale: 1, y: 0 }}
+                viewport={{ once: true, margin: "-50px" }}
                 transition={{
                   duration: 0.5,
-                  delay: prefersReducedMotion ? 0 : (index % 5) * 0.06,
-                  ease: [0.16, 1, 0.3, 1] as const,
+                  delay: prefersReducedMotion ? 0 : (index % 5) * 0.08,
+                  ease: "easeOut",
                 }}
               >
                 <Link
                   href={`/industries/${industry.slug}`}
-                  className="flex flex-col items-center gap-3 rounded-2xl border border-paper-border bg-paper p-6 text-center transition-colors hover:border-accent/40"
+                  className="group flex items-center gap-4 rounded-full bg-ink py-3 pl-3 pr-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl [box-shadow:var(--shadow-neo-flat)] border-t border-white/20 hover:[box-shadow:var(--shadow-neo-pressed)]"
                 >
-                  <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-accent/10 text-accent-deep">
-                    <Icon size={22} aria-hidden />
-                  </span>
-                  <span className="text-sm font-medium text-foreground">
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-accent-deep/10 text-accent-bright transition-transform duration-300 group-hover:scale-110 group-hover:bg-accent/20 [box-shadow:var(--shadow-neo-pressed)]">
+                    <Icon size={18} aria-hidden />
+                  </div>
+                  <span className="font-display text-sm font-bold text-ink-foreground transition-colors group-hover:text-accent-deep">
                     {industry.label}
                   </span>
                 </Link>

@@ -16,12 +16,7 @@ export function FaqAccordion({ items, className }: FaqAccordionProps) {
   const idPrefix = useId();
 
   return (
-    <div
-      className={
-        className ??
-        "divide-y divide-paper-border border-t border-paper-border"
-      }
-    >
+    <div className={className ?? "flex flex-col gap-4"}>
       {items.map((faq, index) => {
         const isOpen = openIndex === index;
         const buttonId = `${idPrefix}-faq-button-${index}`;
@@ -37,6 +32,9 @@ export function FaqAccordion({ items, className }: FaqAccordionProps) {
               delay: Math.min(index, 4) * 0.05,
               ease: [0.16, 1, 0.3, 1] as const,
             }}
+            className={`overflow-hidden rounded-2xl bg-paper px-6 transition-all duration-300 [box-shadow:var(--shadow-neo-flat)] border border-black/5 ${
+              isOpen ? "ring-2 ring-accent/10" : "hover:shadow-lg"
+            }`}
           >
             <h3>
               <button
@@ -45,18 +43,24 @@ export function FaqAccordion({ items, className }: FaqAccordionProps) {
                 aria-expanded={isOpen}
                 aria-controls={panelId}
                 onClick={() => setOpenIndex(isOpen ? null : index)}
-                className="flex w-full items-center justify-between gap-4 py-5 text-left"
+                className="flex w-full items-center justify-between gap-4 py-5 text-left outline-none"
               >
-                <span className="font-display text-base font-medium text-foreground sm:text-lg">
+                <span
+                  className={`font-display text-base font-bold sm:text-lg transition-colors ${
+                    isOpen ? "text-accent-deep" : "text-foreground"
+                  }`}
+                >
                   {faq.question}
                 </span>
-                <ChevronDown
-                  size={18}
-                  aria-hidden
-                  className={`shrink-0 text-accent-deep transition-transform duration-300 ${
-                    isOpen ? "rotate-180" : ""
+                <span
+                  className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full transition-all duration-300 ${
+                    isOpen
+                      ? "bg-accent text-white rotate-180 shadow-md"
+                      : "bg-accent/10 text-accent-deep"
                   }`}
-                />
+                >
+                  <ChevronDown size={16} aria-hidden />
+                </span>
               </button>
             </h3>
             <div
@@ -67,7 +71,7 @@ export function FaqAccordion({ items, className }: FaqAccordionProps) {
               style={{ gridTemplateRows: isOpen ? "1fr" : "0fr" }}
             >
               <div className="overflow-hidden">
-                <p className="pb-5 text-sm leading-relaxed text-muted">
+                <p className="pb-6 text-base leading-relaxed text-muted-dark">
                   {faq.answer}
                 </p>
               </div>

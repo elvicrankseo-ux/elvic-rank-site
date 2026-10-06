@@ -67,7 +67,7 @@ export function GrowthPillars() {
   const prefersReducedMotion = useReducedMotion();
 
   return (
-    <section className="relative overflow-hidden bg-paper-muted pt-10 pb-24 lg:pt-16 lg:pb-32">
+    <section id="growth-pillars" className="relative overflow-hidden pt-10 pb-24 lg:pt-16 lg:pb-32">
       {/* Background Glows */}
       <div className="absolute -left-40 top-20 h-[30rem] w-[30rem] rounded-full bg-accent/10 blur-[100px]" aria-hidden />
       <div className="absolute right-0 bottom-0 h-[40rem] w-[40rem] rounded-full bg-accent-deep/5 blur-[120px]" aria-hidden />

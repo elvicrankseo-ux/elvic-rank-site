@@ -93,7 +93,6 @@ export const siteConfig = {
   ],
 
   nav: [
-    { label: "Industries", href: "/#industries" },
     { label: "Resources", href: "/blog" },
     { label: "About", href: "/about" },
     { label: "Contact", href: "/contact" },

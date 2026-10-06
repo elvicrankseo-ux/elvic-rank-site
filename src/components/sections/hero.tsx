@@ -46,7 +46,7 @@ export function Hero() {
   const isInView = useInView(cardRef, { once: true, margin: "-80px" });
 
   return (
-    <section className="relative min-h-[80vh] flex flex-col items-center justify-center pt-24 pb-10">
+    <section className="relative flex flex-col items-center pt-8 lg:pt-12 pb-10 mt-12 lg:mt-16">
       <div
         aria-hidden
         className="pointer-events-none absolute inset-0 -z-10"
@@ -129,7 +129,7 @@ export function Hero() {
         initial={{ opacity: 0, scale: 0.8 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 1, delay: 0.4, ease: "easeOut" }}
-        className="relative mt-16 md:mt-24 w-full max-w-[1200px] px-4 md:px-6 flex flex-col md:block md:h-[400px] gap-4 md:gap-0"
+        className="relative mt-16 md:mt-24 w-full max-w-[1200px] px-4 md:px-6 flex flex-col md:flex-row md:justify-center md:h-[400px] gap-4 md:gap-0"
         style={{ perspective: 2000 }}
       >
         {/* Main Center Dashboard */}

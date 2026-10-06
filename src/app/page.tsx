@@ -50,7 +50,7 @@ export default function Home() {
   return (
     <main id="top" className="flex-1">
       <Hero />
-      <Services />
+      <Services featuredSlugs={['web-development', 'seo', 'ai-solutions']} />
       <StrategyFlow />
       <GrowthPillars />
       <TrustStrip />

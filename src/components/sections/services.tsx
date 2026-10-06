@@ -8,8 +8,17 @@ import { Button } from "@/components/ui/button";
 import { siteConfig } from "@/config/site";
 import { services } from "@/data/services";
 
-export function Services({ limit }: { limit?: number }) {
+export function Services({ featuredSlugs }: { featuredSlugs?: string[] }) {
   const prefersReducedMotion = useReducedMotion();
+
+  const displayServices = featuredSlugs
+    ? services.filter((s) => featuredSlugs.includes(s.slug))
+    : services;
+
+  // Use a 3-column grid if we're only showing a few featured services, otherwise 4-column
+  const gridClass = featuredSlugs && featuredSlugs.length <= 3 
+    ? "lg:grid-cols-3" 
+    : "lg:grid-cols-4";
 
   return (
     <section id="services" className="relative overflow-hidden pt-20 pb-10 lg:pt-28 lg:pb-16">
@@ -23,8 +32,8 @@ export function Services({ limit }: { limit?: number }) {
           description="From building your digital foundation to increasing visibility and generating leads, we bring the essential pieces of digital growth together."
         />
 
-        <div className="mt-20 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
-          {(limit ? services.slice(0, limit) : services).map((service, index) => {
+        <div className={`mt-20 grid gap-8 sm:grid-cols-2 ${gridClass}`}>
+          {displayServices.map((service, index) => {
             const Icon = service.icon;
             return (
               <motion.div
@@ -88,10 +97,10 @@ export function Services({ limit }: { limit?: number }) {
           })}
         </div>
 
-        {limit && limit < services.length && (
+        {featuredSlugs && (
           <div className="mt-12 flex justify-center">
             <Button href="/services" variant="accent" size="lg" className="px-8 py-4">
-              See all services
+              View more services
             </Button>
           </div>
         )}

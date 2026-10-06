@@ -73,8 +73,6 @@ export function Testimonials() {
           })}
         </div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
       </div>
     </section>
   );

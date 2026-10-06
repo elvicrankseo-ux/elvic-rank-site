@@ -44,8 +44,8 @@ function LayoutA({ service }: { service: Service }) {
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-accent/5 rounded-full blur-[100px] pointer-events-none" />
         <div className="relative z-10 mx-auto max-w-5xl px-6 text-center">
           <Breadcrumbs items={[{ name: "Home", href: "/" }, { name: "Services", href: "/services" }, { name: service.title }]} />
-          <div className="mt-10 mx-auto inline-flex h-20 w-20 items-center justify-center rounded-[2rem] bg-paper border border-paper-border [box-shadow:var(--shadow-neo-flat)] text-accent-deep">
-            <Icon size={40} />
+          <div className="mt-10 mx-auto inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-accent/10 text-accent-deep">
+            <Icon size={32} />
           </div>
           <h1 className="mt-8 font-display text-5xl md:text-7xl font-bold tracking-tight text-foreground">{service.title}</h1>
           <p className="mt-6 mx-auto max-w-2xl text-xl text-muted font-medium leading-relaxed">{service.heroIntro}</p>
@@ -145,7 +145,7 @@ function LayoutB({ service }: { service: Service }) {
             <h1 className="mt-8 font-display text-5xl md:text-6xl lg:text-7xl font-bold leading-tight">{service.title}</h1>
           </div>
           <div className="lg:pl-12 lg:border-l border-paper-border">
-            <div className="mb-6 w-16 h-16 bg-paper-muted rounded-2xl flex items-center justify-center text-accent-deep [box-shadow:var(--shadow-neo-sm)]">
+            <div className="mb-6 w-16 h-16 bg-accent/10 rounded-2xl flex items-center justify-center text-accent-deep">
               <Icon size={32} />
             </div>
             <p className="text-xl leading-relaxed text-muted mb-8">{service.heroIntro}</p>
@@ -244,8 +244,8 @@ function LayoutC({ service }: { service: Service }) {
           <div className="bg-ink rounded-[3rem] p-10 md:p-20 text-center relative overflow-hidden [box-shadow:var(--shadow-neo-flat)]">
             <div className="relative z-10 flex flex-col items-center">
               <Breadcrumbs items={[{ name: "Home", href: "/" }, { name: "Services", href: "/services" }, { name: service.title }]} />
-              <div className="mt-8 mb-6 p-4 bg-paper-muted rounded-full text-accent-deep border border-paper-border [box-shadow:var(--shadow-neo-sm)]">
-                <Icon size={40} />
+              <div className="mt-8 mb-6 inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-accent/10 text-accent-deep">
+                <Icon size={32} />
               </div>
               <h1 className="font-display text-5xl md:text-6xl font-bold text-foreground mb-6 max-w-3xl leading-tight">{service.title}</h1>
               <p className="text-xl text-muted max-w-2xl mx-auto mb-10">{service.heroIntro}</p>
@@ -288,7 +288,7 @@ function LayoutC({ service }: { service: Service }) {
           <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6">
             {service.points.map(pt => (
               <div key={pt} className="bg-paper p-6 rounded-2xl border border-paper-border [box-shadow:var(--shadow-neo-sm)] text-center flex flex-col items-center">
-                <div className="w-12 h-12 rounded-full bg-accent/10 text-accent-deep flex items-center justify-center mb-4">
+                <div className="w-12 h-12 rounded-full bg-accent-deep/10 text-accent-deep flex items-center justify-center mb-4">
                   <Check size={20} />
                 </div>
                 <h3 className="font-medium text-foreground">{pt}</h3>
@@ -432,4 +432,5 @@ export default async function ServicePage({ params }: Props) {
       </section>
     </main>
   );
+};
 }

@@ -9,6 +9,7 @@ import { MobileTabBar } from "@/components/layout/mobile-tab-bar";
 import React from "react";
 import { GoogleAnalytics } from "@/components/analytics/google-analytics";
 import { AuditModal } from "@/components/ui/audit-modal";
+import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -70,6 +71,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     >
       <body className="min-h-full flex flex-col overflow-x-clip w-full max-w-[100vw] bg-paper pb-20 text-foreground sm:pb-0 relative">
         <GoogleAnalytics />
+        <Analytics />
         {jsonLd.map((schema) => (
           <script
             key={schema["@type"]}

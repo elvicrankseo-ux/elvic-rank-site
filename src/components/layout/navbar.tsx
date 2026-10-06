@@ -40,7 +40,7 @@ export function Navbar() {
         className={cn(
           "mx-auto flex h-16 max-w-7xl items-center justify-between px-6 transition-all duration-300 rounded-full",
           isScrolled
-            ? "bg-white/20 backdrop-blur-xl border border-white/60 [box-shadow:var(--shadow-neo-flat)]"
+            ? "bg-white/60 backdrop-blur-xl border border-white/60 [box-shadow:var(--shadow-neo-flat)]"
             : "bg-transparent border-transparent"
         )}
       >

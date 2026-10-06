@@ -46,7 +46,7 @@ export function Hero() {
   const isInView = useInView(cardRef, { once: true, margin: "-80px" });
 
   return (
-    <section className="relative min-h-[90vh] flex flex-col items-center justify-center pt-24 pb-32">
+    <section className="relative min-h-[80vh] flex flex-col items-center justify-center pt-24 pb-10">
       <div
         aria-hidden
         className="pointer-events-none absolute inset-0 -z-10"

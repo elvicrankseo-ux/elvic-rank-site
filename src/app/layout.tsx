@@ -62,9 +62,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${fraunces.variable} h-full antialiased`}
+      className={`${geistSans.variable} ${fraunces.variable} h-full antialiased overflow-x-clip w-full max-w-[100vw]`}
     >
-      <body className="min-h-full flex flex-col overflow-x-hidden bg-paper pb-14 text-foreground sm:pb-0">
+      <body className="min-h-full flex flex-col overflow-x-clip w-full max-w-[100vw] bg-paper pb-14 text-foreground sm:pb-0 relative">
         <GoogleAnalytics />
         {jsonLd.map((schema) => (
           <script
@@ -74,7 +74,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           />
         ))}
         <Navbar />
-        {children}
+        <main className="flex-grow flex flex-col overflow-x-clip w-full max-w-[100vw] relative">
+          {children}
+        </main>
         <Footer />
         <FloatingCta />
       </body>

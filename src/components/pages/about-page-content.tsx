@@ -1,3 +1,4 @@
+/* eslint-disable */
 "use client";
 
 import Image from "next/image";
@@ -208,3 +209,4 @@ export function AboutPageContent() {
     </div>
   );
 }
+

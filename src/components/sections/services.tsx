@@ -23,7 +23,7 @@ export function Services({ limit }: { limit?: number }) {
           description="From building your digital foundation to increasing visibility and generating leads, we bring the essential pieces of digital growth together."
         />
 
-        <div className="mt-20 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-20 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
           {(limit ? services.slice(0, limit) : services).map((service, index) => {
             const Icon = service.icon;
             return (

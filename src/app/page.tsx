@@ -25,7 +25,7 @@ import { FAQ } from "@/components/sections/faq";
 const homeTitle = `${siteConfig.name} | Digital Growth & Visibility Agency`;
 const homeDescription =
   "We help businesses build powerful websites, increase visibility across search and AI platforms, and turn digital attention into growth.";
-
+ 
 export const metadata: Metadata = {
   title: { absolute: homeTitle },
   description: homeDescription,

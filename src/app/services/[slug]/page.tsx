@@ -175,10 +175,10 @@ function LayoutB({ service }: { service: Service }) {
       </section>
 
       {/* Staggered Process */}
-      <section className="py-24 bg-paper-muted">
+      <section className="py-12 lg:py-16 bg-paper-muted">
         <div className="mx-auto max-w-4xl px-6 text-center">
-          <h2 className="font-display text-4xl font-bold mb-16 text-foreground">Our Proven Process</h2>
-          <div className="space-y-12 text-left">
+          <h2 className="font-display text-4xl font-bold mb-10 text-foreground">Our Proven Process</h2>
+          <div className="space-y-8 text-left">
             {service.process.map((step, idx) => (
               <div key={idx} className="flex flex-col md:flex-row gap-6 md:gap-12 items-start md:items-center bg-paper p-8 rounded-3xl border border-paper-border [box-shadow:var(--shadow-neo-flat)]">
                 <div className="text-7xl font-display font-black text-accent-deep/20 md:w-32">0{idx + 1}</div>
@@ -193,10 +193,10 @@ function LayoutB({ service }: { service: Service }) {
       </section>
 
       {/* Features/Benefits Grid */}
-      <section className="py-24 bg-paper border-t border-paper-border">
+      <section className="py-12 lg:py-16 bg-paper border-t border-paper-border">
         <div className="mx-auto max-w-7xl px-6 grid lg:grid-cols-2 gap-16">
            <div>
-             <h2 className="font-display text-3xl font-bold text-foreground mb-8">What's Included</h2>
+             <h2 className="font-display text-3xl font-bold text-foreground mb-6">What's Included</h2>
              <div className="grid grid-cols-2 gap-4">
                {service.points.map(pt => (
                  <div key={pt} className="bg-paper-muted p-4 rounded-xl border border-paper-border font-medium text-foreground flex items-center gap-2">
@@ -206,7 +206,7 @@ function LayoutB({ service }: { service: Service }) {
              </div>
            </div>
            <div>
-             <h2 className="font-display text-3xl font-bold text-foreground mb-8">Why It Matters</h2>
+             <h2 className="font-display text-3xl font-bold text-foreground mb-6">Why It Matters</h2>
              <div className="space-y-6">
                 {service.benefits.map((b) => (
                   <div key={b.title} className="bg-paper-muted p-6 rounded-2xl border border-paper-border">

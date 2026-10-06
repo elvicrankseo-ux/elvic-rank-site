@@ -101,20 +101,7 @@ export function Footer() {
                   {siteConfig.email}
                 </a>
               </li>
-              {siteConfig.whatsapp && (
-                <li>
-                  <a
-                    href={siteConfig.whatsapp.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    onClick={() => trackEvent("whatsapp_click", { location: "footer" })}
-                    className="flex items-center gap-2 text-sm text-ink-foreground/80 transition-colors hover:text-accent-bright"
-                  >
-                    <MessageCircle size={14} aria-hidden />
-                    WhatsApp
-                  </a>
-                </li>
-              )}
+              {/* WhatsApp link removed per request */}
 
             </ul>
             <p className="mt-5 text-xs leading-relaxed text-muted-dark">

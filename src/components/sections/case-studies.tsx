@@ -110,11 +110,7 @@ export function CaseStudies() {
                     {item.href ? (
                       <Link
                         href={item.href}
-                        className={`font-display text-lg font-bold transition-colors duration-300 ${
-                          item.state === "pending"
-                            ? "text-muted"
-                            : "text-foreground hover:text-accent"
-                        }`}
+                        className="font-display text-lg font-bold transition-colors duration-300 text-foreground hover:text-accent"
                       >
                         {item.label}
                       </Link>

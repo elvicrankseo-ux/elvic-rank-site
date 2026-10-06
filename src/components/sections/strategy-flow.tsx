@@ -69,7 +69,7 @@ export function StrategyFlow() {
                 </p>
               </motion.div>
 
-              {/* Right Arrow Connector (only for even items to point to odd items, desktop only) */}
+              {/* Right Arrow Connector (from left to right column) */}
               {index % 2 === 0 && (
                 <motion.div
                   initial={{ opacity: 0 }}
@@ -79,6 +79,19 @@ export function StrategyFlow() {
                   className="hidden md:flex absolute -right-6 top-1/2 -translate-y-1/2 z-10 text-accent-bright"
                 >
                   <ArrowDown size={18} className="-rotate-90" />
+                </motion.div>
+              )}
+
+              {/* Diagonal Arrow Connector (from right column back to left column of next row) */}
+              {(index === 1 || index === 3) && (
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  viewport={{ once: true, margin: "-50px" }}
+                  transition={{ duration: 0.4, delay: index * 0.1 + 0.2 }}
+                  className="hidden md:flex absolute -bottom-10 right-full translate-x-12 z-10 text-accent-bright/50"
+                >
+                  <ArrowDown size={20} className="rotate-45" />
                 </motion.div>
               )}
             </div>

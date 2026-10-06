@@ -46,7 +46,11 @@ export function Navbar() {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            setActiveHash(`#${entry.target.id}`);
+            if (window.scrollY < 100 && pathname === "/") {
+              setActiveHash("");
+            } else {
+              setActiveHash(`#${entry.target.id}`);
+            }
           }
         });
       },
@@ -80,7 +84,14 @@ export function Navbar() {
         )}
       >
         <Link
-          href="/#top"
+          href="/"
+          onClick={(e) => {
+            if (pathname === "/") {
+              e.preventDefault();
+              window.scrollTo({ top: 0, behavior: "smooth" });
+              setActiveHash("");
+            }
+          }}
           className="flex items-center gap-2.5 font-display text-xl font-medium tracking-tight text-foreground"
         >
           <Image

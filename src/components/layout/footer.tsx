@@ -25,7 +25,13 @@ export function Footer() {
         <div className="grid gap-12 lg:grid-cols-[1.3fr_1fr_1fr_1.2fr]">
           <div>
             <Link
-              href="/#top"
+              href="/"
+              onClick={(e) => {
+                if (window.location.pathname === "/") {
+                  e.preventDefault();
+                  window.scrollTo({ top: 0, behavior: "smooth" });
+                }
+              }}
               className="flex items-center gap-2.5 font-display text-xl font-medium tracking-tight text-ink-foreground"
             >
               <Image

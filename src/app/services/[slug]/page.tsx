@@ -432,5 +432,4 @@ export default async function ServicePage({ params }: Props) {
       </section>
     </main>
   );
-};
 }

@@ -209,9 +209,9 @@ function LayoutB({ service }: { service: Service }) {
              <h2 className="font-display text-3xl font-bold text-foreground mb-6">Why It Matters</h2>
              <div className="space-y-6">
                 {service.benefits.map((b) => (
-                  <div key={b.title} className="bg-paper-muted p-6 rounded-2xl border border-paper-border">
-                    <h3 className="font-display text-xl font-bold text-foreground mb-2">{b.title}</h3>
-                    <p className="text-muted">{b.description}</p>
+                  <div key={b.title} className="pb-6 border-b border-paper-border last:border-0 last:pb-0">
+                    <h3 className="font-display text-xl font-bold text-foreground mb-1">{b.title}</h3>
+                    <p className="text-muted leading-relaxed">{b.description}</p>
                   </div>
                 ))}
              </div>

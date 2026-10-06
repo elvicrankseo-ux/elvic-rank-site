@@ -20,7 +20,7 @@ export function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="bg-ink">
+    <footer className="bg-ink hidden sm:block">
       <div className="mx-auto max-w-7xl px-6 py-16 lg:px-8 lg:py-20">
         <div className="grid gap-12 lg:grid-cols-[1.3fr_1fr_1fr_1.2fr]">
           <div>
@@ -99,8 +99,6 @@ export function Footer() {
                   {siteConfig.email}
                 </a>
               </li>
-              {/* WhatsApp link removed per request */}
-
             </ul>
             <p className="mt-5 text-xs leading-relaxed text-muted-dark">
               {siteConfig.location.servingLine}

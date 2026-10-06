@@ -5,6 +5,7 @@ import { getOrganizationSchema, getWebsiteSchema } from "@/lib/schema";
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
 import { FloatingCta } from "@/components/layout/floating-cta";
+import { MobileTabBar } from "@/components/layout/mobile-tab-bar";
 import { GoogleAnalytics } from "@/components/analytics/google-analytics";
 import "./globals.css";
 
@@ -65,7 +66,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${geistSans.variable} ${fraunces.variable} h-full antialiased overflow-x-clip w-full max-w-[100vw]`}
       data-scroll-behavior="smooth"
     >
-      <body className="min-h-full flex flex-col overflow-x-clip w-full max-w-[100vw] bg-paper pb-14 text-foreground sm:pb-0 relative">
+      <body className="min-h-full flex flex-col overflow-x-clip w-full max-w-[100vw] bg-paper pb-20 text-foreground sm:pb-0 relative">
         <GoogleAnalytics />
         {jsonLd.map((schema) => (
           <script
@@ -79,6 +80,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           {children}
         </main>
         <Footer />
+        <MobileTabBar />
         <FloatingCta />
       </body>
     </html>

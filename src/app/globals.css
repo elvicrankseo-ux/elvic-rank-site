@@ -84,14 +84,13 @@ body {
     box-shadow: inset 8px 8px 12px 0 rgba(163, 177, 198, 0.8), inset -8px -8px 12px 0 rgba(255, 255, 255, 1) !important;
   }
 
-  /* Force all rounded container elements to have a flat neumorphic shadow */
-  .rounded-lg, .rounded-xl, .rounded-2xl, .rounded-3xl, .rounded-full {
-    box-shadow: var(--shadow-neo-flat);
-    border: none !important;
+  /* Buttons and interactive elements should NEVER get the blanket neo shadow */
+  button, a, [role="button"] {
+    box-shadow: none;
   }
 
-  /* Exclude specific elements from having double shadows if needed */
-  svg.rounded-full, img.rounded-full {
+  /* Exclude images and SVGs from auto-shadows */
+  svg, img {
     box-shadow: none !important;
   }
 }

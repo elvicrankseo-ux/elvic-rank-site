@@ -41,15 +41,7 @@ export const siteConfig = {
 
   email: "info@elvicrank.com",
 
-  // Technical SEO cleanup: points directly at WhatsApp's final destination
-  // rather than the wa.me short-link (wa.me returns a 302 to this exact
-  // URL — verified via direct HTTP request) to remove an unnecessary
-  // redirect hop from every internal reference to it. Same phone number,
-  // same resulting chat — no behavior change.
-  whatsapp: {
-    display: "+234 707 152 5686",
-    url: "https://api.whatsapp.com/send?phone=2347071525686",
-  } as { display: string; url: string } | null,
+  whatsapp: null as { display: string; url: string } | null,
 
 
   // Strategy-call booking destination. Every "Book a Free Strategy Call"

@@ -7,11 +7,11 @@ import { trackEvent } from "@/lib/analytics";
 
 const variants = {
   primary:
-    "bg-ink text-foreground hover:bg-accent hover:text-accent-foreground",
+    "bg-ink text-foreground hover:bg-accent hover:text-accent-foreground [box-shadow:var(--shadow-neo-flat)] hover:[box-shadow:var(--shadow-neo-sm)] active:[box-shadow:var(--shadow-neo-pressed)]",
   accent:
-    "bg-accent text-accent-foreground hover:bg-accent-bright",
+    "bg-accent text-accent-foreground hover:bg-accent-bright shadow-md hover:shadow-lg active:shadow-sm",
   outline:
-    "border border-paper-border text-foreground hover:border-accent-deep hover:text-accent-deep",
+    "border border-paper-border text-foreground hover:border-accent-deep hover:text-accent-deep [box-shadow:var(--shadow-neo-flat)] hover:[box-shadow:var(--shadow-neo-sm)] active:[box-shadow:var(--shadow-neo-pressed)]",
   "outline-dark":
     "border border-ink-border text-foreground hover:border-accent hover:text-accent-bright",
   ghost: "text-foreground hover:text-accent-deep",
@@ -27,7 +27,7 @@ type Variant = keyof typeof variants;
 type Size = keyof typeof sizes;
 
 const base =
-  "inline-flex items-center justify-center gap-2 rounded-full font-medium tracking-tight transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-deep focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:opacity-50 disabled:pointer-events-none [box-shadow:var(--shadow-neo-flat)] active:[box-shadow:var(--shadow-neo-pressed)] hover:[box-shadow:var(--shadow-neo-sm)]";
+  "inline-flex items-center justify-center gap-2 rounded-full font-medium tracking-tight transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-deep focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:opacity-50 disabled:pointer-events-none";
 
 type CommonProps = {
   variant?: Variant;

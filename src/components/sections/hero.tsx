@@ -173,7 +173,7 @@ export function Hero() {
         <motion.div
           animate={prefersReducedMotion ? undefined : { y: [0, 15, 0], rotateX: [35, 40, 35], rotateY: [15, 20, 15], rotateZ: [-5, -2, -5] }}
           transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-          className="absolute -left-12 lg:-left-20 top-36 z-10 w-[22rem] rounded-2xl bg-ink p-6 [box-shadow:var(--shadow-neo-flat)] hidden md:block"
+          className="absolute -left-2 lg:-left-8 top-36 z-10 w-[22rem] rounded-2xl bg-ink p-6 [box-shadow:var(--shadow-neo-flat)] hidden md:block"
         >
           <p className="text-xs font-bold uppercase text-muted mb-4">TRUSTED SEO PARTNER</p>
           <div className="space-y-3">
@@ -190,7 +190,7 @@ export function Hero() {
         <motion.div
           animate={prefersReducedMotion ? undefined : { y: [0, -10, 0], rotateX: [30, 35, 30], rotateY: [-15, -20, -15], rotateZ: [5, 8, 5] }}
           transition={{ duration: 9, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
-          className="absolute -right-12 lg:-right-16 top-20 z-10 w-[18rem] rounded-2xl bg-ink p-6 [box-shadow:var(--shadow-neo-flat)] hidden md:block border-t border-white/50"
+          className="absolute -right-2 lg:-right-6 top-20 z-10 w-[18rem] rounded-2xl bg-ink p-6 [box-shadow:var(--shadow-neo-flat)] hidden md:block border-t border-white/50"
         >
           <p className="text-xs font-bold uppercase text-muted mb-4">Guarantees</p>
           <div className="space-y-3">

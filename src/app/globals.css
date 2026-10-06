@@ -64,6 +64,8 @@ html {
 
 body {
   background-color: var(--background);
+  background-image: radial-gradient(circle at 1px 1px, rgba(15,17,21,0.08) 1px, transparent 0);
+  background-size: 20px 20px;
   color: var(--foreground);
 }
 

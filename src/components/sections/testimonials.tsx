@@ -30,7 +30,7 @@ export function Testimonials() {
   const prefersReducedMotion = useReducedMotion();
 
   return (
-    <section id="testimonials" className="pt-10 pb-10 lg:pt-16 lg:pb-16 relative z-10">
+    <section id="testimonials" className="pt-10 pb-10 lg:pt-16 lg:pb-16 relative z-10 bg-transparent">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <SectionHeading
           eyebrow="Trust, built honestly"

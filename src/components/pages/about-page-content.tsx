@@ -37,12 +37,12 @@ export function AboutPageContent() {
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
           variants={stagger}
-          className="mx-auto max-w-3xl text-center mb-20"
+          className="mx-auto max-w-3xl text-center mb-16 lg:mb-20"
         >
-          <motion.h1 variants={fadeUp} className="font-display text-5xl font-bold tracking-tight text-foreground sm:text-7xl">
+          <motion.h1 variants={fadeUp} className="font-display text-4xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-foreground">
             About Elvic Rank
           </motion.h1>
-          <motion.p variants={fadeUp} className="mt-8 text-2xl leading-relaxed text-muted-dark font-medium">
+          <motion.p variants={fadeUp} className="mt-6 sm:mt-8 text-lg sm:text-2xl leading-relaxed text-muted-dark font-medium">
             We help businesses become easier to find, trust, and choose.
           </motion.p>
         </motion.div>

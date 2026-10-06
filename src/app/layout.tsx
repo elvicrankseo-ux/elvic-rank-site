@@ -63,6 +63,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     <html
       lang="en"
       className={`${geistSans.variable} ${fraunces.variable} h-full antialiased overflow-x-clip w-full max-w-[100vw]`}
+      data-scroll-behavior="smooth"
     >
       <body className="min-h-full flex flex-col overflow-x-clip w-full max-w-[100vw] bg-paper pb-14 text-foreground sm:pb-0 relative">
         <GoogleAnalytics />

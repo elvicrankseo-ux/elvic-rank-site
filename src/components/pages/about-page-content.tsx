@@ -61,6 +61,7 @@ export function AboutPageContent() {
                 src="/founder.jpg" 
                 alt="Peter Emmanuel Victor, Founder of Elvic Rank"
                 fill
+                priority
                 className="object-cover object-center mix-blend-multiply"
                 sizes="(max-width: 1024px) 100vw, 40vw"
               />

@@ -75,21 +75,6 @@ export function Testimonials() {
 
         <motion.div
           initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] as const }}
-          className="mt-10 flex flex-col items-center gap-4 text-center"
-        >
-          <p className="text-muted">See the work in progress, or ask us a direct question.</p>
-          <Button
-            href="#case-studies"
-            variant="outline"
-            size="md"
-          >
-            See Current Work
-            <ArrowRight size={16} aria-hidden />
-          </Button>
-        </motion.div>
       </div>
     </section>
   );

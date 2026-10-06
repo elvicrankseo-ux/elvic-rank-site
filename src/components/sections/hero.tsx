@@ -15,20 +15,20 @@ import { siteConfig } from "@/config/site";
 
 const trustPoints = [
   "No long-term contracts",
-  "Transparent weekly reporting",
-  "White-hat SEO only",
+  "Transparent reporting",
+  "Data-driven strategies",
 ];
 
 const specialtyBadges = [
-  { icon: Droplets, label: "Restoration SEO" },
-  { icon: Zap, label: "Emergency Service SEO" },
-  { icon: MapPinCheck, label: "Google Business Profile" },
+  { icon: Droplets, label: "Web Development" },
+  { icon: MapPinCheck, label: "Search & AI Visibility" },
+  { icon: Zap, label: "Growth Marketing" },
 ];
 
 const reportHighlights = [
-  "Organic & local search visibility",
-  "Calls & form submissions, not just rankings",
-  "A monthly strategy call, not just a PDF",
+  "Web Development & Performance",
+  "SEO, Local SEO & GEO Visibility",
+  "Paid Advertising & Content Strategy",
 ];
 
 const fadeUp = {
@@ -74,7 +74,7 @@ export function Hero() {
           className="inline-flex items-center gap-2 rounded-full border border-paper-border bg-paper-muted px-5 py-2 text-sm font-semibold text-muted [box-shadow:var(--shadow-neo-sm)]"
         >
           <span className="h-2 w-2 rounded-full bg-accent-deep animate-pulse" aria-hidden />
-          SEO for Restoration &amp; Emergency Services
+          Digital Growth &amp; Visibility Agency
         </motion.div>
 
         <motion.h1
@@ -84,9 +84,9 @@ export function Hero() {
           variants={fadeUp}
           className="mt-8 font-display text-5xl font-bold leading-[1.05] tracking-tight text-foreground sm:text-7xl lg:text-[5.5rem]"
         >
-          Dominate Local Search. <br />
+          Build. Get Found. <br />
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent-deep to-accent-bright drop-shadow-sm">
-            Book More Jobs.
+            Grow.
           </span>
         </motion.h1>
 
@@ -97,7 +97,7 @@ export function Hero() {
           variants={fadeUp}
           className="mt-6 max-w-2xl text-lg sm:text-xl leading-relaxed text-muted font-medium"
         >
-          Get found, get called, and get booked with SEO and conversion-focused websites designed strictly for emergency-service companies.
+          Elvic Rank helps businesses build powerful websites, increase visibility across search and AI platforms, reach customers through advertising, and turn digital attention into growth.
         </motion.p>
 
         <motion.div
@@ -112,14 +112,14 @@ export function Hero() {
             variant="accent"
             size="lg"
             className="text-lg px-10 py-6 font-bold"
-            gaEvent="seo_audit_cta_click"
+            gaEvent="visibility_audit_cta_click"
             gaParams={{ location: "hero" }}
           >
-            {siteConfig.cta.primary.label}
+            Get a Free Visibility Audit
             <ArrowRight size={20} aria-hidden />
           </Button>
-          <Button href={siteConfig.cta.secondary.href} variant="outline" size="lg" className="text-lg px-10 py-6 font-bold">
-            {siteConfig.cta.secondary.label}
+          <Button href="/services" variant="outline" size="lg" className="text-lg px-10 py-6 font-bold">
+            Explore Our Services
           </Button>
         </motion.div>
       </div>
@@ -141,10 +141,10 @@ export function Hero() {
           <div className="flex items-center justify-between mb-8 border-b border-ink-border pb-4">
             <div>
               <p className="text-sm font-bold uppercase tracking-wider text-accent-deep">
-                Live Reporting Dashboard
+                Growth Dashboard
               </p>
               <p className="mt-1 font-display text-2xl font-semibold text-ink-foreground">
-                Plain-English SEO Metrics
+                Complete Digital Visibility
               </p>
             </div>
             <div className="h-12 w-12 rounded-full bg-accent/10 flex items-center justify-center [box-shadow:var(--shadow-neo-pressed)]">
@@ -175,7 +175,7 @@ export function Hero() {
           transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay: 1 }}
           className="md:absolute md:-left-2 lg:-left-8 md:top-36 md:z-10 w-full md:w-[22rem] rounded-2xl bg-ink p-6 [box-shadow:var(--shadow-neo-flat)]"
         >
-          <p className="text-xs font-bold uppercase text-muted mb-4">TRUSTED SEO PARTNER</p>
+          <p className="text-xs font-bold uppercase text-muted mb-4">CORE EXPERTISE</p>
           <div className="space-y-3">
             {specialtyBadges.map(badge => (
               <div key={badge.label} className="flex items-center gap-3 text-sm font-medium">

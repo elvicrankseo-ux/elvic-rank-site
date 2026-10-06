@@ -86,7 +86,8 @@ export const siteConfig = {
     {
       group: "Growth",
       items: [
-        { label: "Paid Advertising", href: "/services/paid-advertising" },
+        { label: "Google Ads", href: "/services/google-ads" },
+        { label: "Meta Ads", href: "/services/meta-ads" },
         { label: "Content & Social", href: "/services/content-social-media" },
       ],
     },

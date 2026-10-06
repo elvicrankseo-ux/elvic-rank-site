@@ -149,27 +149,50 @@ export const services: Service[] = [
     relatedSlugs: ["web-development", "geo", "content-social-media"]
   },
   {
-    slug: "paid-advertising",
+    slug: "google-ads",
     icon: Megaphone,
-    title: "Paid Advertising",
-    shortDescription: "Put businesses in front of customers who are ready to take action immediately.",
+    title: "Google Ads",
+    shortDescription: "Put your business at the top of search results when high-intent customers are looking for your services.",
     points: [
-      "Google Ads & LSA",
-      "Meta (Facebook/IG) Ads",
+      "Search campaigns",
+      "Local service campaigns (LSA)",
       "Conversion tracking"
     ],
-    metaTitle: "Paid Advertising (Google & Meta) | Elvic Rank",
-    metaDescription: "High-converting paid advertising campaigns across Google Ads and Meta to generate immediate leads.",
-    heroIntro: "Don't wait for traffic—buy the exact clicks that lead to revenue. We manage highly targeted Google Ads and Meta campaigns that put your business directly in front of buyers at the exact moment they need you.",
+    metaTitle: "Google Ads Management | Elvic Rank",
+    metaDescription: "High-converting Google Ads and LSA campaigns to generate immediate leads.",
+    heroIntro: "Don't wait for organic traffic—buy the exact clicks that lead to revenue. We manage highly targeted Google Ads campaigns that put your business directly in front of buyers at the exact moment they search.",
     benefits: [
       { title: "Immediate Leads", description: "Turn on campaigns and start receiving targeted traffic instantly." },
       { title: "Measurable ROI", description: "Track every dollar spent directly to calls, form fills, and booked jobs." },
-      { title: "Omnichannel Reach", description: "Capture high-intent searchers on Google and build awareness on Meta." }
+      { title: "High Intent", description: "Capture users actively searching for solutions you provide." }
     ],
     faqs: [
-      { question: "Which is better, Google Ads or Meta Ads?", answer: "Google Ads capture immediate intent (people searching for a solution now), while Meta Ads are incredible for generating awareness and targeted demand." }
+      { question: "What is LSA?", answer: "Local Services Ads appear at the very top of Google and charge per lead, not per click." }
     ],
     relatedSlugs: ["seo", "local-seo", "web-development"]
+  },
+  {
+    slug: "meta-ads",
+    icon: Megaphone,
+    title: "Meta Ads",
+    shortDescription: "Build brand awareness and generate leads through targeted Facebook and Instagram advertising.",
+    points: [
+      "Targeted lead generation",
+      "Retargeting campaigns",
+      "Campaign strategy"
+    ],
+    metaTitle: "Meta Ads Management | Elvic Rank",
+    metaDescription: "Targeted Facebook and Instagram advertising campaigns to build awareness and generate leads.",
+    heroIntro: "Reach your ideal customers before they even start searching. We build targeted Meta ad campaigns on Facebook and Instagram to generate demand and capture leads proactively.",
+    benefits: [
+      { title: "Proactive Reach", description: "Target demographics and behaviors aligned with your ideal customer." },
+      { title: "Visual Engagement", description: "Use images and video to showcase your work and build trust." },
+      { title: "Retargeting", description: "Stay in front of users who visited your site but didn't convert yet." }
+    ],
+    faqs: [
+      { question: "Are Meta ads good for local businesses?", answer: "Yes, they are excellent for building local awareness and capturing leads before they search Google." }
+    ],
+    relatedSlugs: ["google-ads", "content-social-media", "web-development"]
   },
   {
     slug: "content-social-media",

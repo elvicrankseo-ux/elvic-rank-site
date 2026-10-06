@@ -37,7 +37,7 @@ export function StrategyFlow() {
   const prefersReducedMotion = useReducedMotion();
 
   return (
-    <section className="relative overflow-hidden py-20 lg:py-28 bg-ink">
+    <section className="relative overflow-hidden py-20 lg:py-28 bg-transparent">
       <div className="relative z-10 mx-auto max-w-4xl px-6 lg:px-8 text-center">
         <SectionHeading
           eyebrow="The Ecosystem"

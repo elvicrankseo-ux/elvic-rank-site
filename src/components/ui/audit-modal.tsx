@@ -294,9 +294,9 @@ export function AuditModal() {
 }
 
 // Internal Check Icon for Success State
-function Check({ size = 24, className = "" }: { size?: number, className?: string }) {
+function Check({ size = 24, strokeWidth = 3, className = "" }: { size?: number, strokeWidth?: number, className?: string }) {
   return (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" className={className}>
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={strokeWidth} strokeLinecap="round" strokeLinejoin="round" className={className}>
       <polyline points="20 6 9 17 4 12"></polyline>
     </svg>
   );

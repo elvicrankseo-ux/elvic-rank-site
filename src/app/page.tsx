@@ -8,11 +8,9 @@ import { WhyUs } from "@/components/sections/why-us";
 import { Industries } from "@/components/sections/industries";
 import { Process } from "@/components/sections/process";
 import { Testimonials } from "@/components/sections/testimonials";
-import { About } from "@/components/sections/about";
 import { Blog } from "@/components/sections/blog";
 import { FreeAudit } from "@/components/sections/free-audit";
 import { FAQ } from "@/components/sections/faq";
-import { Contact } from "@/components/sections/contact";
 
 // Technical SEO cleanup: the root layout's default title/description
 // (title.default + siteConfig.description) are what render for "/" when
@@ -58,11 +56,9 @@ export default function Home() {
       <Industries />
       <Process />
       <Testimonials />
-      <About />
       <Blog />
       <FreeAudit />
       <FAQ />
-      <Contact />
     </main>
   );
 }

@@ -83,8 +83,9 @@ export const siteConfig = {
     { label: "Emergency SEO", href: "/industries/emergency-service-seo" },
     { label: "Industries", href: "/#industries" },
     { label: "Resources", href: "/blog" },
-    { label: "About", href: "/#about" },
+    { label: "About", href: "/about" },
     { label: "FAQ", href: "/#faq" },
+    { label: "Contact", href: "/contact" },
   ],
 
   // All hrefs here are root-relative (leading "/") since Navbar/Footer are

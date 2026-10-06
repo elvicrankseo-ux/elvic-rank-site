@@ -115,20 +115,7 @@ export function Footer() {
                   </a>
                 </li>
               )}
-              {siteConfig.telegram && (
-                <li>
-                  <a
-                    href={siteConfig.telegram.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    onClick={() => trackEvent("telegram_click", { location: "footer" })}
-                    className="flex items-center gap-2 text-sm text-ink-foreground/80 transition-colors hover:text-accent-bright"
-                  >
-                    <Send size={14} aria-hidden />
-                    Telegram
-                  </a>
-                </li>
-              )}
+
             </ul>
             <p className="mt-5 text-xs leading-relaxed text-muted-dark">
               {siteConfig.location.servingLine}

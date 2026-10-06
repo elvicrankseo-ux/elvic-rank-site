@@ -34,17 +34,15 @@ export function Navbar() {
   }, [isMenuOpen]);
 
   return (
-    <header
-      className={cn(
-        "sticky top-0 z-50 w-full transition-all duration-300",
-        isScrolled
-          ? "bg-paper/85 backdrop-blur-md border-b border-paper-border shadow-[0_1px_0_0_rgba(15,17,21,0.04)]"
-          : "bg-transparent border-b border-transparent"
-      )}
-    >
+    <header className="sticky top-4 z-50 w-full px-4 lg:px-8 transition-all duration-300">
       <nav
         aria-label="Primary"
-        className="mx-auto flex h-20 max-w-7xl items-center justify-between px-6 py-4 lg:px-8"
+        className={cn(
+          "mx-auto flex h-16 max-w-7xl items-center justify-between px-6 transition-all duration-300 rounded-full",
+          isScrolled
+            ? "bg-white/20 backdrop-blur-xl border border-white/60 [box-shadow:var(--shadow-neo-flat)]"
+            : "bg-transparent border-transparent"
+        )}
       >
         <Link
           href="/#top"

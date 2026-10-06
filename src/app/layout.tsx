@@ -64,7 +64,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang="en"
       className={`${geistSans.variable} ${fraunces.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col bg-paper pb-14 text-foreground sm:pb-0">
+      <body className="min-h-full flex flex-col overflow-x-hidden bg-paper pb-14 text-foreground sm:pb-0">
         <GoogleAnalytics />
         {jsonLd.map((schema) => (
           <script

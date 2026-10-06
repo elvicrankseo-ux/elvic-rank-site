@@ -79,14 +79,7 @@ const quickContacts: QuickContact[] = [
     external: true,
     gaEvent: "whatsapp_click",
   },
-  {
-    icon: Send,
-    title: "Telegram",
-    description: "Prefer Telegram? Message us there instead, with the same directness.",
-    href: siteConfig.telegram?.url ?? null,
-    external: true,
-    gaEvent: "telegram_click",
-  },
+
   {
     icon: CalendarCheck,
     title: "Book a free strategy call",

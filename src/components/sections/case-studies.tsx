@@ -62,10 +62,10 @@ export function CaseStudies() {
         >
           <div className="border-b border-paper-border p-8">
             <span className="inline-flex items-center rounded-full border border-paper-border px-3 py-1 text-xs font-medium text-muted">
-              Towing & Logistics
+              Emergency Plumbing
             </span>
             <h3 className="mt-4 font-display text-2xl font-medium text-foreground">
-              Akanaby Logistics Inc.
+              Confidential Client
             </h3>
           </div>
 

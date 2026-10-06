@@ -36,7 +36,7 @@ export function About() {
         <SectionHeading
           eyebrow="About Elvic Rank"
           title="SEO, run like it's personal — because it is"
-          description="Elvic Rank exists because most local service businesses get treated like a line item — handed off to a junior account manager, buried in vague reports, locked into a contract that outlasts the results. We built something smaller and more accountable: one point of contact, one clear strategy, and rankings judged by whether the phone rings."
+          description="Elvic Rank exists because most local service businesses get treated like a line item — handed off to a junior account manager, buried in vague reports, locked into a contract that outlasts the results. We built something smaller and more accountable: one clear strategy, and rankings judged by whether the phone rings."
         />
 
         <div className="mt-16 grid gap-x-8 gap-y-10 sm:grid-cols-2 lg:grid-cols-4">

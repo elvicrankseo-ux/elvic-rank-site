@@ -6,25 +6,29 @@
  * premium/editorial rather than the generic SaaS blue/violet look.
  */
 :root {
-  --background: #fafaf8;
-  --foreground: #0f1115;
+  --background: #f4f6f8;
+  --foreground: #1e293b;
 
-  --color-ink: #0a0d14;
-  --color-ink-elevated: #12161f;
-  --color-ink-border: rgba(232, 230, 223, 0.1);
+  --color-ink: #f4f6f8;
+  --color-ink-elevated: #e2e8f0;
+  --color-ink-border: transparent;
 
-  --color-paper: #fafaf8;
-  --color-paper-muted: #f2efe9;
-  --color-paper-border: rgba(15, 17, 21, 0.08);
+  --color-paper: #f4f6f8;
+  --color-paper-muted: #f4f6f8;
+  --color-paper-border: transparent;
 
-  --color-ink-foreground: #e8e6df;
-  --color-muted: #6b6f76;
-  --color-muted-dark: #9a9d9f;
+  --color-ink-foreground: #1e293b;
+  --color-muted: #64748b;
+  --color-muted-dark: #475569;
 
-  --color-accent: #b6903c;
-  --color-accent-bright: #d9b968;
-  --color-accent-deep: #8f6d28;
-  --color-accent-foreground: #14110a;
+  --color-accent: #2563eb;
+  --color-accent-bright: #3b82f6;
+  --color-accent-deep: #1d4ed8;
+  --color-accent-foreground: #f4f6f8;
+
+  --shadow-neo-flat: 8px 8px 16px #d1d9e6, -8px -8px 16px #ffffff;
+  --shadow-neo-pressed: inset 5px 5px 10px #d1d9e6, inset -5px -5px 10px #ffffff;
+  --shadow-neo-sm: 4px 4px 8px #d1d9e6, -4px -4px 8px #ffffff;
 }
 
 @theme inline {
@@ -45,6 +49,10 @@
   --color-accent-deep: var(--color-accent-deep);
   --color-accent-foreground: var(--color-accent-foreground);
 
+  --shadow-neo-flat: var(--shadow-neo-flat);
+  --shadow-neo-pressed: var(--shadow-neo-pressed);
+  --shadow-neo-sm: var(--shadow-neo-sm);
+
   --font-sans: var(--font-geist-sans);
   --font-display: var(--font-fraunces);
 }
@@ -55,6 +63,33 @@ html {
 }
 
 body {
-  background: var(--background);
+  background-color: var(--background);
   color: var(--foreground);
+}
+
+@layer base {
+  /* Force inputs to have a sunken/pressed neumorphic effect */
+  input, textarea, select {
+    box-shadow: var(--shadow-neo-pressed) !important;
+    border: none !important;
+    background: var(--background) !important;
+    color: var(--foreground) !important;
+  }
+  
+  /* Force focus states to just highlight slightly */
+  input:focus, textarea:focus, select:focus {
+    outline: none !important;
+    box-shadow: inset 8px 8px 12px 0 rgba(163, 177, 198, 0.8), inset -8px -8px 12px 0 rgba(255, 255, 255, 1) !important;
+  }
+
+  /* Force all rounded container elements to have a flat neumorphic shadow */
+  .rounded-lg, .rounded-xl, .rounded-2xl, .rounded-3xl, .rounded-full {
+    box-shadow: var(--shadow-neo-flat);
+    border: none !important;
+  }
+
+  /* Exclude specific elements from having double shadows if needed */
+  svg.rounded-full, img.rounded-full {
+    box-shadow: none !important;
+  }
 }

@@ -7,13 +7,13 @@ import { trackEvent } from "@/lib/analytics";
 
 const variants = {
   primary:
-    "bg-ink text-paper hover:bg-accent hover:text-accent-foreground",
+    "bg-ink text-foreground hover:bg-accent hover:text-accent-foreground",
   accent:
     "bg-accent text-accent-foreground hover:bg-accent-bright",
   outline:
     "border border-paper-border text-foreground hover:border-accent-deep hover:text-accent-deep",
   "outline-dark":
-    "border border-ink-border text-ink-foreground hover:border-accent hover:text-accent-bright",
+    "border border-ink-border text-foreground hover:border-accent hover:text-accent-bright",
   ghost: "text-foreground hover:text-accent-deep",
 } as const;
 
@@ -27,7 +27,7 @@ type Variant = keyof typeof variants;
 type Size = keyof typeof sizes;
 
 const base =
-  "inline-flex items-center justify-center gap-2 rounded-full font-medium tracking-tight transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-deep focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:opacity-50 disabled:pointer-events-none";
+  "inline-flex items-center justify-center gap-2 rounded-full font-medium tracking-tight transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-deep focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:opacity-50 disabled:pointer-events-none [box-shadow:var(--shadow-neo-flat)] active:[box-shadow:var(--shadow-neo-pressed)] hover:[box-shadow:var(--shadow-neo-sm)]";
 
 type CommonProps = {
   variant?: Variant;

@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 
 export default function ServicesPage() {
   return (
-    <main className="flex-1 pt-20">
+    <main className="flex-1">
       <Services />
     </main>
   );

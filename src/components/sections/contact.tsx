@@ -152,28 +152,24 @@ export function Contact() {
     };
   }
 
-  function handleSubmit(event: FormEvent<HTMLFormElement>) {
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const nextErrors = validate(values);
     setErrors(nextErrors);
     if (Object.keys(nextErrors).length > 0) return;
 
-    window.location.href = buildMailtoLink(
-      siteConfig.email,
-      `Message from ${values.name} via elvicrank.com`,
-      [
-        `Name: ${values.name}`,
-        values.businessName ? `Business name: ${values.businessName}` : null,
-        `Email: ${values.email}`,
-        values.phone ? `Phone: ${values.phone}` : null,
-        values.website ? `Website: ${values.website}` : null,
-        values.serviceNeeded ? `Service needed: ${values.serviceNeeded}` : null,
-        "",
-        values.message,
-      ]
-    );
-    trackEvent("generate_lead", { form: "contact" });
     setStatus("sent");
+    trackEvent("generate_lead", { form: "contact" });
+
+    try {
+      await fetch("/api/telegram", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ source: "Contact Page", data: values }),
+      });
+    } catch (error) {
+      console.error("Error submitting form:", error);
+    }
   }
 
   return (
@@ -224,10 +220,10 @@ export function Contact() {
                     <Send size={32} aria-hidden />
                   </span>
                   <p className="mt-4 font-display text-3xl font-bold text-foreground">
-                    Opening your email...
+                    Message sent successfully!
                   </p>
                   <p className="mt-2 max-w-sm text-base text-muted-dark">
-                    If nothing happened, email us directly at{" "}
+                    We've received your request and will get back to you shortly. Or email us directly at{" "}
                     <a href={`mailto:${siteConfig.email}`} className="text-accent-deep font-bold hover:underline">
                       {siteConfig.email}
                     </a>
@@ -383,7 +379,7 @@ export function Contact() {
                       <Send size={18} aria-hidden className="ml-2" />
                     </Button>
                     <p className="mt-6 text-sm font-medium leading-relaxed text-muted-dark">
-                      Sending opens your email app with this message pre-filled — no backend, no automated reply.
+                      100% secure. No automated sales sequence.
                     </p>
                   </div>
                 </form>

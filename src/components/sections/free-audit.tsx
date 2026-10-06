@@ -89,15 +89,24 @@ export function FreeAudit() {
     };
   }
 
-  function handleSubmit(event: FormEvent<HTMLFormElement>) {
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const nextErrors = validate(values);
     setErrors(nextErrors);
     if (Object.keys(nextErrors).length > 0) return;
 
-    window.location.href = buildMailto(values);
-    trackEvent("generate_lead", { form: "free_audit" });
     setStatus("sent");
+    trackEvent("generate_lead", { form: "free_audit" });
+
+    try {
+      await fetch("/api/telegram", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ source: "Free Audit Section", data: values }),
+      });
+    } catch (error) {
+      console.error("Error submitting form:", error);
+    }
   }
 
   return (
@@ -150,14 +159,10 @@ export function FreeAudit() {
                     <Send size={32} aria-hidden />
                   </span>
                   <p className="mt-4 font-display text-3xl font-bold text-foreground">
-                    Opening your email...
+                    Request Received!
                   </p>
                   <p className="mt-2 max-w-sm text-base text-muted-dark">
-                    If nothing happened, email us directly at{" "}
-                    <a href={`mailto:${siteConfig.email}`} className="text-accent-deep font-bold hover:underline">
-                      {siteConfig.email}
-                    </a>
-                    .
+                    Our team is reviewing your details and will send your audit shortly.
                   </p>
                   <Button
                     variant="outline"
@@ -272,7 +277,7 @@ export function FreeAudit() {
                       <Send size={18} aria-hidden className="ml-2" />
                     </Button>
                     <p className="mt-6 text-sm font-medium leading-relaxed text-muted-dark">
-                      Submitting opens your email app with your details pre-filled. No obligation and no automated sales sequence.
+                      100% free. No obligation and no automated sales sequence.
                     </p>
                   </div>
                 </form>

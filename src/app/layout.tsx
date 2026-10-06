@@ -9,6 +9,7 @@ import { MobileTabBar } from "@/components/layout/mobile-tab-bar";
 import React from "react";
 import { GoogleAnalytics } from "@/components/analytics/google-analytics";
 import { AuditModal } from "@/components/ui/audit-modal";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -87,6 +88,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <React.Suspense fallback={null}>
           <AuditModal />
         </React.Suspense>
+        <SpeedInsights />
       </body>
     </html>
   );

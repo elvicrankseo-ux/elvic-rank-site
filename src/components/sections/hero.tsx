@@ -129,14 +129,14 @@ export function Hero() {
         initial={{ opacity: 0, scale: 0.8 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 1, delay: 0.4, ease: "easeOut" }}
-        className="relative mt-24 w-full max-w-[1200px] px-6 h-[400px] flex justify-center perspective-[2000px]"
+        className="relative mt-16 md:mt-24 w-full max-w-[1200px] px-4 md:px-6 flex flex-col md:block md:h-[400px] gap-4 md:gap-0"
         style={{ perspective: 2000 }}
       >
         {/* Main Center Dashboard */}
         <motion.div
           animate={prefersReducedMotion ? undefined : { y: [0, -20, 0], rotateX: [25, 30, 25] }}
           transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute z-20 w-full max-w-2xl rounded-3xl bg-ink p-8 [box-shadow:var(--shadow-neo-flat)] [transform-style:preserve-3d] border-t border-white/40"
+          className="md:absolute md:z-20 w-full md:max-w-2xl rounded-3xl bg-ink p-8 [box-shadow:var(--shadow-neo-flat)] [transform-style:preserve-3d] border-t border-white/40"
         >
           <div className="flex items-center justify-between mb-8 border-b border-ink-border pb-4">
             <div>
@@ -173,7 +173,7 @@ export function Hero() {
         <motion.div
           animate={prefersReducedMotion ? undefined : { y: [0, 15, 0], rotateX: [35, 40, 35], rotateY: [15, 20, 15], rotateZ: [-5, -2, -5] }}
           transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-          className="absolute -left-2 lg:-left-8 top-36 z-10 w-[22rem] rounded-2xl bg-ink p-6 [box-shadow:var(--shadow-neo-flat)] hidden md:block"
+          className="md:absolute md:-left-2 lg:-left-8 md:top-36 md:z-10 w-full md:w-[22rem] rounded-2xl bg-ink p-6 [box-shadow:var(--shadow-neo-flat)]"
         >
           <p className="text-xs font-bold uppercase text-muted mb-4">TRUSTED SEO PARTNER</p>
           <div className="space-y-3">
@@ -190,7 +190,7 @@ export function Hero() {
         <motion.div
           animate={prefersReducedMotion ? undefined : { y: [0, -10, 0], rotateX: [30, 35, 30], rotateY: [-15, -20, -15], rotateZ: [5, 8, 5] }}
           transition={{ duration: 9, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
-          className="absolute -right-2 lg:-right-6 top-20 z-10 w-[18rem] rounded-2xl bg-ink p-6 [box-shadow:var(--shadow-neo-flat)] hidden md:block border-t border-white/50"
+          className="md:absolute md:-right-2 lg:-right-6 md:top-20 md:z-10 w-full md:w-[18rem] rounded-2xl bg-ink p-6 [box-shadow:var(--shadow-neo-flat)] border-t border-white/50"
         >
           <p className="text-xs font-bold uppercase text-muted mb-4">Guarantees</p>
           <div className="space-y-3">

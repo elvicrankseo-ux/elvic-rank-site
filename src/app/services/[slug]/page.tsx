@@ -40,14 +40,14 @@ function LayoutA({ service }: { service: Service }) {
   return (
     <div className="flex flex-col w-full">
       {/* Hero */}
-      <section className="relative pt-24 pb-20 lg:pt-32 lg:pb-28 bg-paper overflow-hidden">
+      <section className="relative pt-16 pb-16 lg:pt-20 lg:pb-20 bg-paper overflow-hidden">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-accent/5 rounded-full blur-[100px] pointer-events-none" />
         <div className="relative z-10 mx-auto max-w-5xl px-6 text-center">
           <Breadcrumbs items={[{ name: "Home", href: "/" }, { name: "Services", href: "/services" }, { name: service.title }]} />
-          <div className="mt-10 mx-auto inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-accent/10 text-accent-deep">
+          <div className="mt-8 mx-auto inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-accent/10 text-accent-deep">
             <Icon size={32} />
           </div>
-          <h1 className="mt-8 font-display text-5xl md:text-7xl font-bold tracking-tight text-foreground">{service.title}</h1>
+          <h1 className="mt-6 font-display text-5xl md:text-7xl font-bold tracking-tight text-foreground">{service.title}</h1>
           <p className="mt-6 mx-auto max-w-2xl text-xl text-muted font-medium leading-relaxed">{service.heroIntro}</p>
           <div className="mt-10 flex justify-center gap-4">
             <Button href={siteConfig.cta.primary.href} variant="accent" size="lg" className="px-8">{siteConfig.cta.primary.label}</Button>
@@ -138,7 +138,7 @@ function LayoutB({ service }: { service: Service }) {
   return (
     <div className="flex flex-col w-full">
       {/* Split Hero */}
-      <section className="bg-ink text-foreground pt-24 pb-20 lg:pt-32 lg:pb-28">
+      <section className="bg-ink text-foreground pt-16 pb-16 lg:pt-24 lg:pb-20">
         <div className="mx-auto max-w-7xl px-6 grid lg:grid-cols-2 gap-12 items-center">
           <div>
             <Breadcrumbs items={[{ name: "Home", href: "/" }, { name: "Services", href: "/services" }, { name: service.title }]} />

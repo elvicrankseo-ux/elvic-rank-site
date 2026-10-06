@@ -109,11 +109,11 @@ export function StrategyFlow() {
               <span className="text-xs font-bold uppercase tracking-widest text-white/80 mb-4 block">
                 Grow
               </span>
-              <h3 className="font-display text-2xl font-bold text-white mb-2 flex flex-col gap-2 items-center">
+              <h3 className="font-display text-xl sm:text-2xl font-bold text-white mb-2 flex flex-row flex-wrap justify-center gap-2 items-center">
                 <span>More Visibility</span>
-                <ArrowDown className="w-5 h-5 text-accent-bright" />
+                <ArrowDown className="w-5 h-5 text-accent-bright -rotate-90" />
                 <span>More Leads</span>
-                <ArrowDown className="w-5 h-5 text-accent-bright" />
+                <ArrowDown className="w-5 h-5 text-accent-bright -rotate-90" />
                 <span>More Customers</span>
               </h3>
             </motion.div>

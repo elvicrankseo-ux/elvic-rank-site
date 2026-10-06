@@ -130,7 +130,7 @@ export default async function BlogPostPage({ params }: Props) {
             </p>
             <Button
               href={siteConfig.cta.primary.href}
-              variant="default"
+              variant="primary"
               size="lg"
               className="mt-4 bg-white text-accent-deep hover:bg-gray-50 font-bold px-8 py-6 text-lg relative z-10 shadow-[0_8px_20px_-5px_rgba(0,0,0,0.2)]"
               gaEvent="seo_audit_cta_click"

@@ -54,9 +54,7 @@ export function Navbar() {
           aria-label="Primary"
           className={cn(
             "mx-auto flex h-14 max-w-7xl items-center justify-between px-5 transition-all duration-300 rounded-full",
-            isScrolled
-              ? "bg-white/30 backdrop-blur-md border border-white/40 shadow-[0_8px_32px_0_rgba(0,0,0,0.05)]"
-              : "bg-transparent border-transparent"
+            "bg-white/50 backdrop-blur-md border border-white/40 shadow-[0_8px_32px_0_rgba(0,0,0,0.05)]"
           )}
         >
           {/* Hamburger — mobile only */}

@@ -150,7 +150,7 @@ function LayoutB({ service }: { service: Service }) {
       </section>
 
       {/* Massive Typographic Problem/Audience */}
-      <section className="py-24 bg-paper">
+      <section className="py-12 lg:py-16 bg-paper">
         <div className="mx-auto max-w-7xl px-6">
           <div className="grid lg:grid-cols-12 gap-12">
             <div className="lg:col-span-5">
@@ -159,9 +159,9 @@ function LayoutB({ service }: { service: Service }) {
               <h3 className="font-display text-2xl font-bold text-foreground mt-8 mb-4">What We Do</h3>
               <p className="text-lg text-muted">{service.whatWeDo}</p>
             </div>
-            <div className="lg:col-span-6 lg:col-start-7 bg-paper-muted p-10 md:p-16 rounded-[2rem] border border-paper-border">
+            <div className="lg:col-span-6 lg:col-start-7 bg-paper-muted p-10 md:p-12 rounded-[2rem] border border-paper-border">
               <h2 className="font-display text-3xl font-bold text-foreground mb-8 text-accent-deep">The Problems We Solve</h2>
-              <ul className="space-y-6">
+              <ul className="space-y-4">
                 {service.problemsSolved.map((p, i) => (
                   <li key={i} className="flex gap-4">
                     <Zap className="text-accent-deep shrink-0 mt-1" size={20} />

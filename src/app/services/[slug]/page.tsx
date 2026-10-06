@@ -1,20 +1,14 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowRight, Check, Send } from "lucide-react";
+import { ArrowRight, Check, Send, AlertTriangle, Lightbulb, Workflow } from "lucide-react";
 import { Breadcrumbs } from "@/components/ui/breadcrumbs";
 import { Button } from "@/components/ui/button";
 import { FaqAccordion } from "@/components/ui/faq-accordion";
-import { ArticleContent } from "@/components/ui/article-content";
 import { services, getServiceBySlug } from "@/data/services";
-import { getBlogPostBySlug } from "@/data/blog";
 import { siteConfig } from "@/config/site";
 import { buildMetadata } from "@/lib/metadata";
-import {
-  getServiceSchema,
-  getBreadcrumbSchema,
-  getFaqSchema,
-} from "@/lib/schema";
+import { cn } from "@/lib/utils";
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -45,63 +39,47 @@ export default async function ServicePage({ params }: Props) {
     .map((relatedSlug) => getServiceBySlug(relatedSlug))
     .filter((s): s is NonNullable<typeof s> => s !== undefined);
 
-  // Only used by services without richContent — pages with richContent
-  // embed their supporting-article link inline, in context, instead.
-  const relatedArticle = service.relatedArticleSlug
-    ? getBlogPostBySlug(service.relatedArticleSlug)
-    : undefined;
-
-  const jsonLd = [
-    getServiceSchema(service),
-    getBreadcrumbSchema([
-      { name: "Home", path: "/" },
-      { name: "Services", path: "/#services" },
-      { name: service.title, path: `/services/${service.slug}` },
-    ]),
-    getFaqSchema(service.faqs),
-  ];
-
   const Icon = service.icon;
+
+  // Determine section order based on layout style to prevent identical-looking pages
+  const isLayoutA = service.layoutStyle === "a";
+  const isLayoutB = service.layoutStyle === "b";
 
   return (
     <main className="flex-1">
-      {jsonLd.map((schema) => (
-        <script
-          key={schema["@type"]}
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
-        />
-      ))}
-
-      {/* Header */}
-      <section className="bg-paper py-16 lg:py-20">
-        <div className="mx-auto max-w-4xl px-6 lg:px-8">
-          <Breadcrumbs
-            items={[
-              { name: "Home", href: "/" },
-              { name: "Services", href: "/#services" },
-              { name: service.title },
-            ]}
-          />
-
-          <div className="mt-6 inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-accent/10 text-accent-deep">
-            <Icon size={26} aria-hidden />
+      {/* 1. Hero / What it is */}
+      <section className="relative overflow-hidden bg-paper pt-20 pb-16 lg:pt-28 lg:pb-24">
+        {isLayoutA && (
+          <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/3 h-[40rem] w-[40rem] rounded-full bg-accent/5 blur-[100px] pointer-events-none" />
+        )}
+        <div className="relative z-10 mx-auto max-w-4xl px-6 lg:px-8 text-center">
+          <div className="flex justify-center mb-6">
+            <Breadcrumbs
+              items={[
+                { name: "Home", href: "/" },
+                { name: "Services", href: "/services" },
+                { name: service.title },
+              ]}
+            />
+          </div>
+          
+          <div className="mt-8 mx-auto inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-accent-deep/10 text-accent-deep">
+            <Icon size={32} aria-hidden />
           </div>
 
-          <h1 className="mt-6 font-display text-4xl font-medium leading-[1.1] tracking-tight text-foreground sm:text-5xl">
+          <h1 className="mt-6 font-display text-4xl font-medium leading-[1.1] tracking-tight text-foreground sm:text-5xl lg:text-6xl">
             {service.title}
           </h1>
-          <p className="mt-6 max-w-2xl text-lg leading-relaxed text-muted">
+          <p className="mt-6 mx-auto max-w-2xl text-lg sm:text-xl leading-relaxed text-muted">
             {service.heroIntro}
           </p>
 
-          <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center">
+          <div className="mt-10 flex flex-col gap-4 sm:flex-row justify-center items-center">
             <Button
               href={siteConfig.cta.primary.href}
               variant="accent"
               size="lg"
-              gaEvent="seo_audit_cta_click"
-              gaParams={{ location: "service_header", service: service.slug }}
+              className="px-8"
             >
               {siteConfig.cta.primary.label}
               <ArrowRight size={18} aria-hidden />
@@ -112,45 +90,64 @@ export default async function ServicePage({ params }: Props) {
               rel="noopener noreferrer"
               variant="outline"
               size="lg"
-              gaEvent="strategy_call_click"
-              gaParams={{ location: "service_header", service: service.slug }}
             >
-              Book a Free Strategy Call
+              Book a Strategy Call
             </Button>
           </div>
-          <p className="mt-4 text-sm text-muted">
-            Not sure which to pick? The audit is self-serve — send your
-            details and we reply directly. The strategy call is a live
-            30-minute conversation if you&apos;d rather talk it through
-            first.
-          </p>
         </div>
       </section>
 
-      {service.richContent ? (
-        /* Pillar-style rich content, for services that need to be a fuller
-           commercial landing page (currently only Local SEO & GBP). */
-        <section className="bg-paper-muted py-16 lg:py-20">
-          <div className="mx-auto max-w-4xl px-6 lg:px-8">
-            <ArticleContent blocks={service.richContent} />
+      {/* 2 & 3. Who it's for & Problems it solves */}
+      <section className={cn("py-16 lg:py-24", isLayoutB ? "bg-ink text-white" : "bg-paper-muted")}>
+        <div className="mx-auto max-w-6xl px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+            <div>
+              <div className="flex items-center gap-3 mb-4">
+                <div className={cn("p-2 rounded-lg", isLayoutB ? "bg-accent-deep/20 text-accent-bright" : "bg-accent/10 text-accent-deep")}>
+                  <AlertTriangle size={20} />
+                </div>
+                <h2 className="font-display text-2xl font-medium">The Problem</h2>
+              </div>
+              <ul className="space-y-4">
+                {service.problemsSolved.map((problem, i) => (
+                  <li key={i} className="flex gap-4">
+                    <span className="text-accent-deep mt-1 font-bold">×</span>
+                    <span className={cn(isLayoutB ? "text-muted-dark" : "text-muted", "leading-relaxed")}>{problem}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            
+            <div className={cn("p-8 rounded-3xl", isLayoutB ? "bg-white/5 border border-white/10" : "bg-paper border border-paper-border [box-shadow:var(--shadow-neo-sm)]")}>
+              <h2 className="font-display text-2xl font-medium mb-4">Who This Is For</h2>
+              <p className={cn("text-lg leading-relaxed", isLayoutB ? "text-muted-dark" : "text-muted")}>
+                {service.whoItsFor}
+              </p>
+            </div>
           </div>
-        </section>
-      ) : (
-        <>
-          {/* What's included */}
-          <section className="bg-paper-muted py-16 lg:py-20">
-            <div className="mx-auto max-w-4xl px-6 lg:px-8">
-              <h2 className="font-display text-2xl font-medium text-foreground sm:text-3xl">
-                What&apos;s included
-              </h2>
-              <ul className="mt-8 grid gap-4 sm:grid-cols-3">
+        </div>
+      </section>
+
+      {/* 4 & 5. What we do & What's included */}
+      <section className={cn("py-16 lg:py-24", isLayoutA ? "bg-paper-muted" : "bg-paper")}>
+        <div className="mx-auto max-w-6xl px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-20">
+            <div className={cn(isLayoutA ? "order-2" : "")}>
+              <h2 className="font-display text-3xl font-medium text-foreground mb-6">What We Do</h2>
+              <p className="text-lg text-muted leading-relaxed mb-8">
+                {service.whatWeDo}
+              </p>
+            </div>
+            <div className={cn(isLayoutA ? "order-1" : "")}>
+              <h2 className="font-display text-2xl font-medium text-foreground mb-6">What&apos;s Included</h2>
+              <ul className="grid gap-3 sm:grid-cols-2">
                 {service.points.map((point) => (
                   <li
                     key={point}
-                    className="flex items-start gap-3 rounded-2xl border border-paper-border bg-paper p-5"
+                    className="flex items-center gap-3 rounded-2xl border border-paper-border bg-paper p-4"
                   >
-                    <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-accent text-accent-foreground">
-                      <Check size={13} aria-hidden />
+                    <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-accent/10 text-accent-deep">
+                      <Check size={14} aria-hidden />
                     </span>
                     <span className="text-sm font-medium text-foreground">
                       {point}
@@ -159,78 +156,89 @@ export default async function ServicePage({ params }: Props) {
                 ))}
               </ul>
             </div>
-          </section>
-
-          {/* Benefits */}
-          <section className="bg-paper py-16 lg:py-20">
-            <div className="mx-auto max-w-4xl px-6 lg:px-8">
-              <h2 className="font-display text-2xl font-medium text-foreground sm:text-3xl">
-                Why it matters
-              </h2>
-              <div className="mt-8 space-y-8">
-                {service.benefits.map((benefit) => (
-                  <div key={benefit.title} className="border-l-2 border-accent pl-6">
-                    <h3 className="font-display text-lg font-medium text-foreground">
-                      {benefit.title}
-                    </h3>
-                    <p className="mt-2 text-sm leading-relaxed text-muted">
-                      {benefit.description}
-                    </p>
-                  </div>
-                ))}
-              </div>
-              {relatedArticle && (
-                <p className="mt-8 text-sm leading-relaxed text-muted">
-                  Further reading:{" "}
-                  <Link
-                    href={`/blog/${relatedArticle.slug}`}
-                    className="text-accent-deep underline underline-offset-2 hover:text-accent"
-                  >
-                    {relatedArticle.title}
-                  </Link>
-                </p>
-              )}
-            </div>
-          </section>
-        </>
-      )}
-
-      {/* FAQ */}
-      <section className="bg-paper-muted py-16 lg:py-20">
-        <div className="mx-auto max-w-3xl px-6 lg:px-8">
-          <h2 className="font-display text-2xl font-medium text-foreground sm:text-3xl">
-            Frequently asked questions
-          </h2>
-          <div className="mt-8">
-            <FaqAccordion items={service.faqs} />
           </div>
         </div>
       </section>
 
-      {/* Related services */}
-      <section className="bg-paper py-16 lg:py-20">
-        <div className="mx-auto max-w-4xl px-6 lg:px-8">
-          <h2 className="font-display text-2xl font-medium text-foreground sm:text-3xl">
-            Related services
+      {/* 6. Process */}
+      <section className={cn("py-16 lg:py-24", isLayoutB ? "bg-paper-muted" : "bg-ink")}>
+        <div className="mx-auto max-w-5xl px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent-deep/10 text-accent-deep font-semibold text-sm mb-6">
+              <Workflow size={16} /> How It Works
+            </div>
+            <h2 className={cn("font-display text-3xl md:text-4xl font-medium", isLayoutB ? "text-foreground" : "text-white")}>Our Proven Process</h2>
+          </div>
+          
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {service.process.map((step, idx) => (
+              <div key={idx} className={cn("p-6 rounded-2xl", isLayoutB ? "bg-paper border border-paper-border" : "bg-white/5 border border-white/10")}>
+                <span className="text-4xl font-display font-bold text-accent/20 block mb-4">0{idx + 1}</span>
+                <h3 className={cn("font-display text-lg font-bold mb-2", isLayoutB ? "text-foreground" : "text-white")}>{step.title}</h3>
+                <p className={cn("text-sm leading-relaxed", isLayoutB ? "text-muted" : "text-muted-dark")}>{step.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 7. Why it matters (Benefits) */}
+      <section className="py-16 lg:py-24 bg-paper">
+        <div className="mx-auto max-w-6xl px-6 lg:px-8">
+          <div className="text-center mb-16">
+             <h2 className="font-display text-3xl font-medium text-foreground">Why It Matters</h2>
+          </div>
+          <div className="grid md:grid-cols-3 gap-8">
+            {service.benefits.map((benefit) => (
+              <div key={benefit.title} className="p-8 rounded-3xl bg-paper-muted border border-paper-border text-center flex flex-col items-center">
+                <div className="w-12 h-12 rounded-full bg-accent/10 text-accent-deep flex items-center justify-center mb-6">
+                  <Lightbulb size={20} />
+                </div>
+                <h3 className="font-display text-xl font-medium text-foreground mb-3">
+                  {benefit.title}
+                </h3>
+                <p className="text-muted leading-relaxed">
+                  {benefit.description}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 8. FAQs */}
+      <section className="bg-paper-muted py-16 lg:py-24">
+        <div className="mx-auto max-w-3xl px-6 lg:px-8">
+          <h2 className="font-display text-3xl font-medium text-foreground text-center mb-12">
+            Frequently Asked Questions
           </h2>
-          <div className="mt-8 grid gap-4 sm:grid-cols-3">
+          <FaqAccordion items={service.faqs} />
+        </div>
+      </section>
+
+      {/* Related services */}
+      <section className="bg-paper py-16 lg:py-20 border-t border-paper-border">
+        <div className="mx-auto max-w-5xl px-6 lg:px-8">
+          <h2 className="font-display text-2xl font-medium text-foreground mb-8">
+            Continue Exploring
+          </h2>
+          <div className="grid gap-4 sm:grid-cols-3">
             {relatedServices.map((related) => {
               const RelatedIcon = related.icon;
               return (
                 <Link
                   key={related.slug}
                   href={`/services/${related.slug}`}
-                  className="group flex flex-col rounded-2xl border border-paper-border bg-paper-muted p-5 transition-colors hover:border-accent/40"
+                  className="group flex flex-col rounded-2xl border border-paper-border bg-paper p-6 transition-all hover:-translate-y-1 hover:shadow-lg hover:border-accent/40"
                 >
-                  <RelatedIcon size={20} className="text-accent-deep" aria-hidden />
-                  <span className="mt-3 text-sm font-medium text-foreground">
+                  <RelatedIcon size={24} className="text-accent-deep" aria-hidden />
+                  <span className="mt-4 text-base font-bold text-foreground">
                     {related.title}
                   </span>
-                  <span className="mt-2 flex items-center gap-1 text-xs font-medium text-accent-deep">
-                    Learn more
+                  <span className="mt-2 flex items-center gap-1 text-sm font-medium text-accent-deep">
+                    View service
                     <ArrowRight
-                      size={12}
-                      aria-hidden
+                      size={14}
                       className="transition-transform duration-200 group-hover:translate-x-1"
                     />
                   </span>
@@ -241,33 +249,31 @@ export default async function ServicePage({ params }: Props) {
         </div>
       </section>
 
-      {/* Final CTA */}
-      <section id="contact-cta" className="bg-ink py-16 lg:py-20">
-        <div className="mx-auto flex max-w-4xl flex-col items-center gap-6 px-6 text-center lg:px-8">
-          <h2 className="font-display text-2xl font-medium text-ink-foreground sm:text-3xl">
-            {service.ctaHeading ?? `Ready to talk about ${service.title.toLowerCase()}?`}
+      {/* 9. Final CTA */}
+      <section id="contact-cta" className="bg-ink py-20 lg:py-28 relative overflow-hidden">
+        <div className="absolute inset-0 bg-[url('/noise.png')] opacity-[0.03]" />
+        <div className="relative z-10 mx-auto flex max-w-4xl flex-col items-center gap-6 px-6 text-center lg:px-8">
+          <h2 className="font-display text-4xl lg:text-5xl font-medium text-white">
+            {service.ctaHeading ?? `Ready to grow with ${service.title}?`}
           </h2>
-          <p className="max-w-xl text-muted-dark">
-            Start with a free audit, or book a strategy call — either way,
-            you&apos;ll walk away with a clearer picture of where you stand.
+          <p className="max-w-xl text-lg text-muted-dark">
+            Start with a free visibility audit, or book a strategy call — either way,
+            you'll walk away with a clear roadmap to scalable growth.
           </p>
-          <div className="flex flex-col gap-4 sm:flex-row">
+          <div className="mt-6 flex flex-col gap-4 sm:flex-row">
             <Button
               href={siteConfig.cta.primary.href}
               variant="accent"
               size="lg"
-              gaEvent="seo_audit_cta_click"
-              gaParams={{ location: "service_footer", service: service.slug }}
+              className="px-8"
             >
               {siteConfig.cta.primary.label}
               <ArrowRight size={18} aria-hidden />
             </Button>
             <Button
-              href="/#contact"
+              href="/contact"
               variant="outline-dark"
               size="lg"
-              gaEvent="contact_cta_click"
-              gaParams={{ location: "service_footer", service: service.slug }}
             >
               Contact Us
               <Send size={16} aria-hidden />

@@ -19,8 +19,8 @@ export function Services({ limit }: { limit?: number }) {
       <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8">
         <SectionHeading
           eyebrow="What we do"
-          title="SEO services built for restoration & emergency service companies"
-          description="Not a menu of tactics — a system. Every service below feeds the same goal: more urgent, local searches finding you first — and choosing you."
+          title="Everything Your Business Needs to Grow Online"
+          description="From building your digital foundation to increasing visibility and generating leads, we bring the essential pieces of digital growth together."
         />
 
         <div className="mt-20 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
@@ -112,11 +112,11 @@ export function Services({ limit }: { limit?: number }) {
                 href={siteConfig.cta.primary.href}
                 variant="primary"
                 size="lg"
-                gaEvent="seo_audit_cta_click"
+                gaEvent="visibility_audit_cta_click"
                 gaParams={{ location: "services_section" }}
                 className="w-full sm:w-auto shadow-xl shadow-accent/20"
               >
-                {siteConfig.cta.primary.label}
+                Get a Free Visibility Audit
                 <ArrowRight size={18} aria-hidden className="ml-2" />
               </Button>
             </div>

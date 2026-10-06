@@ -66,13 +66,33 @@ export const siteConfig = {
     tiktok: "https://www.tiktok.com/@elvicrank",
   },
 
-  // Phase 31: restructured around the restoration/emergency-service
-  // specialization (first 4 items are the ones Footer's quickLinks slice
-  // surfaces — kept the most important entries there deliberately).
+  // Structured dropdown for the Services menu
+  navServices: [
+    {
+      group: "Visibility",
+      items: [
+        { label: "SEO", href: "/services/seo" },
+        { label: "Local SEO", href: "/services/local-seo" },
+        { label: "GEO", href: "/services/geo" },
+      ],
+    },
+    {
+      group: "Technology",
+      items: [
+        { label: "Web Development", href: "/services/web-development" },
+        { label: "AI Solutions", href: "/services/ai-solutions" },
+      ],
+    },
+    {
+      group: "Growth",
+      items: [
+        { label: "Paid Advertising", href: "/services/paid-advertising" },
+        { label: "Content & Social", href: "/services/content-social-media" },
+      ],
+    },
+  ],
+
   nav: [
-    { label: "Services", href: "/services" },
-    { label: "Restoration SEO", href: "/industries/restoration-seo" },
-    { label: "Emergency SEO", href: "/industries/emergency-service-seo" },
     { label: "Industries", href: "/#industries" },
     { label: "Resources", href: "/blog" },
     { label: "About", href: "/about" },

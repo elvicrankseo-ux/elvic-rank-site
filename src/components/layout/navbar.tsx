@@ -86,6 +86,56 @@ export function Navbar() {
 
           {/* Desktop nav links */}
           <ul className="hidden items-center gap-2 lg:flex">
+            {/* Services Dropdown */}
+            <li className="relative group">
+              <Link
+                href="/services"
+                className={cn(
+                  "relative z-10 flex items-center gap-1 px-4 py-2 text-sm font-medium transition-colors text-muted hover:text-foreground",
+                  pathname.startsWith("/services") && "text-accent-deep"
+                )}
+              >
+                Services
+                <span className="transition-transform duration-200 group-hover:rotate-180">
+                  <svg width="10" height="10" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M2.5 4.5L6 8L9.5 4.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                </span>
+                {pathname.startsWith("/services") && (
+                  <motion.div
+                    layoutId="navbar-active-pill"
+                    className="absolute inset-0 -z-10 rounded-full bg-accent/10"
+                    transition={{ type: "spring", stiffness: 600, damping: 35, mass: 0.5 }}
+                  />
+                )}
+              </Link>
+
+              {/* Mega Menu Dropdown */}
+              <div className="absolute top-full left-1/2 -translate-x-1/2 pt-4 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                <div className="w-[600px] rounded-2xl bg-white p-6 shadow-[0_8px_32px_0_rgba(0,0,0,0.1)] border border-paper-border flex gap-8">
+                  {siteConfig.navServices.map((section) => (
+                    <div key={section.group} className="flex-1">
+                      <p className="text-xs font-bold uppercase tracking-wider text-accent-deep mb-3">
+                        {section.group}
+                      </p>
+                      <ul className="space-y-2">
+                        {section.items.map((item) => (
+                          <li key={item.href}>
+                            <Link
+                              href={item.href}
+                              className="block text-sm font-medium text-muted hover:text-accent-deep transition-colors"
+                            >
+                              {item.label}
+                            </Link>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </li>
+
             {siteConfig.nav.map((item) => {
               const isHashLink = item.href.startsWith("/#");
               const isActive = isHashLink

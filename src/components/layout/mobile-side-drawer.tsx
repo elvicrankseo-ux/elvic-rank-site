@@ -157,6 +157,36 @@ export function MobileSideDrawer({ isOpen, onClose }: Props) {
                 </ul>
               </nav>
 
+              <div className="mx-4 border-t border-black/5" />
+
+              {/* Services Menu */}
+              <div className="px-4 py-4">
+                <p className="mb-3 text-[10px] font-bold uppercase tracking-widest text-muted">All Services</p>
+                <div className="space-y-4">
+                  {siteConfig.navServices.map((section) => (
+                    <div key={section.group}>
+                      <p className="text-[11px] font-bold uppercase tracking-wider text-accent-deep mb-2 pl-2">
+                        {section.group}
+                      </p>
+                      <ul className="space-y-1">
+                        {section.items.map((item) => (
+                          <li key={item.href}>
+                            <Link
+                              href={item.href}
+                              onClick={onClose}
+                              className="flex items-center gap-2 rounded-xl px-2 py-2 text-sm text-foreground hover:bg-black/5 transition-all"
+                            >
+                              <ChevronRight size={13} className="text-accent/50 shrink-0" />
+                              {item.label}
+                            </Link>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
               {/* CTA */}
               <div className="px-4 pb-4">
                 <Button

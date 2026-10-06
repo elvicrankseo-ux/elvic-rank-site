@@ -4,6 +4,7 @@ import { Hero } from "@/components/sections/hero";
 import { GrowthPillars } from "@/components/sections/growth-pillars";
 import { TrustStrip } from "@/components/sections/trust-strip";
 import { Services } from "@/components/sections/services";
+import { StrategyFlow } from "@/components/sections/strategy-flow";
 import { WhyUs } from "@/components/sections/why-us";
 import { Industries } from "@/components/sections/industries";
 import { Process } from "@/components/sections/process";
@@ -21,9 +22,9 @@ import { FAQ } from "@/components/sections/faq";
 // (title is left to inherit layout's homeTitle unchanged) fixes the
 // <meta name="description"> length in isolation, without shortening any
 // visible on-page text or the schema description.
-const homeTitle = `${siteConfig.name} | Restoration & Emergency Service SEO Agency`;
+const homeTitle = `${siteConfig.name} | Digital Growth & Visibility Agency`;
 const homeDescription =
-  "SEO and lead generation for restoration and emergency service businesses — local SEO, Google Business Profile, and technical audits built for urgent searches.";
+  "We help businesses build powerful websites, increase visibility across search and AI platforms, and turn digital attention into growth.";
 
 export const metadata: Metadata = {
   title: { absolute: homeTitle },
@@ -51,7 +52,8 @@ export default function Home() {
       <Hero />
       <GrowthPillars />
       <TrustStrip />
-      <Services limit={3} />
+      <Services />
+      <StrategyFlow />
       <WhyUs />
       <Industries />
       <Process />

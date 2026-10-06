@@ -12,6 +12,7 @@ import {
 } from "lucide-react";
 import { SectionHeading } from "@/components/ui/section-heading";
 
+
 const reasons: { icon: LucideIcon; title: string; description: string }[] = [
   {
     icon: Compass,

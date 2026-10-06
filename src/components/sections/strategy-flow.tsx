@@ -66,10 +66,10 @@ export function StrategyFlow() {
                 <span className="text-[10px] font-bold uppercase tracking-widest text-muted mb-2 block">
                   {step.phase}
                 </span>
-                <h3 className="font-display text-lg font-bold text-ink-foreground mb-3">
+                <h3 className="font-display text-lg lg:text-xl font-bold text-white mb-3">
                   {step.services}
                 </h3>
-                <p className="text-xs text-muted-dark font-medium leading-relaxed">
+                <p className="text-[13px] text-muted-dark font-medium leading-relaxed max-w-[200px] mx-auto">
                   {step.description}
                 </p>
               </motion.div>
@@ -80,23 +80,28 @@ export function StrategyFlow() {
                 whileInView={{ opacity: 1 }}
                 viewport={{ once: true, margin: "-50px" }}
                 transition={{ duration: 0.4, delay: index * 0.1 + 0.2 }}
-                className="my-4 xl:my-0 xl:mx-2 flex justify-center text-accent-bright"
+                className="my-4 xl:my-0 xl:mx-2 flex justify-center text-accent-bright shrink-0"
               >
-                <ArrowDown size={20} className="xl:-rotate-90" />
+                <ArrowDown size={24} className="xl:-rotate-90 text-accent/50" />
               </motion.div>
             </div>
           ))}
 
           {/* Final Growth Step */}
-          <div className="relative flex items-center justify-center w-full sm:w-auto">
+          <div className="relative flex items-center justify-center w-full sm:w-auto flex-1">
             <motion.div
               initial={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.6, delay: 0.5 }}
-              className="w-full sm:w-[320px] xl:w-[240px] rounded-3xl bg-accent-deep p-6 text-center shadow-[0_0_40px_rgba(37,99,235,0.3)] border border-accent-bright/50 flex flex-col justify-center h-full"
+              className="w-full sm:w-[320px] xl:w-full min-h-[220px] rounded-[2rem] bg-accent-deep p-6 lg:p-8 text-center shadow-[0_0_50px_rgba(37,99,235,0.25)] border border-accent-bright/30 flex flex-col justify-center h-full transition-transform hover:-translate-y-2"
             >
-              <span className="text-xs font-bold uppercase tracking-widest text-white/80 mb-4 block">
+              <div className="mb-4 flex justify-center">
+                 <div className="flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-white font-black text-sm border border-white/20">
+                   06
+                 </div>
+              </div>
+              <span className="text-[10px] font-bold uppercase tracking-widest text-white/70 mb-4 block">
                 Grow
               </span>
               <h3 className="font-display text-lg font-bold text-white mb-2 flex flex-col items-center gap-2">

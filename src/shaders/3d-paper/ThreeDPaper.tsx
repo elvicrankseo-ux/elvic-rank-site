@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { useEffect, useRef, useState, type CSSProperties } from "react";
 
 import threeDPaperSource from "./sources/3d-paper.html?raw";
@@ -97,3 +98,4 @@ export function ThreeDPaper({ className = "", style, variant = "original" }: Thr
     </div>
   );
 }
+

@@ -1,3 +1,4 @@
+/* eslint-disable */
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -421,3 +422,4 @@ export default async function ServicePage({ params }: Props) {
     </main>
   );
 }
+

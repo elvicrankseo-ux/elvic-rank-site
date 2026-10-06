@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, Send, Search, Target, Zap, ArrowRight } from "lucide-react";
+import { X, Search, Target, Zap, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 export function AuditModal() {
@@ -15,6 +15,7 @@ export function AuditModal() {
   useEffect(() => {
     // Open if ?modal=audit is in the URL
     if (searchParams.get("modal") === "audit") {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setIsOpen(true);
       // Prevent background scrolling completely
       document.documentElement.style.overflow = "hidden";
@@ -172,7 +173,7 @@ export function AuditModal() {
                   </div>
                   <h3 className="font-display text-4xl font-bold text-ink-foreground mb-4">Request Received!</h3>
                   <p className="text-muted-dark text-lg max-w-sm mb-10 leading-relaxed">
-                    Our team is already reviewing your details. We'll send your comprehensive audit within 24-48 hours.
+                    Our team is already reviewing your details. We&apos;ll send your comprehensive audit within 24-48 hours.
                   </p>
                   <Button onClick={closeModal} variant="accent" size="lg" className="px-10 py-5 text-lg shadow-xl shadow-accent/20">
                     Return to site

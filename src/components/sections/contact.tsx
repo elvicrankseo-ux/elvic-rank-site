@@ -4,19 +4,16 @@ import { useId, useState, type FormEvent } from "react";
 import { motion } from "framer-motion";
 import {
   Mail,
-  MessageCircle,
   CalendarCheck,
   MapPin,
   Send,
   ArrowUpRight,
   type LucideIcon,
 } from "lucide-react";
-import { SectionHeading } from "@/components/ui/section-heading";
 import { Button } from "@/components/ui/button";
 import { SocialLinks } from "@/components/ui/social-links";
 import { siteConfig } from "@/config/site";
 import { services } from "@/data/services";
-import { buildMailtoLink } from "@/lib/mailto";
 import { trackEvent } from "@/lib/analytics";
 
 type FormState = {
@@ -40,8 +37,6 @@ const initialState: FormState = {
   message: "",
 };
 
-const inputClass =
-  "mt-1.5 w-full rounded-lg border border-paper-border bg-paper px-4 py-2.5 text-sm text-foreground placeholder:text-muted focus:border-accent-deep focus:outline-none";
 
 function validate(values: FormState): FormErrors {
   const errors: FormErrors = {};
@@ -182,10 +177,10 @@ export function Contact() {
                 Contact
               </span>
               <h2 className="mt-8 font-display text-3xl font-bold leading-tight text-foreground sm:text-4xl">
-                Let's talk about your rankings.
+                Let&apos;s talk about your rankings.
               </h2>
               <p className="mt-6 text-base leading-relaxed text-muted-dark max-w-md">
-                Questions, partnership ideas, or you're just not sure where to start — reach out directly.
+                Questions, partnership ideas, or you&apos;re just not sure where to start — reach out directly.
               </p>
 
               <div className="mt-8 flex items-start gap-4 rounded-2xl bg-paper p-6 [box-shadow:var(--shadow-neo-flat)] border border-black/5">
@@ -223,7 +218,7 @@ export function Contact() {
                     Message sent successfully!
                   </p>
                   <p className="mt-2 max-w-sm text-base text-muted-dark">
-                    We've received your request and will get back to you shortly. Or email us directly at{" "}
+                    We&apos;ve received your request and will get back to you shortly. Or email us directly at{" "}
                     <a href={`mailto:${siteConfig.email}`} className="text-accent-deep font-bold hover:underline">
                       {siteConfig.email}
                     </a>

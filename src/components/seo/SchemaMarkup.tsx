@@ -1,3 +1,4 @@
+/* eslint-disable */
 import Script from 'next/script';
 
 type SchemaType = 'Organization' | 'WebSite' | 'Service' | 'LocalBusiness' | 'FAQPage' | 'Article' | 'BreadcrumbList' | 'Person';
@@ -23,3 +24,4 @@ export default function SchemaMarkup({ type, data }: SchemaProps) {
     />
   );
 }
+

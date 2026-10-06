@@ -3,10 +3,8 @@
 import { useId, useState, type FormEvent } from "react";
 import { motion } from "framer-motion";
 import { SearchCheck, MapPinCheck, ListChecks, Send } from "lucide-react";
-import { SectionHeading } from "@/components/ui/section-heading";
 import { Button } from "@/components/ui/button";
 import { siteConfig } from "@/config/site";
-import { buildMailtoLink } from "@/lib/mailto";
 import { trackEvent } from "@/lib/analytics";
 
 const included = [
@@ -54,26 +52,6 @@ function validate(values: FormState): FormErrors {
   return errors;
 }
 
-/**
- * TODO(elvic): no email/form backend is wired up yet. This falls back to
- * a mailto: link (works with zero configuration on Vercel) — swap for a
- * real endpoint (Formspree / a Resend-backed route handler) once you've
- * set one up, and this component won't need to change much beyond the
- * submit handler.
- */
-function buildMailto(values: FormState) {
-  return buildMailtoLink(
-    siteConfig.email,
-    `Free SEO Audit Request — ${values.website || values.name}`,
-    [
-      `Name: ${values.name}`,
-      `Email: ${values.email}`,
-      `Website: ${values.website}`,
-      values.phone ? `Phone: ${values.phone}` : null,
-      values.message ? `\nBiggest SEO challenge:\n${values.message}` : null,
-    ]
-  );
-}
 
 export function FreeAudit() {
   const [values, setValues] = useState<FormState>(initialState);
@@ -121,7 +99,7 @@ export function FreeAudit() {
                 Free SEO audit
               </span>
               <h2 className="mt-8 font-display text-3xl font-bold leading-tight text-foreground sm:text-4xl">
-                See exactly where you're losing rankings.
+                See exactly where you&apos;re losing rankings.
               </h2>
               <p className="mt-6 text-base leading-relaxed text-muted-dark max-w-md">
                 No generic PDF. Get a real look at your site, your competitors, and the fastest wins available to you.

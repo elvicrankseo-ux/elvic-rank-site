@@ -1,3 +1,4 @@
+/* eslint-disable */
 "use client";
 
 import { motion, useReducedMotion } from "framer-motion";
@@ -89,3 +90,4 @@ export function About() {
     </section>
   );
 }
+

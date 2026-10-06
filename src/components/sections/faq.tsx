@@ -1,6 +1,7 @@
 import { SectionHeading } from "@/components/ui/section-heading";
 import { FaqAccordion } from "@/components/ui/faq-accordion";
 import { getFaqSchema } from "@/lib/schema";
+import { Button } from "@/components/ui/button";
 
 const faqs = [
   {
@@ -90,11 +91,12 @@ const faqs = [
   },
 ];
 
-export function FAQ() {
-  const jsonLd = getFaqSchema(faqs);
-  const half = Math.ceil(faqs.length / 2);
-  const leftFaqs = faqs.slice(0, half);
-  const rightFaqs = faqs.slice(half);
+export function FAQ({ limit }: { limit?: number }) {
+  const displayedFaqs = limit ? faqs.slice(0, limit) : faqs;
+  const jsonLd = getFaqSchema(displayedFaqs);
+  const half = Math.ceil(displayedFaqs.length / 2);
+  const leftFaqs = displayedFaqs.slice(0, half);
+  const rightFaqs = displayedFaqs.slice(half);
 
   return (
     <section id="faq" className="relative overflow-hidden pt-4 pb-20 lg:pt-8 lg:pb-28">
@@ -117,6 +119,14 @@ export function FAQ() {
             <FaqAccordion items={rightFaqs} />
           </div>
         </div>
+
+        {limit && limit < faqs.length && (
+          <div className="mt-12 flex justify-center">
+            <Button href="/faq" variant="accent" size="lg">
+              See more FAQs
+            </Button>
+          </div>
+        )}
       </div>
     </section>
   );

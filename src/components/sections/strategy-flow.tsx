@@ -55,18 +55,18 @@ export function StrategyFlow() {
                 transition={{ duration: 0.5, delay: prefersReducedMotion ? 0 : index * 0.1 }}
                 className={cn(
                   "relative w-full sm:w-[320px] xl:w-full h-full min-h-[220px] rounded-[2rem] p-6 lg:p-8 text-center border [box-shadow:var(--shadow-neo-flat)] transition-transform hover:-translate-y-2",
-                  "bg-ink border-white/10 flex flex-col justify-center"
+                  "bg-paper border-white/20 flex flex-col justify-center"
                 )}
               >
                 <div className="mb-4 flex justify-center">
-                   <div className="flex h-10 w-10 items-center justify-center rounded-full bg-accent-deep/10 text-accent-bright font-black text-sm border border-accent-deep/20 [box-shadow:var(--shadow-neo-pressed)]">
+                   <div className="flex h-10 w-10 items-center justify-center rounded-full bg-accent/10 text-accent font-black text-sm border border-accent/20">
                      0{index + 1}
                    </div>
                 </div>
-                <span className="text-[10px] font-bold uppercase tracking-widest text-muted mb-2 block">
+                <span className="text-[10px] font-bold uppercase tracking-widest text-accent-deep mb-2 block">
                   {step.phase}
                 </span>
-                <h3 className="font-display text-lg lg:text-xl font-bold text-white mb-3">
+                <h3 className="font-display text-lg lg:text-xl font-bold text-ink-foreground mb-3">
                   {step.services}
                 </h3>
                 <p className="text-[13px] text-muted-dark font-medium leading-relaxed max-w-[200px] mx-auto">

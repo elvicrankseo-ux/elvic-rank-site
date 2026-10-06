@@ -82,14 +82,6 @@ export function Footer() {
                   </Link>
                 </li>
               ))}
-              <li>
-                <Link
-                  href="/contact"
-                  className="text-sm text-ink-foreground/80 transition-colors hover:text-accent-bright"
-                >
-                  Contact
-                </Link>
-              </li>
             </ul>
           </div>
 

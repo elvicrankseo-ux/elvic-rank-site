@@ -94,9 +94,6 @@ const faqs = [
 export function FAQ({ limit }: { limit?: number }) {
   const displayedFaqs = limit ? faqs.slice(0, limit) : faqs;
   const jsonLd = getFaqSchema(displayedFaqs);
-  const half = Math.ceil(displayedFaqs.length / 2);
-  const leftFaqs = displayedFaqs.slice(0, half);
-  const rightFaqs = displayedFaqs.slice(half);
 
   return (
     <section id="faq" className="relative overflow-hidden pt-4 pb-20 lg:pt-8 lg:pb-28">
@@ -104,20 +101,15 @@ export function FAQ({ limit }: { limit?: number }) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <div className="mx-auto max-w-7xl px-6 lg:px-8">
+      <div className="mx-auto max-w-4xl px-6 lg:px-8">
         <SectionHeading
           eyebrow="FAQ"
           title="Questions worth asking before you hire us"
           description="Straight answers. If yours isn't here, ask us directly."
         />
 
-        <div className="mt-16 grid gap-8 lg:grid-cols-2 lg:gap-16 items-start">
-          <div className="flex flex-col gap-2">
-            <FaqAccordion items={leftFaqs} />
-          </div>
-          <div className="flex flex-col gap-2">
-            <FaqAccordion items={rightFaqs} />
-          </div>
+        <div className="mt-16 flex flex-col gap-3">
+          <FaqAccordion items={displayedFaqs} />
         </div>
 
         {limit && limit < faqs.length && (

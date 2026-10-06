@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/button";
 import { siteConfig } from "@/config/site";
 import { services } from "@/data/services";
 
-export function Services() {
+export function Services({ limit }: { limit?: number }) {
   const prefersReducedMotion = useReducedMotion();
 
   return (
@@ -24,7 +24,7 @@ export function Services() {
         />
 
         <div className="mt-20 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-          {services.map((service, index) => {
+          {(limit ? services.slice(0, limit) : services).map((service, index) => {
             const Icon = service.icon;
             return (
               <motion.div
@@ -87,6 +87,14 @@ export function Services() {
             );
           })}
         </div>
+
+        {limit && limit < services.length && (
+          <div className="mt-12 flex justify-center">
+            <Button href="/services" variant="accent" size="lg" className="px-8 py-4">
+              See all services
+            </Button>
+          </div>
+        )}
 
         <motion.div
           initial={{ opacity: 0, y: 20 }}

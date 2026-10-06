@@ -51,14 +51,14 @@ export default function Home() {
       <Hero />
       <GrowthPillars />
       <TrustStrip />
-      <Services />
+      <Services limit={3} />
       <WhyUs />
       <Industries />
       <Process />
       <Testimonials />
       <Blog />
       <FreeAudit />
-      <FAQ />
+      <FAQ limit={4} />
     </main>
   );
 }

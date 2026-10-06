@@ -78,13 +78,12 @@ export const siteConfig = {
   // specialization (first 4 items are the ones Footer's quickLinks slice
   // surfaces — kept the most important entries there deliberately).
   nav: [
-    { label: "Services", href: "/#services" },
+    { label: "Services", href: "/services" },
     { label: "Restoration SEO", href: "/industries/restoration-seo" },
     { label: "Emergency SEO", href: "/industries/emergency-service-seo" },
     { label: "Industries", href: "/#industries" },
     { label: "Resources", href: "/blog" },
     { label: "About", href: "/about" },
-    { label: "FAQ", href: "/#faq" },
     { label: "Contact", href: "/contact" },
   ],
 

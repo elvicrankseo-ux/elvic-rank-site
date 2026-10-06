@@ -94,9 +94,8 @@ export const siteConfig = {
     // Kept compact deliberately — this label is reused in tight spaces
     // (navbar, mobile sticky bar) as well as full-size buttons.
     primary: { label: "Get a Free Growth Audit", href: "/#audit" },
-    // Only consumed by Hero — points at the real case-study section
-    // ("View Our Work" should mean actual work, not a services list).
-    secondary: { label: "View Our Work", href: "/#case-studies" },
+    // Only consumed by Hero — points at the testimonials section since case studies were removed.
+    secondary: { label: "View Our Work", href: "/#testimonials" },
   },
 } as const;
 

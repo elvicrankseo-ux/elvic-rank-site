@@ -50,10 +50,10 @@ export default function Home() {
   return (
     <main id="top" className="flex-1">
       <Hero />
-      <GrowthPillars />
-      <TrustStrip />
       <Services />
       <StrategyFlow />
+      <GrowthPillars />
+      <TrustStrip />
       <WhyUs />
       <Industries />
       <Process />

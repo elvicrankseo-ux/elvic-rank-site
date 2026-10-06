@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { motion } from "framer-motion";
 import { Home, Briefcase, BookOpen, User, Mail } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { trackEvent } from "@/lib/analytics";
@@ -39,20 +40,29 @@ export function MobileTabBar() {
               onClick={() =>
                 trackEvent("mobile_tab_click", { tab: tab.label })
               }
-              className="flex flex-1 flex-col items-center justify-center gap-1 transition-all duration-200 active:scale-95"
+              className="relative flex flex-1 flex-col items-center justify-center gap-1 transition-all duration-200 active:scale-95"
               aria-current={isActive ? "page" : undefined}
             >
 
-              <span
-                className={cn(
-                  "flex h-8 w-8 items-center justify-center rounded-xl transition-all duration-200",
-                  isActive
-                    ? "bg-accent-deep/10 text-accent-deep scale-110"
-                    : "text-muted"
+              <div className="relative flex h-8 w-8 items-center justify-center">
+                {isActive && (
+                  <motion.div
+                    layoutId="mobile-tab-indicator"
+                    className="absolute inset-0 rounded-xl bg-accent-deep/10"
+                    transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                  />
                 )}
-              >
-                <Icon size={20} strokeWidth={isActive ? 2.5 : 1.8} aria-hidden />
-              </span>
+                <span
+                  className={cn(
+                    "relative z-10 flex items-center justify-center transition-all duration-200",
+                    isActive
+                      ? "text-accent-deep scale-110"
+                      : "text-muted"
+                  )}
+                >
+                  <Icon size={20} strokeWidth={isActive ? 2.5 : 1.8} aria-hidden />
+                </span>
+              </div>
               <span
                 className={cn(
                   "text-[10px] font-semibold leading-none tracking-wide transition-colors duration-200",

@@ -36,7 +36,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 // Highly visual, contained cards, subtle glows, centered hero.
 // -------------------------------------------------------------
 function LayoutA({ service }: { service: Service }) {
-  const Icon = service.icon;
   return (
     <div className="flex flex-col w-full">
       {/* Hero */}
@@ -44,9 +43,6 @@ function LayoutA({ service }: { service: Service }) {
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-accent/5 rounded-full blur-[100px] pointer-events-none" />
         <div className="relative z-10 mx-auto max-w-5xl px-6 text-center">
           <Breadcrumbs items={[{ name: "Home", href: "/" }, { name: "Services", href: "/services" }, { name: service.title }]} />
-          <div className="mt-8 mx-auto inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-accent/10 text-accent-deep">
-            <Icon size={32} />
-          </div>
           <h1 className="mt-6 font-display text-5xl md:text-7xl font-bold tracking-tight text-foreground">{service.title}</h1>
           <p className="mt-6 mx-auto max-w-2xl text-xl text-muted font-medium leading-relaxed">{service.heroIntro}</p>
           <div className="mt-10 flex justify-center gap-4">
@@ -134,7 +130,6 @@ function LayoutA({ service }: { service: Service }) {
 // Agency feel, large images/text splits, stacked typography.
 // -------------------------------------------------------------
 function LayoutB({ service }: { service: Service }) {
-  const Icon = service.icon;
   return (
     <div className="flex flex-col w-full">
       {/* Split Hero */}
@@ -145,10 +140,7 @@ function LayoutB({ service }: { service: Service }) {
             <h1 className="mt-8 font-display text-5xl md:text-6xl lg:text-7xl font-bold leading-tight">{service.title}</h1>
           </div>
           <div className="lg:pl-12 lg:border-l border-paper-border">
-            <div className="mb-6 w-16 h-16 bg-accent/10 rounded-2xl flex items-center justify-center text-accent-deep">
-              <Icon size={32} />
-            </div>
-            <p className="text-xl leading-relaxed text-muted mb-8">{service.heroIntro}</p>
+            <p className="mt-8 text-xl leading-relaxed text-muted mb-8">{service.heroIntro}</p>
             <div className="flex gap-4">
               <Button href={siteConfig.cta.primary.href} variant="accent" size="lg">{siteConfig.cta.primary.label}</Button>
               <Button href={siteConfig.calendlyUrl} variant="outline" size="lg">Let's Talk</Button>
@@ -235,7 +227,6 @@ function LayoutB({ service }: { service: Service }) {
 // Zig-zag sections, focused on high conversion, clear grids.
 // -------------------------------------------------------------
 function LayoutC({ service }: { service: Service }) {
-  const Icon = service.icon;
   return (
     <div className="flex flex-col w-full">
       {/* Contained Hero */}
@@ -244,10 +235,7 @@ function LayoutC({ service }: { service: Service }) {
           <div className="bg-ink rounded-[3rem] p-10 md:p-20 text-center relative overflow-hidden [box-shadow:var(--shadow-neo-flat)]">
             <div className="relative z-10 flex flex-col items-center">
               <Breadcrumbs items={[{ name: "Home", href: "/" }, { name: "Services", href: "/services" }, { name: service.title }]} />
-              <div className="mt-8 mb-6 inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-accent/10 text-accent-deep">
-                <Icon size={32} />
-              </div>
-              <h1 className="font-display text-5xl md:text-6xl font-bold text-foreground mb-6 max-w-3xl leading-tight">{service.title}</h1>
+              <h1 className="mt-8 font-display text-5xl md:text-6xl font-bold text-foreground mb-6 max-w-3xl leading-tight">{service.title}</h1>
               <p className="text-xl text-muted max-w-2xl mx-auto mb-10">{service.heroIntro}</p>
               <Button href={siteConfig.cta.primary.href} variant="accent" size="lg" className="px-10 py-6 text-lg font-bold">{siteConfig.cta.primary.label}</Button>
             </div>

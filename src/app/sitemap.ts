@@ -30,9 +30,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     ...services.map((service) => ({
       url: `${siteConfig.url}/services/${service.slug}`,
-      lastModified: service.lastUpdated
-        ? new Date(service.lastUpdated)
-        : SITE_LAST_UPDATED,
+      lastModified: SITE_LAST_UPDATED,
       changeFrequency: "monthly" as const,
       priority: 0.8,
     })),

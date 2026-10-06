@@ -1,20 +1,33 @@
 "use client";
 
-import Link from "next/link";
 import { motion, useReducedMotion } from "framer-motion";
 import { SectionHeading } from "@/components/ui/section-heading";
-import { industries } from "@/data/industries";
+import { 
+  Droplets, 
+  Home, 
+  Thermometer, 
+  Wrench, 
+  Truck, 
+  Hammer, 
+  Briefcase, 
+  LineChart, 
+  Building2, 
+  Zap 
+} from "lucide-react";
+import { cn } from "@/lib/utils";
 
-// Pulled directly from src/data/industries.ts (the same data that powers
-// each /industries/[slug] page) rather than a separately maintained list,
-// so this grid can never drift out of sync with what pages actually
-// exist. Hub pages (isHub: true) are reachable from primary nav instead,
-// and excludeFromGrid pages (e.g. Restoration Web Design — a service
-// angle, not a customer vertical) are reachable via contextual links
-// elsewhere — this grid shows only the 10 individual customer verticals.
-const industryCards = industries.filter(
-  (industry) => !industry.isHub && !industry.excludeFromGrid
-);
+const newIndustries = [
+  { label: "Restoration", icon: Droplets },
+  { label: "Roofing", icon: Home },
+  { label: "HVAC", icon: Thermometer },
+  { label: "Plumbing", icon: Wrench },
+  { label: "Towing", icon: Truck },
+  { label: "Remodeling", icon: Hammer },
+  { label: "Home Services", icon: Building2 },
+  { label: "Local Service Businesses", icon: Zap },
+  { label: "Professional Services", icon: Briefcase },
+  { label: "Growth-Focused Businesses", icon: LineChart },
+];
 
 export function Industries() {
   const prefersReducedMotion = useReducedMotion();
@@ -26,17 +39,17 @@ export function Industries() {
 
       <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8">
         <SectionHeading
-          eyebrow="Industries"
-          title="Built for restoration & emergency service businesses"
-          description="Two categories, one shared fundamental: customers search Google because something has already gone wrong, and they call whoever shows up first."
+          eyebrow="Who We Help"
+          title="Built for businesses that depend on local visibility"
+          description="From emergency home services to professional practices, our strongest expertise is helping companies that rely on high-intent online searches and predictable customer acquisition."
         />
 
         <div className="mt-16 flex flex-wrap justify-center gap-4 lg:gap-6">
-          {industryCards.map((industry, index) => {
+          {newIndustries.map((industry, index) => {
             const Icon = industry.icon;
             return (
               <motion.div
-                key={industry.slug}
+                key={industry.label}
                 initial={{ opacity: 0, scale: 0.9, y: 20 }}
                 whileInView={{ opacity: 1, scale: 1, y: 0 }}
                 viewport={{ once: true, margin: "-50px" }}
@@ -46,9 +59,11 @@ export function Industries() {
                   ease: "easeOut",
                 }}
               >
-                <Link
-                  href={`/industries/${industry.slug}`}
-                  className="group flex items-center gap-4 rounded-full bg-ink py-3 pl-3 pr-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl [box-shadow:var(--shadow-neo-flat)] border-t border-white/20 hover:[box-shadow:var(--shadow-neo-pressed)]"
+                <div
+                  className={cn(
+                    "group flex items-center gap-4 rounded-full bg-ink py-3 pl-3 pr-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl [box-shadow:var(--shadow-neo-flat)] border-t border-white/20 hover:[box-shadow:var(--shadow-neo-pressed)]",
+                    "cursor-default"
+                  )}
                 >
                   <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-accent-deep/10 text-accent-bright transition-transform duration-300 group-hover:scale-110 group-hover:bg-accent/20 [box-shadow:var(--shadow-neo-pressed)]">
                     <Icon size={18} aria-hidden />
@@ -56,7 +71,7 @@ export function Industries() {
                   <span className="font-display text-sm font-bold text-ink-foreground transition-colors group-hover:text-accent-deep">
                     {industry.label}
                   </span>
-                </Link>
+                </div>
               </motion.div>
             );
           })}

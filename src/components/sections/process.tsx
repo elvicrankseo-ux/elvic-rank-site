@@ -14,38 +14,38 @@ import { SectionHeading } from "@/components/ui/section-heading";
 const steps: { number: string; icon: LucideIcon; title: string; description: string }[] = [
   {
     number: "01",
-    icon: ClipboardCheck,
-    title: "Free SEO Audit",
+    icon: Search,
+    title: "Discover",
     description:
-      "We crawl your site, analyze competitors, and map exactly where you're losing visibility — and why.",
+      "We audit your digital footprint, analyze competitors, and map exactly where you're losing visibility — and why.",
   },
   {
     number: "02",
     icon: Compass,
-    title: "Strategy Session",
+    title: "Strategize",
     description:
-      "A no-templates roadmap built around your services, service area, and buyer intent — walked through with you, not just emailed over.",
+      "A complete digital roadmap built around your business goals, target audience, and best growth channels.",
   },
   {
     number: "03",
-    icon: Rocket,
-    title: "Technical Implementation",
+    icon: ClipboardCheck,
+    title: "Build",
     description:
-      "Technical fixes, site structure, and Google Business Profile work — done for you, not handed to you as homework.",
+      "We build a fast, conversion-focused website and setup the technical foundation to support long-term growth.",
   },
   {
     number: "04",
-    icon: Search,
-    title: "SEO Optimization",
+    icon: Rocket,
+    title: "Optimize",
     description:
-      "On-page content, internal linking, and metadata tuned to the keywords that actually drive booked jobs.",
+      "Ongoing SEO, local optimization, and content creation that puts your business exactly where buyers are searching.",
   },
   {
     number: "05",
     icon: BarChart3,
-    title: "Growth Tracking",
+    title: "Grow",
     description:
-      "Weekly reporting and monthly strategy calls. We double down on what's working and cut what isn't.",
+      "Traffic means nothing without leads. We use paid ads and continuous refinement to scale your customer acquisition.",
   },
 ];
 
@@ -57,8 +57,8 @@ export function Process() {
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <SectionHeading
           eyebrow="Our process"
-          title="From audit to ranked, without the guesswork"
-          description="Five steps, one accountable partner. No black box, no vanishing after the contract's signed."
+          title="From strategy to scale, without the guesswork"
+          description="A clear five-step framework to build your digital presence, increase visibility, and drive predictable customer acquisition."
         />
 
         {/* Desktop: horizontal timeline */}

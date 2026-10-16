@@ -4,7 +4,7 @@ import { AboutPageContent } from "@/components/pages/about-page-content";
 
 export const metadata: Metadata = {
   title: `About Us | ${siteConfig.name}`,
-  description: "Learn more about Elvic Rank, our mission, and our expertise in SEO for restoration and emergency service businesses.",
+  description: "Learn more about Elvic Rank, our team, and how we help businesses become easier to find, trust, and choose.",
 };
 
 export default function AboutPage() {

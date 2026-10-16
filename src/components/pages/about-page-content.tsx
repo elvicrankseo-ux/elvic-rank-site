@@ -69,25 +69,30 @@ export function AboutPageContent() {
             </div>
             <div className="lg:col-span-3 p-10 sm:p-16 lg:p-20">
               <h2 className="font-display text-4xl sm:text-5xl font-bold tracking-tight text-foreground">
-                Meet the Founder
+                The team behind Elvic Rank
               </h2>
-              <div className="mt-4 text-2xl font-bold text-accent-deep">
-                Peter Emmanuel Victor
+              <div className="mt-4 text-xl sm:text-2xl font-bold text-accent-deep">
+                Hi, I’m Peter Emmanuel Victor — the person who started Elvic Rank.
               </div>
               <div className="text-sm uppercase tracking-wider text-muted-dark font-bold mt-2">
-                Founder & CEO, Elvic Rank
+                Founder, Elvic Rank
               </div>
 
-              <blockquote className="mt-12 border-l-4 border-accent-deep pl-6 italic text-2xl leading-relaxed text-foreground font-display">
-                “I started Elvic Rank with a simple goal: to help businesses stop being invisible online.”
+              <div className="mt-8 space-y-5 text-lg leading-relaxed text-muted-dark">
+                <p>
+                  I built this company because too many good businesses stay invisible online. They have a website, they post sometimes, they even pay for ads… yet the phone still doesn’t ring the way it should.
+                </p>
+                <p>
+                  We’re a small team (developers + growth support) that focuses on the practical side of digital visibility: websites that convert, search that actually brings customers, and systems that keep working after the campaign ends.
+                </p>
+                <p>
+                  No big agency layers. No junior account managers. Just clear communication, honest reporting, and work that is judged by one simple question:
+                </p>
+              </div>
+
+              <blockquote className="mt-8 border-l-4 border-accent-deep pl-6 italic text-xl sm:text-2xl leading-relaxed text-foreground font-display">
+                “Did more of the right people find you and choose you?”
               </blockquote>
-
-              <div className="mt-12 space-y-6 text-lg leading-relaxed text-muted-dark">
-                <p>Elvic Rank was built from a desire to help businesses compete in an increasingly digital marketplace.</p>
-                <p>Too many businesses invest in having a website or maintaining an online presence without having a clear system for actually being discovered by potential customers.</p>
-                <p>Elvic Rank brings together search visibility, websites, AI-driven search optimization, and customer acquisition to help businesses build a stronger presence online and create more opportunities for growth.</p>
-                <p>I want to build a company that businesses can rely on when they need to improve their digital presence, compete more effectively, and adapt to the rapidly changing way people discover and choose businesses online.</p>
-              </div>
             </div>
           </div>
         </motion.div>
@@ -180,10 +185,10 @@ export function AboutPageContent() {
           <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff1a_1px,transparent_1px),linear-gradient(to_bottom,#ffffff1a_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)] pointer-events-none" />
           
           <h2 className="relative z-10 font-display text-4xl sm:text-5xl font-bold tracking-tight text-white">
-            Ready to become easier to find?
+            Ready to stop being hard to find?
           </h2>
           <p className="relative z-10 mt-6 text-xl leading-relaxed text-white/80 max-w-2xl mx-auto">
-            Let's identify what's holding your digital presence back and find the opportunities that can move your business forward.
+            Let’s look at what’s holding your visibility back and map the fastest wins together.
           </p>
           <div className="relative z-10 mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
             <Button 

@@ -63,8 +63,8 @@ export function WhyUs() {
       <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8">
         <SectionHeading
           eyebrow="Why Elvic Rank"
-          title="Why restoration & emergency service companies choose Elvic Rank"
-          description="Not a generic marketing checklist — six things that actually change the outcome of an SEO engagement for a business that depends on urgent, local Google searches."
+          title="Why businesses choose Elvic Rank"
+          description="Not a generic marketing checklist — six things that actually change the outcome of an SEO and digital growth engagement for companies that need more visibility, more leads, and more booked work."
         />
 
         <div className="mt-20 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">

@@ -21,7 +21,7 @@ export const siteConfig = {
   // urgently, because something has already gone wrong, and decide fast.
   // See docs/phase-31-niche-pivot.md for the full reasoning.
   description:
-    "SEO and lead generation for restoration and emergency service businesses. Local SEO, Google Business Profile, and technical audits that turn urgent Google searches into booked jobs.",
+    "Digital growth & visibility for businesses that want more traffic, better rankings, and more leads. Websites, SEO, local search, and paid acquisition — built to compound.",
   domain: "elvicrank.com",
   // Phase 28: confirmed via direct HTTP testing (twice, across two phases)
   // that Vercel's platform-level redirect goes apex -> www (a single,
@@ -53,7 +53,7 @@ export const siteConfig = {
   location: {
     mode: "remote" as const,
     servingLine:
-      "Helping U.S. restoration and emergency service businesses turn urgent Google searches into booked jobs through local SEO, Google Business Profile optimization, and technical SEO.",
+      "Helping businesses turn search and AI visibility into real growth through technical SEO, local SEO, Google Business Profile optimization, and conversion-focused websites.",
   },
 
   // instagram/tiktok point directly at their final destinations (both

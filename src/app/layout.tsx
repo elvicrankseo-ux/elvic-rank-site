@@ -73,6 +73,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       <body className="min-h-full flex flex-col overflow-x-clip w-full max-w-[100vw] bg-paper pb-20 text-foreground sm:pb-0 relative">
         <GoogleAnalytics />
         <Analytics />
+        <SpeedInsights />
         {jsonLd.map((schema) => (
           <script
             key={schema["@type"]}
